@@ -1,5 +1,5 @@
 package org.stringdistance
 
-import org.stringdistance.algo.JaroDistance
+import org.stringdistance.algo.{LevenshteinDistance, JaroDistance}
 
-object StringDistance extends JaroDistance
+object StringDistance extends JaroDistance with LevenshteinDistance
