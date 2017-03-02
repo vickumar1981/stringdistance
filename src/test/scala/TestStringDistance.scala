@@ -1,36 +1,37 @@
 import org.scalatest._
 import org.stringdistance.implicits.Converters._
 import scala.math.BigDecimal
+import fixtures.TestCases.{precision, testCases}
 
 class TestStringDistance extends FlatSpec with Matchers {
-  private lazy val precision = 3
-  private lazy val data = List(
-    ("MARTHA", "MARHTA", 0.944, 0.961, 2),
-    ("DWAYNE", "DUANE", 0.822, 0.840, 2),
-    ("DIXON", "DICKSONX", 0.767, 0.813, 4)
-  )
-
   private def roundToPrecision(v: Double) =
     BigDecimal(v).setScale(precision, BigDecimal.RoundingMode.HALF_UP).toDouble
 
   "The Jaro Score" should "match for all test cases" in {
-    data.map(d => {
-      val jaro = d._1.toJaro(d._2)
-      roundToPrecision(jaro) should be (d._3)
+    testCases.filter(_.jaro.isDefined).map(t => {
+      val jaro = t.s1.jaro(t.s2)
+      roundToPrecision(jaro) should be (t.jaro.get)
     })
   }
 
   "The Jaro-Winkler Score" should "match for all test cases" in {
-    data.map(d => {
-      val jaroWinkler = d._1.toJaroWinkler(d._2)
-      roundToPrecision(jaroWinkler) should be (d._4)
+    testCases.filter(_.jaroWinkler.isDefined).map(t => {
+      val jaroWinkler = t.s1.jaroWinkler(t.s2)
+      roundToPrecision(jaroWinkler) should be (t.jaroWinkler.get)
     })
   }
 
   "The Levenschtein distance" should "match for all test cases" in {
-    data.map(d => {
-      val levenschtein = d._1.toLevenschtein(d._2)
-      levenschtein should be (d._5)
+    testCases.filter(_.levenschtein.isDefined).map(t => {
+      val levenschtein = t.s1.levenschtein(t.s2)
+      levenschtein should be (t.levenschtein.get)
+    })
+  }
+
+  "The Dice Coefficient" should "match for all test cases" in {
+    testCases.filter(_.diceCoefficient.isDefined).map(t => {
+      val diceCoefficient = t.s1.diceCoefficient(t.s2)
+      roundToPrecision(diceCoefficient) should be (t.diceCoefficient.get)
     })
   }
 
