@@ -8,6 +8,7 @@ sealed class StringDistanceConverter(s1: String) {
     StringDistance.jaroWinkler(s1, s2, weight)
   def levenschtein(s2: String) = StringDistance.levenschtein(s1, s2)
   def diceCoefficient(s2: String) = StringDistance.diceCoefficient(s1, s2)
+  def hamming(s2: String) = StringDistance.hamming(s1, s2)
 }
 
 object Converters {

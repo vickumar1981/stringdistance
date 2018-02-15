@@ -35,5 +35,12 @@ class TestStringDistance extends FlatSpec with Matchers {
     })
   }
 
+  "The Hamming Distance" should "match for all test cases" in {
+    testCases.filter(_.hamming.isDefined).map(t => {
+      val hamming = t.s1.hamming(t.s2)
+      hamming should be (t.hamming.get)
+    })
+  }
+
 }
 
