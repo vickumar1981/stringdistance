@@ -1,10 +1,32 @@
 name := "stringdistance"
 version := "1.0.0"
 scalaVersion := "2.12.6"
-organization := "org.vickumar"
+organization := "com.github.vickumar1981"
+homepage := Some(url("https://github.com/vickumar1981/stringdistance"))
+scmInfo := Some(ScmInfo(url("https://github.com/vickumar1981/stringdistance"),
+  "git@github.com:vickumar/stringdistance.git"))
+developers := List(Developer("vickumar1981",
+  "Vic Kumar",
+  "vickumar@gmail.com",
+  url("https://github.com/vickumar1981")))
+licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0"))
 publishMavenStyle := true
 
-publishTo := Some("Sonatype Snapshots Nexus" at "https://oss.sonatype.org/content/repositories/snapshots")
+artifact in (Compile, assembly) := {
+  val art = (artifact in (Compile, assembly)).value
+  art.withClassifier(Some("assembly"))
+}
+
+addArtifact(artifact in (Compile, assembly), assembly)
+
+// Add sonatype repository settings
+publishTo := Some(
+  if (isSnapshot.value)
+    Opts.resolver.sonatypeSnapshots
+  else
+    Opts.resolver.sonatypeStaging
+)
+credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
 assemblyJarName := "stringdistance-" + version.value + ".jar"
 
