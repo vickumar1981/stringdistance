@@ -1,6 +1,5 @@
 package org.stringdistance.util;
 
-import org.stringdistance.StringDistance$;
 import org.stringdistance.algo.LevenshteinDistance;
 
 public class StringDistance {
