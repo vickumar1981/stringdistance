@@ -30,5 +30,5 @@ credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
 assemblyJarName := "stringdistance_2.12-" + version.value + ".jar"
 
-libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1" % Test
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % Test
