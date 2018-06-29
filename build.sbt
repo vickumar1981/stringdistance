@@ -14,7 +14,7 @@ publishMavenStyle := true
 
 artifact in (Compile, assembly) := {
   val art = (artifact in (Compile, assembly)).value
-  art.withClassifier(Some("assembly"))
+  art.withClassifier(Some(version.value))
 }
 
 addArtifact(artifact in (Compile, assembly), assembly)
@@ -28,7 +28,7 @@ publishTo := Some(
 )
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
-assemblyJarName := "stringdistance-" + version.value + ".jar"
+assemblyJarName := "stringdistance_2.12-" + version.value + ".jar"
 
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
