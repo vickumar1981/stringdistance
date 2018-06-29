@@ -37,11 +37,11 @@ Example
 // Java example
 import org.stringdistance.util.StringDistance;
 
-Double jaro = StringDistance.jaro("MARTHA", "MARHTA")
-Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA")
-Integer hamming = StringDistance.hamming("MARTHA", "MARHTA")
-Double diceCoefficient = StringDistance.diceCoefficient("MARTHA", "MARHTA")
-Double diceCoefficientWeighted = StringDistance.diceCoefficient("MARTHA", "MARHTA", 0.2)
-Integer levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA")
+Double jaro = StringDistance.jaro("MARTHA", "MARHTA");
+Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA");
+Integer hamming = StringDistance.hamming("MARTHA", "MARHTA");
+Double diceCoefficient = StringDistance.diceCoefficient("MARTHA", "MARHTA");
+Double diceCoefficientWeighted = StringDistance.diceCoefficient("MARTHA", "MARHTA", 0.2);
+Integer levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA");
 ```
 
