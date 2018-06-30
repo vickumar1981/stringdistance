@@ -1,5 +1,5 @@
 import org.scalatest._
-import org.stringdistance.implicits.Converters._
+import org.stringdistance.StringConverter._
 import scala.math.BigDecimal
 import fixtures.TestCases.{precision, testCases}
 
@@ -22,9 +22,9 @@ class TestStringDistance extends FlatSpec with Matchers {
   }
 
   "The Levenschtein distance" should "match for all test cases" in {
-    testCases.filter(_.levenschtein.isDefined).map(t => {
-      val levenschtein = t.s1.levenschtein(t.s2)
-      levenschtein should be (t.levenschtein.get)
+    testCases.filter(_.levenshtein.isDefined).map(t => {
+      val levenschtein = t.s1.levenshtein(t.s2)
+      levenschtein should be (t.levenshtein.get)
     })
   }
 

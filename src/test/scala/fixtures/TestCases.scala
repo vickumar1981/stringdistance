@@ -4,7 +4,7 @@ case class TestCase (s1: String,
                      s2: String,
                      jaro: Option[Double] = None,
                      jaroWinkler: Option[Double] = None,
-                     levenschtein: Option[Int] = None,
+                     levenshtein: Option[Int] = None,
                      diceCoefficient: Option[Double] = None,
                      hamming: Option[Int] = None)
 

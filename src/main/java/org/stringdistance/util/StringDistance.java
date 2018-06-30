@@ -1,12 +1,10 @@
 package org.stringdistance.util;
 
-import org.stringdistance.algo.LevenshteinDistance;
-
 public class StringDistance {
     private static JaroDistance jaro = new JaroDistance();
     private static Hamming hamming = new Hamming();
     private static DiceCoefficient dice = new DiceCoefficient();
-    private static LevenshteinDistance levenshtein = new LevenschteinDistance();
+    private static LevenshteinDistance levenshtein = new LevenshteinDistance();
 
 
     public static Double jaroWinkler(String s1, String s2) {
@@ -34,6 +32,6 @@ public class StringDistance {
     }
 
     public static Integer levenshtein(String s1, String s2) {
-        return levenshtein.levenschtein(s1, s2);
+        return levenshtein.levenshtein(s1, s2);
     }
 }

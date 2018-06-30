@@ -18,12 +18,12 @@ val levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA")
 ```
 
 ### Use with Implicits
-  -  To use implicits and extend the String class:  `import org.stringdistance.implicits.Converters._`
+  -  To use implicits and extend the String class:  `import org.stringdistance.StringConverter._`
 
 Example
 ```
 // Scala example using implicits
-import org.stringdistance.implicits.Converters._
+import org.stringdistance.StringConverter._
 
 val jaro = "MARTHA".jaro("MARHTA")
 val jaroWinkler = "MARTHA".jaroWinkler("MARHTA")
