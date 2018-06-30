@@ -3,7 +3,7 @@ import xerial.sbt.Sonatype._
 name := "stringdistance"
 version := "1.0.0"
 scalaVersion := "2.12.6"
-organization := "com.github.vickumar1981"
+organization := "org.stringdistance"
 sonatypeProjectHosting := Some(GitHubHosting("vickumar1981", "stringdistance", "vickumar@gmail.com"))
 publishMavenStyle := true
 licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
