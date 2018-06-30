@@ -33,6 +33,6 @@ trait StringDistanceAlgo {
           j += 1
         }
       }}
-    return commonChars.toString
+    commonChars.toString
   }
 }

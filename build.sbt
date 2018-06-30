@@ -30,3 +30,7 @@ addArtifact(artifact in (Compile, assembly), assembly)
 
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1" % Test
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % Test
+
+coverageEnabled := true
+coverageMinimum := 100
+coverageFailOnMinimum := true

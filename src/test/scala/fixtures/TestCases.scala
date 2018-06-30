@@ -14,7 +14,9 @@ object TestCases {
     TestCase("DWAYNE", "DUANE", Some(0.822), Some(0.840), Some(2), Some(0.222)),
     TestCase("DIXON", "DICKSONX", Some(0.767), Some(0.813), Some(4), Some(0.364)),
     TestCase("karolin", "kathrin", hamming = Some(3)),
-    TestCase("karolin", "kerstin", hamming = Some(3))
+    TestCase("karolin", "kerstin", hamming = Some(3)),
+    TestCase("ABC", "ABCD", hamming = Some(-1)),
+    TestCase("A", "B", jaro = Some(0.0), jaroWinkler = Some(0.0))
   )
 
   lazy val precision = 3
