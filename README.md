@@ -53,7 +53,6 @@ val bigramSimilarity: Double = "karolin".ngram("kathrin", 2)
 // Distances between two strings
 val hammingDist: Int = "MARTHA".hammingDist("MARHTA")
 val levenshteinDist: Int = "MARTHA".levenshteinDist("MARHTA")
-...
 
 ```
 
