@@ -12,17 +12,24 @@ Example:
 import com.github.vickumar1981.stringdistance._
 
 // Dice Coefficient
-val diceCoefficient = DiceCoefficient.score("MARTHA", "MARHTA")
-val diceCoefficientWeighted = DiceCoefficient.score("MARTHA", "MARHTA", 0.2)
+val diceCoefficient: Double = DiceCoefficient.score("MARTHA", "MARHTA")
+val diceCoefficientWeighted: Double = DiceCoefficient.score("MARTHA", "MARHTA", 0.2)
+
+// Hamming Distance
+val hammingDist: Int = Hamming.distance("MARTHA", "MARHTA")
+val hamming: Double = hamming.score("MARTHA", "MARHTA")
 
 // Jaro and Jaro Winkler
-val jaro = Jaro.score("MARTHA", "MARHTA")
-val jaroWinkler = JaroWinkler.score("MARTHA", "MARHTA")
-val hamming = Hamming.distance("MARTHA", "MARHTA")
+val jaro: Double = Jaro.score("MARTHA", "MARHTA")
+val jaroWinkler: Double = JaroWinkler.score("MARTHA", "MARHTA")
 
-val levenshtein = Levenshtein.distance("MARTHA", "MARHTA")
-val ngramSimilarity = Ngram.score("karolin", "kathrin")
-val bigramSimilarity = Ngram.score("karolin", "kathrin", 2)
+// Levenshtein Distance
+val levenshteinDist: Int = Levenshtein.distance("MARTHA", "MARHTA")
+val levenshtein: Double = Levenshtein.score("MARTHA", "MARHTA")
+
+// N-Gram Similarity
+val ngramSimilarity: Double = Ngram.score("karolin", "kathrin")
+val bigramSimilarity: Double = Ngram.score("karolin", "kathrin", 2)
 ```
 
 ### Use with Implicits
@@ -33,14 +40,19 @@ Example
 // Scala example using implicits
 import com.github.vickumar1981.stringdistance.StringConverter._
 
-val jaro = "MARTHA".jaro("MARHTA")
-val jaroWinkler = "MARTHA".jaroWinkler("MARHTA")
-val hamming = "MARTHA".hammingDist("MARHTA")
-val diceCoefficient = "MARTHA".diceCoefficient("MARHTA")
-val diceCoefficientWeighted = "MARTHA".diceCoefficient("MARHTA", 0.2)
-val levenshtein = "MARTHA".levenshteinDist("MARHTA")
-val ngramSimilarity = "karolin".ngram("kathrin")
-val bigramSimilarity = "karolin".ngram("kathrin", 2)
+// Scores between two strings
+val diceCoefficient: Double = "MARTHA".diceCoefficient("MARHTA")
+val diceCoefficientWeighted: Double = "MARTHA".diceCoefficient("MARHTA", 0.2)
+val hamming: Double = "MARTHA".hamming("MARHTA")
+val jaro: Double = "MARTHA".jaro("MARHTA")
+val jaroWinkler: Double = "MARTHA".jaroWinkler("MARHTA")
+val levenshtein: Double = "MARTHA".levenshtein("MARHTA")
+val ngramSimilarity: Double = "karolin".ngram("kathrin")
+val bigramSimilarity: Double = "karolin".ngram("kathrin", 2)
+
+// Distances between two strings
+val hammingDist: Int = "MARTHA".hammingDist("MARHTA")
+val levenshteinDist: Int = "MARTHA".levenshteinDist("MARHTA")
 ...
 
 ```

@@ -7,7 +7,6 @@ public class StringDistance {
     private static LevenshteinDistanceImpl levenshtein = new LevenshteinDistanceImpl();
     private static NGramImpl ngram = new NGramImpl();
 
-
     public static Double diceCoefficient(String s1, String s2) {
         return dice.diceCoefficient(s1, s2, 0.1);
     }
