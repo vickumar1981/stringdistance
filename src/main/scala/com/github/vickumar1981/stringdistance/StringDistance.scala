@@ -1,6 +1,6 @@
-package org.stringdistance
+package com.github.vickumar1981.stringdistance
 
-import org.stringdistance.algo._
+import com.github.vickumar1981.stringdistance.algo._
 
 object StringDistance extends JaroDistance with NGram
   with LevenshteinDistance with DiceCoefficient with Hamming

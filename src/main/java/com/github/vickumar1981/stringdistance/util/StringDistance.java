@@ -1,4 +1,4 @@
-package org.stringdistance.util;
+package com.github.vickumar1981.stringdistance.util;
 
 public class StringDistance {
     private static JaroDistance jaro = new JaroDistance();

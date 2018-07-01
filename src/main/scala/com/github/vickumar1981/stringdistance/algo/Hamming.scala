@@ -1,4 +1,4 @@
-package org.stringdistance.algo
+package com.github.vickumar1981.stringdistance.algo
 
 trait Hamming {
   def hamming(s1: String, s2: String): Int = {

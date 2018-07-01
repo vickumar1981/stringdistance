@@ -1,4 +1,4 @@
-package org.stringdistance.algo
+package com.github.vickumar1981.stringdistance.algo
 
 trait StringDistanceAlgo {
   protected def minStartPrefix(s1: String, s2: String, minPrefixLen: Int = 4): Int = {

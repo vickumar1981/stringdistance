@@ -1,4 +1,4 @@
-package org.stringdistance.algo
+package com.github.vickumar1981.stringdistance.algo
 
 import scala.collection.mutable.Set
 

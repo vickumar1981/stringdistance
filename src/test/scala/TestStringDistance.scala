@@ -1,5 +1,5 @@
 import org.scalatest._
-import org.stringdistance.StringConverter._
+import com.github.vickumar1981.stringdistance.StringConverter._
 import scala.math.BigDecimal
 import fixtures.TestCases.{precision, testCases}
 

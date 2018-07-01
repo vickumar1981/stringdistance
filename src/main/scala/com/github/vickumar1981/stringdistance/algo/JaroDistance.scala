@@ -1,4 +1,4 @@
-package org.stringdistance.algo
+package com.github.vickumar1981.stringdistance.algo
 
 trait JaroDistance extends StringDistanceAlgo {
   def jaroWinkler(s1: String, s2: String, weight: Double = 0.1): Double = {

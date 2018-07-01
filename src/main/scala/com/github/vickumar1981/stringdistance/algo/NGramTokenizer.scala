@@ -1,4 +1,4 @@
-package org.stringdistance.algo
+package com.github.vickumar1981.stringdistance.algo
 
 trait NGramTokenizer {
   private def tokenize(a: Array[Char], n: Int): Array[Array[Char]] =

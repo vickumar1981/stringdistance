@@ -9,7 +9,7 @@ A String distance library for Scala and Java that includes Levenshtein distance,
 Example:
 ```
 // Scala example
-import org.stringdistance.StringDistance
+import com.github.vickumar1981.stringdistance.StringDistance
 
 val jaro = StringDistance.jaro("MARTHA", "MARHTA")
 val jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA")
@@ -22,12 +22,12 @@ val bigramSimilarity = StringDistance.ngram("karolin", "kathrin", 2)
 ```
 
 ### Use with Implicits
-  -  To use implicits and extend the String class:  `import org.stringdistance.StringConverter._`
+  -  To use implicits and extend the String class:  `import com.github.vickumar1981.stringdistance.StringConverter._`
 
 Example
 ```
 // Scala example using implicits
-import org.stringdistance.StringConverter._
+import com.github.vickumar1981.stringdistance.StringConverter._
 
 val jaro = "MARTHA".jaro("MARHTA")
 val jaroWinkler = "MARTHA".jaroWinkler("MARHTA")
@@ -36,12 +36,12 @@ val jaroWinkler = "MARTHA".jaroWinkler("MARHTA")
 ```
 
 ### Java Usage
-  -  To use in Java:  `import org.stringdistance.util.StringDistance`
+  -  To use in Java:  `import com.github.vickumar1981.stringdistance.util.StringDistance`
 
 Example
 ```
 // Java example
-import org.stringdistance.util.StringDistance;
+import com.github.vickumar1981.stringdistance.util.StringDistance;
 
 Double jaro = StringDistance.jaro("MARTHA", "MARHTA");
 Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA");
