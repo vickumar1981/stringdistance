@@ -1,12 +1,18 @@
 package com.github.vickumar1981.stringdistance
 
-import com.github.vickumar1981.stringdistance.algo._
+import com.github.vickumar1981.stringdistance.impl._
 
-object StringDistance extends JaroDistance with NGram
-  with LevenshteinDistance with DiceCoefficient with Hamming
+object StringDistance {
+  object DiceCoefficient extends StringDistanceImpl[DiceCoefficientAlgorithm]
+  object Hamming extends StringDistanceImpl[HammingAlgorithm]
+  object Jaro extends StringDistanceImpl[JaroAlgorithm]
+  object JaroWinkler extends StringDistanceImpl[JaroWinklerAlgorithm]
+  object Levenshtein extends StringDistanceImpl[LevenshteinAlgorithm]
+  object NGram extends StringDistanceImpl[NGramAlgorithm]
+}
 
-class JaroDistanceWrapper extends JaroDistance
-class LevenshteinDistanceWrapper extends LevenshteinDistance
-class DiceCoefficientWrapper extends DiceCoefficient
-class HammingWrapper extends Hamming
-class NGramWrapper extends NGram
+class JaroImplWrapper extends JaroImpl
+class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
+class DiceCoefficientImplWrapper extends DiceCoefficientImpl
+class HammingImplWrapper extends HammingImpl
+class NGramImplWrapper extends NGramImpl

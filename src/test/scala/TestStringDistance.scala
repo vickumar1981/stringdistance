@@ -22,9 +22,16 @@ class TestStringDistance extends FlatSpec with Matchers {
   }
 
   "The Levenschtein Distance" should "match for all test cases" in {
+    testCases.filter(_.levenshteinDist.isDefined).map(t => {
+      val levenschteinDist = t.s1.levenshteinDist(t.s2)
+      levenschteinDist should be (t.levenshteinDist.get)
+    })
+  }
+
+  "The Levenschtein Score" should "match for all test cases" in {
     testCases.filter(_.levenshtein.isDefined).map(t => {
       val levenschtein = t.s1.levenshtein(t.s2)
-      levenschtein should be (t.levenshtein.get)
+      roundToPrecision(levenschtein) should be (t.levenshtein.get)
     })
   }
 
@@ -36,9 +43,16 @@ class TestStringDistance extends FlatSpec with Matchers {
   }
 
   "The Hamming Distance" should "match for all test cases" in {
+    testCases.filter(_.hammingDist.isDefined).map(t => {
+      val hammingDist = t.s1.hammingDist(t.s2)
+      hammingDist should be (t.hammingDist.get)
+    })
+  }
+
+  "The Hamming Score" should "match for all test cases" in {
     testCases.filter(_.hamming.isDefined).map(t => {
       val hamming = t.s1.hamming(t.s2)
-      hamming should be (t.hamming.get)
+      roundToPrecision(hamming) should be (t.hamming.get)
     })
   }
 

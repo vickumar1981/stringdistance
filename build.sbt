@@ -1,9 +1,9 @@
 import xerial.sbt.Sonatype._
 
 name := "stringdistance"
-version := "1.0.3"
+version := "1.0.0"
 scalaVersion := "2.12.6"
-organization := "com.github.vickumar1981.stringdistance"
+organization := "com.github.vickumar1981"
 sonatypeProjectHosting := Some(GitHubHosting("vickumar1981", "stringdistance", "vickumar@gmail.com"))
 publishMavenStyle := true
 licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
@@ -19,7 +19,7 @@ publishTo := Some(
 )
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
-assemblyJarName := "stringdistance-" + version.value + ".jar"
+assemblyJarName := "stringdistance_2.12-" + version.value + ".jar"
 test in assembly := {}
 
 artifact in (Compile, assembly) := {

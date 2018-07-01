@@ -9,16 +9,20 @@ A String distance library for Scala and Java that includes Levenshtein distance,
 Example:
 ```
 // Scala example
-import com.github.vickumar1981.stringdistance.StringDistance
+import com.github.vickumar1981.stringdistance._
 
-val jaro = StringDistance.jaro("MARTHA", "MARHTA")
-val jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA")
-val hamming = StringDistance.hamming("MARTHA", "MARHTA")
-val diceCoefficient = StringDistance.diceCoefficient("MARTHA", "MARHTA")
-val diceCoefficientWeighted = StringDistance.diceCoefficient("MARTHA", "MARHTA", 0.2)
-val levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA")
-val ngramSimilarity = StringDistance.ngram("karolin", "kathrin")
-val bigramSimilarity = StringDistance.ngram("karolin", "kathrin", 2)
+// Dice Coefficient
+val diceCoefficient = DiceCoefficient.score("MARTHA", "MARHTA")
+val diceCoefficientWeighted = DiceCoefficient.score("MARTHA", "MARHTA", 0.2)
+
+// Jaro and Jaro Winkler
+val jaro = Jaro.score("MARTHA", "MARHTA")
+val jaroWinkler = JaroWinkler.score("MARTHA", "MARHTA")
+val hamming = Hamming.distance("MARTHA", "MARHTA")
+
+val levenshtein = Levenshtein.distance("MARTHA", "MARHTA")
+val ngramSimilarity = Ngram.score("karolin", "kathrin")
+val bigramSimilarity = Ngram.score("karolin", "kathrin", 2)
 ```
 
 ### Use with Implicits
@@ -31,6 +35,12 @@ import com.github.vickumar1981.stringdistance.StringConverter._
 
 val jaro = "MARTHA".jaro("MARHTA")
 val jaroWinkler = "MARTHA".jaroWinkler("MARHTA")
+val hamming = "MARTHA".hammingDist("MARHTA")
+val diceCoefficient = "MARTHA".diceCoefficient("MARHTA")
+val diceCoefficientWeighted = "MARTHA".diceCoefficient("MARHTA", 0.2)
+val levenshtein = "MARTHA".levenshteinDist("MARHTA")
+val ngramSimilarity = "karolin".ngram("kathrin")
+val bigramSimilarity = "karolin".ngram("kathrin", 2)
 ...
 
 ```
@@ -45,10 +55,10 @@ import com.github.vickumar1981.stringdistance.util.StringDistance;
 
 Double jaro = StringDistance.jaro("MARTHA", "MARHTA");
 Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA");
-Integer hamming = StringDistance.hamming("MARTHA", "MARHTA");
+Integer hamming = StringDistance.hammingDist("MARTHA", "MARHTA");
 Double diceCoefficient = StringDistance.diceCoefficient("MARTHA", "MARHTA");
 Double diceCoefficientWeighted = StringDistance.diceCoefficient("MARTHA", "MARHTA", 0.2);
-Integer levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA");
+Integer levenshtein = StringDistance.levenshteinDist("MARTHA", "MARHTA");
 Double ngramSimilarity = StringDistance.ngram("karolin", "kathrin");
 Double bigramSimilarity = StringDistance.ngram("karolin", "kathrin", 2);
 ```

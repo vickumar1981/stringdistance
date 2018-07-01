@@ -1,6 +1,6 @@
-package com.github.vickumar1981.stringdistance.algo
+package com.github.vickumar1981.stringdistance.impl
 
-trait NGram extends NGramTokenizer {
+trait NGramImpl extends NGramTokenizer {
   private val intersectLength: ((Array[String], Array[String]) => Int) = (mt1, mt2) => mt1.intersect(mt2).length
 
   def nGram(s1: String, s2: String, n: Int = 1): Double = {
