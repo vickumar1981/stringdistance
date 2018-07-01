@@ -9,7 +9,7 @@ A String distance library for Scala and Java that includes Levenshtein distance,
 Example:
 ```
 // Scala example
-import com.github.vickumar1981.stringdistance._
+import com.github.vickumar1981.stringdistance.StringDistance._
 
 // Dice Coefficient
 val diceCoefficient: Double = DiceCoefficient.score("MARTHA", "MARHTA")
