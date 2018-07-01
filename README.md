@@ -17,7 +17,7 @@ val diceCoefficientWeighted: Double = DiceCoefficient.score("MARTHA", "MARHTA", 
 
 // Hamming Distance
 val hammingDist: Int = Hamming.distance("MARTHA", "MARHTA")
-val hamming: Double = hamming.score("MARTHA", "MARHTA")
+val hamming: Double = Hamming.score("MARTHA", "MARHTA")
 
 // Jaro and Jaro Winkler
 val jaro: Double = Jaro.score("MARTHA", "MARHTA")
@@ -65,13 +65,18 @@ Example
 // Java example
 import com.github.vickumar1981.stringdistance.util.StringDistance;
 
-Double jaro = StringDistance.jaro("MARTHA", "MARHTA");
-Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA");
-Integer hamming = StringDistance.hammingDist("MARTHA", "MARHTA");
+// Scores between two strings
 Double diceCoefficient = StringDistance.diceCoefficient("MARTHA", "MARHTA");
 Double diceCoefficientWeighted = StringDistance.diceCoefficient("MARTHA", "MARHTA", 0.2);
-Integer levenshtein = StringDistance.levenshteinDist("MARTHA", "MARHTA");
+Double hamming = StringDistance.hamming("MARTHA", "MARHTA");
+Double jaro = StringDistance.jaro("MARTHA", "MARHTA");
+Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA");
+Double levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA");
 Double ngramSimilarity = StringDistance.ngram("karolin", "kathrin");
 Double bigramSimilarity = StringDistance.ngram("karolin", "kathrin", 2);
+
+// Distances between two strings
+Integer hammingDist = StringDistance.hammingDist("MARTHA", "MARHTA");
+Integer levenshteinDist = StringDistance.levenshteinDist("MARTHA", "MARHTA");
 ```
 
