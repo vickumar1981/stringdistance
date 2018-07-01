@@ -5,6 +5,7 @@ public class StringDistance {
     private static Hamming hamming = new Hamming();
     private static DiceCoefficient dice = new DiceCoefficient();
     private static LevenshteinDistance levenshtein = new LevenshteinDistance();
+    private static NGram ngram = new NGram();
 
 
     public static Double jaroWinkler(String s1, String s2) {
@@ -34,4 +35,8 @@ public class StringDistance {
     public static Integer levenshtein(String s1, String s2) {
         return levenshtein.levenshtein(s1, s2);
     }
+
+    public static Double nGram(String s1, String s2) { return ngram.nGram(s1, s2, 1); }
+
+    public static Double nGram(String s1, String s2, Integer n) { return ngram.nGram(s1, s2, n); }
 }

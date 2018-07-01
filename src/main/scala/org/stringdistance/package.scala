@@ -9,6 +9,7 @@ package object stringdistance {
       def levenshtein(s2: String): Int = StringDistance.levenshtein(s1, s2)
       def diceCoefficient(s2: String): Double = StringDistance.diceCoefficient(s1, s2)
       def hamming(s2: String): Int = StringDistance.hamming(s1, s2)
+      def nGram(s2: String, n: Int = 1): Double = StringDistance.nGram(s1, s2, n)
     }
   }
 }

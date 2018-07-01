@@ -21,7 +21,7 @@ class TestStringDistance extends FlatSpec with Matchers {
     })
   }
 
-  "The Levenschtein distance" should "match for all test cases" in {
+  "The Levenschtein Distance" should "match for all test cases" in {
     testCases.filter(_.levenshtein.isDefined).map(t => {
       val levenschtein = t.s1.levenshtein(t.s2)
       levenschtein should be (t.levenshtein.get)
@@ -42,5 +42,11 @@ class TestStringDistance extends FlatSpec with Matchers {
     })
   }
 
+  "The N-Gram Similarity" should "match for all test cases" in {
+    testCases.filter(_.ngram.isDefined).map(t => {
+      val nGram = t.s1.nGram(t.s2)
+      roundToPrecision(nGram) should be (t.ngram.get)
+    })
+  }
 }
 
