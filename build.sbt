@@ -1,7 +1,7 @@
 import xerial.sbt.Sonatype._
 
 name := "stringdistance"
-version := "1.0.1"
+version := "1.0.2"
 scalaVersion := "2.12.6"
 organization := "org.stringdistance"
 sonatypeProjectHosting := Some(GitHubHosting("vickumar1981", "stringdistance", "vickumar@gmail.com"))

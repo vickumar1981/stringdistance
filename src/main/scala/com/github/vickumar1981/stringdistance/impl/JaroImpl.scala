@@ -1,6 +1,6 @@
-package org.stringdistance.algo
+package com.github.vickumar1981.stringdistance.impl
 
-trait JaroDistance extends StringDistanceAlgo {
+trait JaroImpl extends StringDistanceAlgo {
   def jaroWinkler(s1: String, s2: String, weight: Double = 0.1): Double = {
     val jaroScore = jaro(s1, s2)
     val l = minStartPrefix(s1, s2)
@@ -20,10 +20,10 @@ trait JaroDistance extends StringDistanceAlgo {
             transpositions += 1
           }
         }}
-      transpositions /= 2.0
-      (((common1.length * 1.0) / s1.length) +
-        (common2.length * 1.0 / s2.length) +
-        ((1.0 * common1.length - transpositions) / common1.length)) / 3
+      transpositions /= 2d
+      (((common1.length * 1d) / s1.length) +
+        (common2.length * 1d / s2.length) +
+        ((1d * common1.length - transpositions) / common1.length)) / 3d
     } else 0d
   }
 }

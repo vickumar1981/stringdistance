@@ -1,6 +1,6 @@
-package org.stringdistance.algo
+package com.github.vickumar1981.stringdistance.impl
 
-trait Hamming {
+trait HammingImpl {
   def hamming(s1: String, s2: String): Int = {
     if (s1.length != s2.length) -1
     else {

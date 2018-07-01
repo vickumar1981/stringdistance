@@ -1,8 +1,8 @@
-package org.stringdistance.algo
+package com.github.vickumar1981.stringdistance.impl
 
 import scala.collection.mutable.Set
 
-trait DiceCoefficient {
+trait DiceCoefficientImpl {
   def diceCoefficient(s1: String, s2: String, weight: Double = 0.1): Double = {
     val nx = Set[String]()
     val ny = Set[String]()

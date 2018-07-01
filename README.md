@@ -9,47 +9,74 @@ A String distance library for Scala and Java that includes Levenshtein distance,
 Example:
 ```
 // Scala example
-import org.stringdistance.StringDistance
+import com.github.vickumar1981.stringdistance._
 
-val jaro = StringDistance.jaro("MARTHA", "MARHTA")
-val jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA")
-val hamming = StringDistance.hamming("MARTHA", "MARHTA")
-val diceCoefficient = StringDistance.diceCoefficient("MARTHA", "MARHTA")
-val diceCoefficientWeighted = StringDistance.diceCoefficient("MARTHA", "MARHTA", 0.2)
-val levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA")
-val ngramSimilarity = StringDistance.ngram("karolin", "kathrin")
-val bigramSimilarity = StringDistance.ngram("karolin", "kathrin", 2)
+// Dice Coefficient
+val diceCoefficient: Double = DiceCoefficient.score("MARTHA", "MARHTA")
+val diceCoefficientWeighted: Double = DiceCoefficient.score("MARTHA", "MARHTA", 0.2)
+
+// Hamming Distance
+val hammingDist: Int = Hamming.distance("MARTHA", "MARHTA")
+val hamming: Double = Hamming.score("MARTHA", "MARHTA")
+
+// Jaro and Jaro Winkler
+val jaro: Double = Jaro.score("MARTHA", "MARHTA")
+val jaroWinkler: Double = JaroWinkler.score("MARTHA", "MARHTA")
+
+// Levenshtein Distance
+val levenshteinDist: Int = Levenshtein.distance("MARTHA", "MARHTA")
+val levenshtein: Double = Levenshtein.score("MARTHA", "MARHTA")
+
+// N-Gram Similarity
+val ngramSimilarity: Double = Ngram.score("karolin", "kathrin")
+val bigramSimilarity: Double = Ngram.score("karolin", "kathrin", 2)
 ```
 
 ### Use with Implicits
-  -  To use implicits and extend the String class:  `import org.stringdistance.StringConverter._`
+  -  To use implicits and extend the String class:  `import com.github.vickumar1981.stringdistance.StringConverter._`
 
 Example
 ```
 // Scala example using implicits
-import org.stringdistance.StringConverter._
+import com.github.vickumar1981.stringdistance.StringConverter._
 
-val jaro = "MARTHA".jaro("MARHTA")
-val jaroWinkler = "MARTHA".jaroWinkler("MARHTA")
+// Scores between two strings
+val diceCoefficient: Double = "MARTHA".diceCoefficient("MARHTA")
+val diceCoefficientWeighted: Double = "MARTHA".diceCoefficient("MARHTA", 0.2)
+val hamming: Double = "MARTHA".hamming("MARHTA")
+val jaro: Double = "MARTHA".jaro("MARHTA")
+val jaroWinkler: Double = "MARTHA".jaroWinkler("MARHTA")
+val levenshtein: Double = "MARTHA".levenshtein("MARHTA")
+val ngramSimilarity: Double = "karolin".ngram("kathrin")
+val bigramSimilarity: Double = "karolin".ngram("kathrin", 2)
+
+// Distances between two strings
+val hammingDist: Int = "MARTHA".hammingDist("MARHTA")
+val levenshteinDist: Int = "MARTHA".levenshteinDist("MARHTA")
 ...
 
 ```
 
 ### Java Usage
-  -  To use in Java:  `import org.stringdistance.util.StringDistance`
+  -  To use in Java:  `import com.github.vickumar1981.stringdistance.util.StringDistance`
 
 Example
 ```
 // Java example
-import org.stringdistance.util.StringDistance;
+import com.github.vickumar1981.stringdistance.util.StringDistance;
 
-Double jaro = StringDistance.jaro("MARTHA", "MARHTA");
-Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA");
-Integer hamming = StringDistance.hamming("MARTHA", "MARHTA");
+// Scores between two strings
 Double diceCoefficient = StringDistance.diceCoefficient("MARTHA", "MARHTA");
 Double diceCoefficientWeighted = StringDistance.diceCoefficient("MARTHA", "MARHTA", 0.2);
-Integer levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA");
+Double hamming = StringDistance.hamming("MARTHA", "MARHTA");
+Double jaro = StringDistance.jaro("MARTHA", "MARHTA");
+Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA");
+Double levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA");
 Double ngramSimilarity = StringDistance.ngram("karolin", "kathrin");
 Double bigramSimilarity = StringDistance.ngram("karolin", "kathrin", 2);
+
+// Distances between two strings
+Integer hammingDist = StringDistance.hammingDist("MARTHA", "MARHTA");
+Integer levenshteinDist = StringDistance.levenshteinDist("MARTHA", "MARHTA");
 ```
 
