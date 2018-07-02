@@ -1,6 +1,6 @@
 # StringDistance
 
-[![Build Status](https://api.travis-ci.org/vickumar1981/stringdistance.svg?branch=master)](https://travis-ci.org/vickumar1981/stringdistance/builds) [![Coverage](https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_100.png)](https://coveralls.io/github/vickumar1981/stringdistance) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Build Status](https://api.travis-ci.org/vickumar1981/stringdistance.svg?branch=master)](https://travis-ci.org/vickumar1981/stringdistance/builds) [![Coverage Status](https://coveralls.io/repos/github/vickumar1981/stringdistance/badge.svg?branch=master)](https://coveralls.io/github/vickumar1981/stringdistance?branch=master) [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html) [![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/github/vickumar1981/stringdistance_2.12/maven-metadata.xml.svg)](https://mvnrepository.com/artifact/com.github.vickumar1981/stringdistance) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 A String distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, Cosine similarity, Jaccard similarity, Longest common subsequence, and Hamming distance.
 
@@ -8,17 +8,16 @@ For more detailed information, please refer to the [API Documentation](https://v
 
 ---
 
-### Adding it to your project using...
+### Add it to your project ...
 
-__sbt:__
+__Using sbt:__
 
 In `build.sbt`:
 ```scala
 libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.0.0"
 ```
----
 
-__gradle:__
+__Using gradle:__
 
 In `build.gradle`:
 ```groovy
@@ -26,16 +25,15 @@ dependencies {
     compile 'com.github.vickumar1981:stringdistance_2.12:1.0.0'
 }
 ```
----
 
-__Maven:__
+__Using Maven:__
 
 In `pom.xml`:
 ```xml
 <dependency>
-	<groupId>com.github.vickumar1981</groupId>
-	<artifactId>stringdistance_2.12</artifactId>
-	<version>1.0.0</version>
+    <groupId>com.github.vickumar1981</groupId>
+    <artifactId>stringdistance_2.12</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 ---
