@@ -3,6 +3,7 @@ package com.github.vickumar1981.stringdistance
 import com.github.vickumar1981.stringdistance.impl._
 
 object StringDistance {
+  object Cosine extends StringDistanceImpl[CosineAlgorithm]
   object DiceCoefficient extends StringDistanceImpl[DiceCoefficientAlgorithm]
   object Hamming extends StringDistanceImpl[HammingAlgorithm]
   object Jaro extends StringDistanceImpl[JaroAlgorithm]
@@ -11,8 +12,9 @@ object StringDistance {
   object NGram extends StringDistanceImpl[NGramAlgorithm]
 }
 
-class JaroImplWrapper extends JaroImpl
-class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
+class CosineSimilarityImplWrapper extends CosSimilarityImpl
 class DiceCoefficientImplWrapper extends DiceCoefficientImpl
 class HammingImplWrapper extends HammingImpl
+class JaroImplWrapper extends JaroImpl
+class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
 class NGramImplWrapper extends NGramImpl

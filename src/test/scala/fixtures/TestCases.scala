@@ -9,7 +9,8 @@ case class TestCase (s1: String,
                      diceCoefficient: Option[Double] = None,
                      hamming: Option[Double] = None,
                      hammingDist: Option[Int] = None,
-                     ngram: Option[Double] = None)
+                     ngram: Option[Double] = None,
+                     cosine: Option[Double] = None)
 
 object TestCases {
   lazy val testCases: List[TestCase] = List(
@@ -22,7 +23,11 @@ object TestCases {
     TestCase("A", "B", jaro = Some(0), jaroWinkler = Some(0)),
     TestCase("night", "nact", Some(0.633), Some(0.67), Some(0.4), Some(3), ngram = Some(0.6)),
     TestCase("", "abc", ngram = Some(0)),
-    TestCase("abc", "abc", Some(1), Some(1), Some(1), Some(0), Some(1), Some(1), Some(0), Some(1))
+    TestCase("abc", "abc", Some(1), Some(1), Some(1), Some(0), Some(1), Some(1), Some(0), Some(1)),
+    TestCase("hello", "chello", cosine = Some(0.935)),
+    TestCase("hello", "hell", cosine = Some(0.926)),
+    TestCase("hello", "hellhole", cosine = Some(0.980)),
+    TestCase("hello", "hello", cosine = Some(1))
   )
 
   lazy val precision = 3

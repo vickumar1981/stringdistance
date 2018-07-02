@@ -2,7 +2,7 @@
 
 [![Build Status](https://api.travis-ci.org/vickumar1981/stringdistance.svg?branch=master)](https://travis-ci.org/vickumar1981/stringdistance/builds) [![Coverage](https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_100.png)](https://coveralls.io/github/vickumar1981/stringdistance) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-A String distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, and Hamming distance.
+A String distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, Cosine Similarity, and Hamming distance.
 
 ### Adding it to your project using...
 
@@ -65,6 +65,9 @@ Example:
 // Scala example
 import com.github.vickumar1981.stringdistance.StringDistance._
 
+// Cosine Similarity
+val cosSimilarity: Double = Cosine.score("hello", "chello")
+
 // Dice Coefficient
 val diceCoefficient: Double = DiceCoefficient.score("MARTHA", "MARHTA")
 val diceCoefficientWeighted: Double = DiceCoefficient.score("MARTHA", "MARHTA", 0.2)
@@ -95,6 +98,7 @@ Example
 import com.github.vickumar1981.stringdistance.StringConverter._
 
 // Scores between two strings
+val cosSimilarity: double = "hello".cosine("chello")
 val diceCoefficient: Double = "MARTHA".diceCoefficient("MARHTA")
 val diceCoefficientWeighted: Double = "MARTHA".diceCoefficient("MARHTA", 0.2)
 val hamming: Double = "MARTHA".hamming("MARHTA")
@@ -119,6 +123,7 @@ Example
 import com.github.vickumar1981.stringdistance.util.StringDistance;
 
 // Scores between two strings
+Double cosSimilarity = StringDistance.cosine("hello", "chello");
 Double diceCoefficient = StringDistance.diceCoefficient("MARTHA", "MARHTA");
 Double diceCoefficientWeighted = StringDistance.diceCoefficient("MARTHA", "MARHTA", 0.2);
 Double hamming = StringDistance.hamming("MARTHA", "MARHTA");

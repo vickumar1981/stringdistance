@@ -62,5 +62,12 @@ class TestStringDistance extends FlatSpec with Matchers {
       roundToPrecision(nGram) should be (t.ngram.get)
     })
   }
+
+  "The Cosine Similarity" should "match for all test cases" in {
+    testCases.filter(_.cosine.isDefined).map(t => {
+      val cosine = t.s1.cosine(t.s2)
+      roundToPrecision(cosine) should be (t.cosine.get)
+    })
+  }
 }
 

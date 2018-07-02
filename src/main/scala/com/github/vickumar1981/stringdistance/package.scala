@@ -10,6 +10,12 @@ package object stringdistance {
   trait JaroWinklerAlgorithm extends StringDistanceAlgorithm
   trait LevenshteinAlgorithm extends StringDistanceAlgorithm
   trait NGramAlgorithm extends StringDistanceAlgorithm
+  trait CosineAlgorithm extends StringDistanceAlgorithm
+
+  object Strategy {
+    final lazy val splitWord = "(?!^)"
+    final lazy val splitSentence = "\\W+"
+  }
 
   trait DistanceAlgorithm[+T <: StringDistanceAlgorithm] {
     def distance(s1: String, s2: String): Int
@@ -29,6 +35,11 @@ package object stringdistance {
       val minLen = maxLen - distance(s1, s2)
       (if (minLen < 0 || minLen > maxLen) 0d else minLen * 1d) / maxLen
     }
+  }
+
+  implicit object CosSimilarityScore extends CosSimilarityImpl
+    with WeightedScoringAlgorithm[CosineAlgorithm, String] {
+    override def score(s1: String, s2: String, splitOn: String = Strategy.splitWord): Double = cosSimilarity(s1, s2)
   }
 
   implicit object DiceCoefficientScore extends DiceCoefficientImpl
@@ -70,6 +81,7 @@ package object stringdistance {
   object StringConverter {
     import StringDistance._
     implicit class StringToStringDistanceConverter(s1: String) {
+      def cosine(s2: String, splitOn: String = Strategy.splitWord): Double = Cosine.score(s1, s2, splitOn)
       def diceCoefficient(s2: String, weight: Double = 0.1): Double = DiceCoefficient.score(s1, s2, weight)
       def hamming(s2: String): Double = Hamming.score(s1, s2)
       def hammingDist(s2: String): Int = Hamming.distance(s1, s2)

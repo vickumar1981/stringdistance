@@ -1,11 +1,15 @@
 package com.github.vickumar1981.stringdistance.util;
 
 public class StringDistance {
-    private static JaroImpl jaro = new JaroImpl();
-    private static HammingImpl hamming = new HammingImpl();
-    private static DiceCoefficientImpl dice = new DiceCoefficientImpl();
-    private static LevenshteinDistanceImpl levenshtein = new LevenshteinDistanceImpl();
-    private static NGramImpl ngram = new NGramImpl();
+    private final static CosSimilarityImpl cosine = new CosSimilarityImpl();
+    private final static JaroImpl jaro = new JaroImpl();
+    private final static HammingImpl hamming = new HammingImpl();
+    private final static DiceCoefficientImpl dice = new DiceCoefficientImpl();
+    private final static LevenshteinDistanceImpl levenshtein = new LevenshteinDistanceImpl();
+    private final static NGramImpl ngram = new NGramImpl();
+
+    private final static String splitOnWord = "(?!^)";
+    private final static String splitOnSentence = "\\W+";
 
     private static Double scoreFromDistance(String s1, String s2, Integer distance) {
         int maxLen = Math.max(s1.length(), s2.length());
@@ -16,6 +20,15 @@ public class StringDistance {
         return minLen * 1.0 / maxLen;
 
     }
+
+    public static Double cosine(String s1, String s2) {
+        return cosine.cosSimilarity(s1, s2, splitOnWord);
+    }
+
+    public static Double cosine(String s1, String s2, String splitOn) {
+        return cosine.cosSimilarity(s1, s2, splitOn);
+    }
+
     public static Double diceCoefficient(String s1, String s2) {
         return dice.diceCoefficient(s1, s2, 0.1);
     }
