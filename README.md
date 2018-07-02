@@ -10,8 +10,7 @@ __sbt:__
 
 `build.sbt`
 ```scala
-resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.0.0-SNAPSHOT"
+libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.0.0"
 ```
 
 ---
@@ -20,17 +19,8 @@ __gradle:__
 
 `build.gradle`
 ```groovy
-apply plugin: 'java'
-apply plugin: 'maven'
-
-repositories {
-    maven {
-        url "https://oss.sonatype.org/content/groups/public"
-    }
-}
-
 dependencies {
-    compile 'com.github.vickumar1981:stringdistance_2.12:1.0.0-SNAPSHOT'
+    compile 'com.github.vickumar1981:stringdistance_2.12:1.0.0'
 }
 ```
 
@@ -38,28 +28,12 @@ dependencies {
 
 __Maven:__
 
-`settings.xml`
-```xml
-<repositories>
-  <repository>
-    <id>sonatypeSnapshots</id>
-    <name>Sonatype Snapshots</name>
-    <releases>
-      <enabled>false</enabled>
-    </releases>
-    <snapshots>
-      <enabled>true</enabled>
-    </snapshots>
-    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-  </repository>
-</repositories>
-```
 `pom.xml`:
 ```xml
 <dependency>
 	<groupId>com.github.vickumar1981</groupId>
 	<artifactId>stringdistance_2.12</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 </dependency>
 ```
 
