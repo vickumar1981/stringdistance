@@ -4,10 +4,64 @@
 
 A String distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, and Hamming distance.
 
+### Adding it to your project using...
+
+__sbt:__
+```scala
+resolvers += Resolver.sonatypeRepo("snapshots")
+libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.0.0-SNAPSHOT"
+```
+
+---
+
+__gradle:__
+```groovy
+apply plugin: 'java'
+apply plugin: 'maven'
+
+repositories {
+    maven {
+        url "https://oss.sonatype.org/content/groups/public"
+    }
+}
+
+dependencies {
+    compile 'com.github.vickumar1981:stringdistance_2.12:1.0.0-SNAPSHOT'
+}
+```
+
+---
+
+__Maven:__
+`settings.xml`
+```xml
+<repositories>
+  <repository>
+    <id>sonatypeSnapshots</id>
+    <name>Sonatype Snapshots</name>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+  </repository>
+</repositories>
+```
+`pom.xml`:
+```xml
+<dependency>
+	<groupId>com.github.vickumar1981</groupId>
+	<artifactId>stringdistance_2.12</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
 ### Scala Usage
 
 Example:
-```
+```scala
 // Scala example
 import com.github.vickumar1981.stringdistance.StringDistance._
 
@@ -36,7 +90,7 @@ val bigramSimilarity: Double = Ngram.score("karolin", "kathrin", 2)
   -  To use implicits and extend the String class:  `import com.github.vickumar1981.stringdistance.StringConverter._`
 
 Example
-```
+```scala
 // Scala example using implicits
 import com.github.vickumar1981.stringdistance.StringConverter._
 
@@ -60,7 +114,7 @@ val levenshteinDist: Int = "MARTHA".levenshteinDist("MARHTA")
   -  To use in Java:  `import com.github.vickumar1981.stringdistance.util.StringDistance`
 
 Example
-```
+```java
 // Java example
 import com.github.vickumar1981.stringdistance.util.StringDistance;
 
