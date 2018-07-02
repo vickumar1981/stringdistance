@@ -69,5 +69,12 @@ class TestStringDistance extends FlatSpec with Matchers {
       roundToPrecision(cosine) should be (t.cosine.get)
     })
   }
+
+  "The Jaccard Similarity" should "match for all test cases" in {
+    testCases.filter(_.jaccard.isDefined).map(t => {
+      val jaccard = t.s1.jaccard(t.s2)
+      roundToPrecision(jaccard) should be (t.jaccard.get)
+    })
+  }
 }
 

@@ -6,6 +6,7 @@ object StringDistance {
   object Cosine extends StringDistanceImpl[CosineAlgorithm]
   object DiceCoefficient extends StringDistanceImpl[DiceCoefficientAlgorithm]
   object Hamming extends StringDistanceImpl[HammingAlgorithm]
+  object Jaccard extends StringDistanceImpl[JaccardAlgorithm]
   object Jaro extends StringDistanceImpl[JaroAlgorithm]
   object JaroWinkler extends StringDistanceImpl[JaroWinklerAlgorithm]
   object Levenshtein extends StringDistanceImpl[LevenshteinAlgorithm]
@@ -15,6 +16,7 @@ object StringDistance {
 class CosineSimilarityImplWrapper extends CosSimilarityImpl
 class DiceCoefficientImplWrapper extends DiceCoefficientImpl
 class HammingImplWrapper extends HammingImpl
+class JaccardImplWrapper extends JaccardImpl
 class JaroImplWrapper extends JaroImpl
 class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
 class NGramImplWrapper extends NGramImpl

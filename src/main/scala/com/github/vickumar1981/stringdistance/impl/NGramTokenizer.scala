@@ -1,6 +1,8 @@
 package com.github.vickumar1981.stringdistance.impl
 
 trait NGramTokenizer {
+  protected val intersectLength: ((Array[String], Array[String]) => Int) = (mt1, mt2) => mt1.intersect(mt2).length
+
   private def tokenize(a: Array[Char], n: Int): Array[Array[Char]] =
     sequence(a, Array.empty[Array[Char]], n)
 

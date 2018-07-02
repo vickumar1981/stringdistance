@@ -6,6 +6,7 @@ package object stringdistance {
   sealed trait StringDistanceAlgorithm
   trait DiceCoefficientAlgorithm extends StringDistanceAlgorithm
   trait HammingAlgorithm extends StringDistanceAlgorithm
+  trait JaccardAlgorithm extends StringDistanceAlgorithm
   trait JaroAlgorithm extends StringDistanceAlgorithm
   trait JaroWinklerAlgorithm extends StringDistanceAlgorithm
   trait LevenshteinAlgorithm extends StringDistanceAlgorithm
@@ -52,6 +53,10 @@ package object stringdistance {
     override def distance(s1: String, s2: String): Int = hamming(s1, s2)
   }
 
+  implicit object JaccardScore extends JaccardImpl with WeightedScoringAlgorithm[JaccardAlgorithm, Int] {
+    override def score(s1: String, s2: String, n: Int = 1): Double = jaccard(s1, s2, n)
+  }
+
   implicit object JaroScore extends JaroImpl with ScoringAlgorithm[JaroAlgorithm] {
     override def score(s1: String, s2: String): Double = jaro(s1, s2)
   }
@@ -85,12 +90,13 @@ package object stringdistance {
       def diceCoefficient(s2: String, weight: Double = 0.1): Double = DiceCoefficient.score(s1, s2, weight)
       def hamming(s2: String): Double = Hamming.score(s1, s2)
       def hammingDist(s2: String): Int = Hamming.distance(s1, s2)
+      def jaccard(s2: String, nGram: Int = 1): Double = Jaccard.score(s1, s2, nGram)
       def jaro(s2: String): Double = Jaro.score(s1, s2)
       def jaroWinkler(s2: String, weight: Double = 0.1): Double =
         JaroWinkler.score(s1, s2, weight)
       def levenshtein(s2: String): Double = Levenshtein.score(s1, s2)
       def levenshteinDist(s2: String): Int = Levenshtein.distance(s1, s2)
-      def nGram(s2: String, n: Int = 1): Double = NGram.score(s1, s2, n)
+      def nGram(s2: String, nGram: Int = 1): Double = NGram.score(s1, s2, nGram)
     }
   }
 }

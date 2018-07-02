@@ -10,7 +10,8 @@ case class TestCase (s1: String,
                      hamming: Option[Double] = None,
                      hammingDist: Option[Int] = None,
                      ngram: Option[Double] = None,
-                     cosine: Option[Double] = None)
+                     cosine: Option[Double] = None,
+                     jaccard: Option[Double] = None)
 
 object TestCases {
   lazy val testCases: List[TestCase] = List(
@@ -21,9 +22,9 @@ object TestCases {
     TestCase("karolin", "kerstin", hamming = Some(0.571), hammingDist = Some(3)),
     TestCase("ABC", "ABCD", hamming = Some(0), hammingDist = Some(-1)),
     TestCase("A", "B", jaro = Some(0), jaroWinkler = Some(0)),
-    TestCase("night", "nact", Some(0.633), Some(0.67), Some(0.4), Some(3), ngram = Some(0.6)),
-    TestCase("", "abc", ngram = Some(0)),
-    TestCase("abc", "abc", Some(1), Some(1), Some(1), Some(0), Some(1), Some(1), Some(0), Some(1)),
+    TestCase("night", "nact", Some(0.633), Some(0.67), Some(0.4), Some(3), ngram = Some(0.6), jaccard = Some(0.286)),
+    TestCase("", "abc", ngram = Some(0), jaccard = Some(0)),
+    TestCase("abc", "abc", Some(1), Some(1), Some(1), Some(0), Some(1), Some(1), Some(0), Some(1), jaccard = Some(1)),
     TestCase("hello", "chello", cosine = Some(0.935)),
     TestCase("hello", "hell", cosine = Some(0.926)),
     TestCase("hello", "hellhole", cosine = Some(0.980)),

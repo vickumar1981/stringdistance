@@ -1,13 +1,13 @@
 package com.github.vickumar1981.stringdistance.impl
 
 trait JaroImpl extends StringDistanceAlgo {
-  def jaroWinkler(s1: String, s2: String, weight: Double = 0.1): Double = {
+  protected def jaroWinkler(s1: String, s2: String, weight: Double = 0.1): Double = {
     val jaroScore = jaro(s1, s2)
     val l = minStartPrefix(s1, s2)
     jaroScore + (l * weight * (1 - jaroScore))
   }
 
-  def jaro(s1: String, s2: String): Double = {
+  protected def jaro(s1: String, s2: String): Double = {
     val minLen = Math.min(s1.length, s2.length)
     val halflen = (minLen / 2) + (minLen % 2)
     val common1 = getCommonChars(s1, s2, halflen)

@@ -14,7 +14,7 @@ class CosSimilarityImpl {
     retMap.toMap
   }
 
-  def cosSimilarity(s1: String, s2: String, splitOn: String = Strategy.splitWord): Double = {
+  protected def cosSimilarity(s1: String, s2: String, splitOn: String = Strategy.splitWord): Double = {
     val s1TermFreqs = termFrequencyMap(s1.split(splitOn))
     val s2TermFreqs = termFrequencyMap(s2.split(splitOn))
     val intersection = (s1TermFreqs.keySet intersect s2TermFreqs.keySet).toList
