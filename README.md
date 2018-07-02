@@ -139,8 +139,8 @@ Double hamming = StringDistance.hamming("MARTHA", "MARHTA");
 Double jaro = StringDistance.jaro("MARTHA", "MARHTA");
 Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA");
 Double levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA");
-Double ngramSimilarity = StringDistance.ngram("karolin", "kathrin");
-Double bigramSimilarity = StringDistance.ngram("karolin", "kathrin", 2);
+Double ngramSimilarity = StringDistance.nGram("karolin", "kathrin");
+Double bigramSimilarity = StringDistance.nGram("karolin", "kathrin", 2);
 
 // Distances between two strings
 Integer hammingDist = StringDistance.hammingDist("MARTHA", "MARHTA");
