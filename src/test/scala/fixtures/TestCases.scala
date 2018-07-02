@@ -11,11 +11,13 @@ case class TestCase (s1: String,
                      hammingDist: Option[Int] = None,
                      ngram: Option[Double] = None,
                      cosine: Option[Double] = None,
-                     jaccard: Option[Double] = None)
+                     jaccard: Option[Double] = None,
+                     longestCommonSeq: Option[Int] = None)
 
 object TestCases {
   lazy val testCases: List[TestCase] = List(
-    TestCase("MARTHA", "MARHTA", Some(0.944), Some(0.961), Some(0.667), Some(2), Some(0.4), ngram = Some(0)),
+    TestCase("MARTHA", "MARHTA", Some(0.944), Some(0.961), Some(0.667), Some(2), Some(0.4),
+      ngram = Some(0), longestCommonSeq = Some(5)),
     TestCase("DWAYNE", "DUANE", Some(0.822), Some(0.840), Some(0.667), Some(2), Some(0.222)),
     TestCase("DIXON", "DICKSONX", Some(0.767), Some(0.813), Some(0.5), Some(4), Some(0.364)),
     TestCase("karolin", "kathrin", hamming = Some(0.571), hammingDist = Some(3), ngram = Some(0.286)),
@@ -28,7 +30,9 @@ object TestCases {
     TestCase("hello", "chello", cosine = Some(0.935)),
     TestCase("hello", "hell", cosine = Some(0.926)),
     TestCase("hello", "hellhole", cosine = Some(0.980)),
-    TestCase("hello", "hello", cosine = Some(1))
+    TestCase("hello", "hello", cosine = Some(1)),
+    TestCase("ABCDGH", "AEDFHR", longestCommonSeq = Some(3)),
+    TestCase("AGGTAB", "GXTXAYB", longestCommonSeq = Some(4))
   )
 
   lazy val precision = 3

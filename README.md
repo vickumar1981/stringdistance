@@ -2,7 +2,7 @@
 
 [![Build Status](https://api.travis-ci.org/vickumar1981/stringdistance.svg?branch=master)](https://travis-ci.org/vickumar1981/stringdistance/builds) [![Coverage](https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_100.png)](https://coveralls.io/github/vickumar1981/stringdistance) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-A String distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, Cosine similarity, Jaccard similarity, and Hamming distance.
+A String distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, Cosine similarity, Jaccard similarity, Longest common subsequence, and Hamming distance.
 
 ### Adding it to your project using...
 
@@ -92,6 +92,9 @@ val jaroWinkler: Double = JaroWinkler.score("MARTHA", "MARHTA")
 val levenshteinDist: Int = Levenshtein.distance("MARTHA", "MARHTA")
 val levenshtein: Double = Levenshtein.score("MARTHA", "MARHTA")
 
+// Longest Common Subsequence
+val longestCommonSubSeq = LongestCommonSeq.distance("MARTHA", "MARHTA")
+
 // N-Gram Similarity
 val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
 val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
@@ -120,7 +123,7 @@ val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
 // Distances between two strings
 val hammingDist: Int = "MARTHA".hammingDist("MARHTA")
 val levenshteinDist: Int = "MARTHA".levenshteinDist("MARHTA")
-
+val longestCommonSeq: Int = "MARTHA".longestCommonSeq("MARHTA")
 ```
 
 ### Java Usage
@@ -145,5 +148,6 @@ Double bigramSimilarity = StringDistance.nGram("karolin", "kathrin", 2);
 // Distances between two strings
 Integer hammingDist = StringDistance.hammingDist("MARTHA", "MARHTA");
 Integer levenshteinDist = StringDistance.levenshteinDist("MARTHA", "MARHTA");
+Integer longestCommonSeq = StringDistance.longestCommonSeq("MARTHA", "MARHTA");
 ```
 

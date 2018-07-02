@@ -76,5 +76,12 @@ class TestStringDistance extends FlatSpec with Matchers {
       roundToPrecision(jaccard) should be (t.jaccard.get)
     })
   }
+
+  "The Longest Common Subsequence" should "match for all test cases" in {
+    testCases.filter(_.longestCommonSeq.isDefined).map(t => {
+      val longestCommonSeq = t.s1.longestCommonSeq(t.s2)
+      roundToPrecision(longestCommonSeq) should be (t.longestCommonSeq.get)
+    })
+  }
 }
 

@@ -10,6 +10,7 @@ package object stringdistance {
   trait JaroAlgorithm extends StringDistanceAlgorithm
   trait JaroWinklerAlgorithm extends StringDistanceAlgorithm
   trait LevenshteinAlgorithm extends StringDistanceAlgorithm
+  trait LongestCommonSeqAlorithm extends StringDistanceAlgorithm
   trait NGramAlgorithm extends StringDistanceAlgorithm
   trait CosineAlgorithm extends StringDistanceAlgorithm
 
@@ -70,6 +71,11 @@ package object stringdistance {
     override def distance(s1: String, s2: String): Int = levenshtein(s1, s2)
   }
 
+  implicit object LongestCommonSeqDistance extends LongestCommonSeqImpl
+    with DistanceAlgorithm[LongestCommonSeqAlorithm] {
+    override def distance(s1: String, s2: String): Int = longestCommonSeq(s1, s2)
+  }
+
   implicit object NGramScore extends NGramImpl with WeightedScoringAlgorithm[NGramAlgorithm, Int] {
     override def score(s1: String, s2: String, n: Int = 1): Double = nGram(s1, s2, n)
   }
@@ -96,6 +102,7 @@ package object stringdistance {
         JaroWinkler.score(s1, s2, weight)
       def levenshtein(s2: String): Double = Levenshtein.score(s1, s2)
       def levenshteinDist(s2: String): Int = Levenshtein.distance(s1, s2)
+      def longestCommonSeq(s2: String): Int = LongestCommonSeq.distance(s1, s2)
       def nGram(s2: String, nGram: Int = 1): Double = NGram.score(s1, s2, nGram)
     }
   }

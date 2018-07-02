@@ -7,6 +7,7 @@ public class StringDistance {
     private final static HammingImpl hamming = new HammingImpl();
     private final static DiceCoefficientImpl dice = new DiceCoefficientImpl();
     private final static LevenshteinDistanceImpl levenshtein = new LevenshteinDistanceImpl();
+    private final static LongestCommonSeqImpl longestCommonSeq = new LongestCommonSeqImpl();
     private final static NGramImpl ngram = new NGramImpl();
 
     private final static String splitOnWord = "(?!^)";
@@ -67,6 +68,10 @@ public class StringDistance {
 
     public static Integer levenshteinDist(String s1, String s2) {
         return levenshtein.levenshtein(s1, s2);
+    }
+
+    public static Integer longestCommonSeq(String s1, String s2) {
+        return longestCommonSeq.longestCommonSeq(s1, s2);
     }
 
     public static Double nGram(String s1, String s2) { return nGram(s1, s2, 1); }

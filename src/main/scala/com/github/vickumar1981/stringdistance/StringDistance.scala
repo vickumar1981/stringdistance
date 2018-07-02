@@ -10,6 +10,7 @@ object StringDistance {
   object Jaro extends StringDistanceImpl[JaroAlgorithm]
   object JaroWinkler extends StringDistanceImpl[JaroWinklerAlgorithm]
   object Levenshtein extends StringDistanceImpl[LevenshteinAlgorithm]
+  object LongestCommonSeq extends StringDistanceImpl[LongestCommonSeqAlorithm]
   object NGram extends StringDistanceImpl[NGramAlgorithm]
 }
 
@@ -19,4 +20,5 @@ class HammingImplWrapper extends HammingImpl
 class JaccardImplWrapper extends JaccardImpl
 class JaroImplWrapper extends JaroImpl
 class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
+class LongestCommonSeqWrapper extends LongestCommonSeqImpl
 class NGramImplWrapper extends NGramImpl
