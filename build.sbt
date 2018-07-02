@@ -31,6 +31,11 @@ addArtifact(artifact in (Compile, assembly), assembly)
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1" % Test
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % Test
 
+lazy val testScalastyle = taskKey[Unit]("testScalastyle")
+testScalastyle := scalastyle.in(Test).toTask("").value
+(test in Test) := ((test in Test) dependsOn testScalastyle).value
+
 coverageEnabled := true
 coverageMinimum := 100
 coverageFailOnMinimum := true
+scalastyleFailOnWarning := true

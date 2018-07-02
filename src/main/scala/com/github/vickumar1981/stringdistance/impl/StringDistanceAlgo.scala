@@ -1,7 +1,9 @@
 package com.github.vickumar1981.stringdistance.impl
 
 trait StringDistanceAlgo {
-  protected def minStartPrefix(s1: String, s2: String, minPrefixLen: Int = 4): Int = {
+  final lazy val MIN_PREFIX_LENGTH = 4
+
+  protected def minStartPrefix(s1: String, s2: String, minPrefixLen: Int = MIN_PREFIX_LENGTH): Int = {
     var isSame = true
     var minPrefix = 0
     s1.zipWithIndex.foreach{

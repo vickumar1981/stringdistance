@@ -1,5 +1,6 @@
 package fixtures
 
+// scalastyle:off
 case class TestCase (s1: String,
                      s2: String,
                      jaro: Option[Double] = None,
