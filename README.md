@@ -74,26 +74,26 @@ import com.github.vickumar1981.stringdistance.StringDistance._
 val cosSimilarity: Double = Cosine.score("hello", "chello")
 
 // Dice Coefficient
-val diceCoefficient: Double = DiceCoefficient.score("MARTHA", "MARHTA")
-val diceCoefficientWeighted: Double = DiceCoefficient.score("MARTHA", "MARHTA", 0.2)
+val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
+val diceCoefficientWeighted: Double = DiceCoefficient.score("martha", "marhta", 0.2)
 
 // Hamming Distance
-val hammingDist: Int = Hamming.distance("MARTHA", "MARHTA")
-val hamming: Double = Hamming.score("MARTHA", "MARHTA")
+val hammingDist: Int = Hamming.distance("martha", "marhta")
+val hamming: Double = Hamming.score("martha", "marhta")
 
 // Jaccard Similarity
 val jaccard: Double = Jaccard.score("karolin", "kathrin")
 
 // Jaro and Jaro Winkler
-val jaro: Double = Jaro.score("MARTHA", "MARHTA")
-val jaroWinkler: Double = JaroWinkler.score("MARTHA", "MARHTA")
+val jaro: Double = Jaro.score("martha", "marhta")
+val jaroWinkler: Double = JaroWinkler.score("martha", "marhta")
 
 // Levenshtein Distance
-val levenshteinDist: Int = Levenshtein.distance("MARTHA", "MARHTA")
-val levenshtein: Double = Levenshtein.score("MARTHA", "MARHTA")
+val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")
+val levenshtein: Double = Levenshtein.score("martha", "marhta")
 
 // Longest Common Subsequence
-val longestCommonSubSeq: Int = LongestCommonSeq.distance("MARTHA", "MARHTA")
+val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
 
 // N-Gram Similarity
 val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
@@ -110,20 +110,20 @@ import com.github.vickumar1981.stringdistance.StringConverter._
 
 // Scores between two strings
 val cosSimilarity: Double = "hello".cosine("chello")
-val diceCoefficient: Double = "MARTHA".diceCoefficient("MARHTA")
-val diceCoefficientWeighted: Double = "MARTHA".diceCoefficient("MARHTA", 0.2)
-val hamming: Double = "MARTHA".hamming("MARHTA")
+val diceCoefficient: Double = "martha".diceCoefficient("marhta")
+val diceCoefficientWeighted: Double = "martha".diceCoefficient("marhta", 0.2)
+val hamming: Double = "martha".hamming("marhta")
 val jaccard: Double = "karolin".jaccard("kathrin")
-val jaro: Double = "MARTHA".jaro("MARHTA")
-val jaroWinkler: Double = "MARTHA".jaroWinkler("MARHTA")
-val levenshtein: Double = "MARTHA".levenshtein("MARHTA")
+val jaro: Double = "martha".jaro("marhta")
+val jaroWinkler: Double = "martha".jaroWinkler("marhta")
+val levenshtein: Double = "martha".levenshtein("marhta")
 val ngramSimilarity: Double = "karolin".nGram("kathrin")
 val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
 
 // Distances between two strings
-val hammingDist: Int = "MARTHA".hammingDist("MARHTA")
-val levenshteinDist: Int = "MARTHA".levenshteinDist("MARHTA")
-val longestCommonSeq: Int = "MARTHA".longestCommonSeq("MARHTA")
+val hammingDist: Int = "martha".hammingDist("marhta")
+val levenshteinDist: Int = "martha".levenshteinDist("marhta")
+val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
 ```
 
 ### Java Usage
@@ -136,18 +136,18 @@ import com.github.vickumar1981.stringdistance.util.StringDistance;
 
 // Scores between two strings
 Double cosSimilarity = StringDistance.cosine("hello", "chello");
-Double diceCoefficient = StringDistance.diceCoefficient("MARTHA", "MARHTA");
-Double diceCoefficientWeighted = StringDistance.diceCoefficient("MARTHA", "MARHTA", 0.2);
-Double hamming = StringDistance.hamming("MARTHA", "MARHTA");
-Double jaro = StringDistance.jaro("MARTHA", "MARHTA");
-Double jaroWinkler = StringDistance.jaroWinkler("MARTHA", "MARHTA");
-Double levenshtein = StringDistance.levenshtein("MARTHA", "MARHTA");
+Double diceCoefficient = StringDistance.diceCoefficient("martha", "marhta");
+Double diceCoefficientWeighted = StringDistance.diceCoefficient("martha", "marhta", 0.2);
+Double hamming = StringDistance.hamming("martha", "marhta");
+Double jaro = StringDistance.jaro("martha", "marhta");
+Double jaroWinkler = StringDistance.jaroWinkler("martha", "marhta");
+Double levenshtein = StringDistance.levenshtein("martha", "marhta");
 Double ngramSimilarity = StringDistance.nGram("karolin", "kathrin");
 Double bigramSimilarity = StringDistance.nGram("karolin", "kathrin", 2);
 
 // Distances between two strings
-Integer hammingDist = StringDistance.hammingDist("MARTHA", "MARHTA");
-Integer levenshteinDist = StringDistance.levenshteinDist("MARTHA", "MARHTA");
-Integer longestCommonSeq = StringDistance.longestCommonSeq("MARTHA", "MARHTA");
+Integer hammingDist = StringDistance.hammingDist("martha", "marhta");
+Integer levenshteinDist = StringDistance.levenshteinDist("martha", "marhta");
+Integer longestCommonSeq = StringDistance.longestCommonSeq("martha", "marhta");
 ```
 
