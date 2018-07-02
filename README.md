@@ -7,14 +7,18 @@ A String distance library for Scala and Java that includes Levenshtein distance,
 ### Adding it to your project using...
 
 __sbt:__
+
+`build.sbt`
 ```scala
-resolvers += Resolver.sonatypeRepo("snapshots")
+resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.0.0-SNAPSHOT"
 ```
 
 ---
 
 __gradle:__
+
+`build.gradle`
 ```groovy
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -33,6 +37,7 @@ dependencies {
 ---
 
 __Maven:__
+
 `settings.xml`
 ```xml
 <repositories>
