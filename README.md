@@ -93,7 +93,7 @@ val levenshteinDist: Int = Levenshtein.distance("MARTHA", "MARHTA")
 val levenshtein: Double = Levenshtein.score("MARTHA", "MARHTA")
 
 // Longest Common Subsequence
-val longestCommonSubSeq = LongestCommonSeq.distance("MARTHA", "MARHTA")
+val longestCommonSubSeq: Int = LongestCommonSeq.distance("MARTHA", "MARHTA")
 
 // N-Gram Similarity
 val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
