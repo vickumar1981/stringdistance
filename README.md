@@ -4,31 +4,33 @@
 
 A String distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, Cosine similarity, Jaccard similarity, Longest common subsequence, and Hamming distance.
 
+For more detailed information, please refer to the [API Documentation](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html "API Documentation").
+
+---
+
 ### Adding it to your project using...
 
 __sbt:__
 
-`build.sbt`
+In `build.sbt`:
 ```scala
 libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.0.0"
 ```
-
 ---
 
 __gradle:__
 
-`build.gradle`
+In `build.gradle`:
 ```groovy
 dependencies {
     compile 'com.github.vickumar1981:stringdistance_2.12:1.0.0'
 }
 ```
-
 ---
 
 __Maven:__
 
-`pom.xml`:
+In `pom.xml`:
 ```xml
 <dependency>
 	<groupId>com.github.vickumar1981</groupId>
@@ -36,10 +38,10 @@ __Maven:__
 	<version>1.0.0</version>
 </dependency>
 ```
-
+---
 ### Scala Usage
 
-Example:
+__Example.scala__:
 ```scala
 // Scala example
 import com.github.vickumar1981.stringdistance.StringDistance._
@@ -73,11 +75,12 @@ val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
 val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
 val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
 ```
+---
 
-### Use with Implicits
+### Scala: Use with Implicits
   -  To use implicits and extend the String class:  `import com.github.vickumar1981.stringdistance.StringConverter._`
 
-Example
+__Example.scala__
 ```scala
 // Scala example using implicits
 import com.github.vickumar1981.stringdistance.StringConverter._
@@ -99,11 +102,12 @@ val hammingDist: Int = "martha".hammingDist("marhta")
 val levenshteinDist: Int = "martha".levenshteinDist("marhta")
 val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
 ```
+---
 
 ### Java Usage
   -  To use in Java:  `import com.github.vickumar1981.stringdistance.util.StringDistance`
 
-Example
+__Example.java__
 ```java
 // Java example
 import com.github.vickumar1981.stringdistance.util.StringDistance;
