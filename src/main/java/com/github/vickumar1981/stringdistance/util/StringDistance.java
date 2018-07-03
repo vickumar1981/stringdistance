@@ -9,6 +9,7 @@ public class StringDistance {
     private final static LevenshteinDistanceImpl levenshtein = new LevenshteinDistanceImpl();
     private final static LongestCommonSeqImpl longestCommonSeq = new LongestCommonSeqImpl();
     private final static NGramImpl ngram = new NGramImpl();
+    private final static OverlapImpl overLap = new OverlapImpl();
 
     private final static String splitOnWord = "(?!^)";
     private final static String splitOnSentence = "\\W+";
@@ -77,4 +78,8 @@ public class StringDistance {
     public static Double nGram(String s1, String s2) { return nGram(s1, s2, 1); }
 
     public static Double nGram(String s1, String s2, Integer n) { return ngram.nGram(s1, s2, n); }
+
+    public static Double overlap(String s1, String s2) { return overlap(s1, s2, 1); }
+
+    public static Double overlap(String s1, String s2, Integer n) { return overLap.overlap(s1, s2, n); }
 }

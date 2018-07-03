@@ -50,6 +50,11 @@ package object stringdistance {
   trait NGramAlgorithm extends StringDistanceAlgorithm
 
   /**
+    * A marker interface for the overlap similarity algorithm.
+    */
+  trait OverlapAlgorithm extends StringDistanceAlgorithm
+
+  /**
     * A marker interface for the cosine similarity algorithm.
     */
   trait CosineAlgorithm extends StringDistanceAlgorithm
@@ -261,6 +266,20 @@ package object stringdistance {
   }
 
   /**
+    * Implicit definition of overlap score for [[OverlapAlgorithm]].
+    */
+  implicit object OverlapScore extends OverlapImpl with WeightedScoringAlgorithm[OverlapAlgorithm, Int] {
+    /**
+      * The score method takes two strings and returns n-gram similarity between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the overlap similarity between Strings s1 and s2.
+      */
+    override def score(s1: String, s2: String, n: Int = 1): Double = overlap(s1, s2, n)
+  }
+
+  /**
     * Defines implementation for [[StringDistanceAlgorithm]] by adding
     * implicit definitions from [[DistanceAlgorithm]], [[ScoringAlgorithm]] or [[WeightedScoringAlgorithm]]
     */
@@ -292,6 +311,7 @@ package object stringdistance {
     * val hammingDist: Int = "martha".hammingDist("marhta")
     * val levenshteinDist: Int = "martha".levenshteinDist("marhta")
     * val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
+    * val overlap: Double = "karolin".overlap("kathrin")
     * }}}
     */
   object StringConverter {
@@ -309,6 +329,7 @@ package object stringdistance {
       def levenshteinDist(s2: String): Int = Levenshtein.distance(s1, s2)
       def longestCommonSeq(s2: String): Int = LongestCommonSeq.distance(s1, s2)
       def nGram(s2: String, nGram: Int = 1): Double = NGram.score(s1, s2, nGram)
+      def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)
     }
   }
 }

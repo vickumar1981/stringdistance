@@ -72,6 +72,10 @@ val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
 // N-Gram Similarity
 val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
 val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
+
+// Overlap Similarity
+val overlap: Double = Overlap.score("karolin", "kathrin")
+val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)
 ```
 ---
 
@@ -94,6 +98,8 @@ val jaroWinkler: Double = "martha".jaroWinkler("marhta")
 val levenshtein: Double = "martha".levenshtein("marhta")
 val ngramSimilarity: Double = "karolin".nGram("kathrin")
 val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
+val overlap: Double = "karolin".overlap("kathrin")
+val overlapBiGram: Double "karolin".overlap("kathrin", 2)
 
 // Distances between two strings
 val hammingDist: Int = "martha".hammingDist("marhta")
@@ -120,6 +126,8 @@ Double jaroWinkler = StringDistance.jaroWinkler("martha", "marhta");
 Double levenshtein = StringDistance.levenshtein("martha", "marhta");
 Double ngramSimilarity = StringDistance.nGram("karolin", "kathrin");
 Double bigramSimilarity = StringDistance.nGram("karolin", "kathrin", 2);
+Double overlap = StringDistance.overlap("karolin", "kathrin");
+Double overlapBiGram = StringDistance.overlap("karolin", "kathrin", 2);
 
 // Distances between two strings
 Integer hammingDist = StringDistance.hammingDist("martha", "marhta");

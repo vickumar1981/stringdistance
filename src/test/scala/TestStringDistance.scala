@@ -83,5 +83,12 @@ class TestStringDistance extends FlatSpec with Matchers {
       roundToPrecision(longestCommonSeq) should be (t.longestCommonSeq.get)
     })
   }
+
+  "The Overlap Score" should "match for all test cases" in {
+    testCases.filter(_.overlap.isDefined).map(t => {
+      val overlap = t.s1.overlap(t.s2)
+      roundToPrecision(overlap) should be (t.overlap.get)
+    })
+  }
 }
 

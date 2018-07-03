@@ -21,6 +21,7 @@ import com.github.vickumar1981.stringdistance.impl._
   * val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
   * val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
   * val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
+  * val overlap: Double = Overlap.score("karolin", "kathrin")
   * }}}
   */
 object StringDistance {
@@ -33,6 +34,7 @@ object StringDistance {
   object Levenshtein extends StringDistanceImpl[LevenshteinAlgorithm]
   object LongestCommonSeq extends StringDistanceImpl[LongestCommonSeqAlorithm]
   object NGram extends StringDistanceImpl[NGramAlgorithm]
+  object Overlap extends StringDistanceImpl[OverlapAlgorithm]
 }
 
 /**
@@ -74,3 +76,8 @@ class LongestCommonSeqWrapper extends LongestCommonSeqImpl
   * Jave Wrapper for n-gram similarity.
   */
 class NGramImplWrapper extends NGramImpl
+
+/**
+  * Jave Wrapper for overlap similarity.
+  */
+class OverlapImplWrapper extends OverlapImpl
