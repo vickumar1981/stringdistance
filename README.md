@@ -104,7 +104,7 @@ val hammingDist: Int = "martha".hammingDist("marhta")
 val levenshteinDist: Int = "martha".levenshteinDist("marhta")
 val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
 val ngramDist: Int = "karolin".nGramDist("kathrin")
-val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
+val bigramDist: Int = "karolin".nGramDist("kathrin", 2)
 ```
 ---
 ### Java Usage
@@ -163,8 +163,8 @@ implicit object CustomScore extends ScoringAlgorithm[CustomAlgorithm] {
 3.  Create an object the extends `StringMetric` using your algorithm as the type parameter, and use the `score` and `distance` methods defined in the implicit object.
 
 ```scala
-object CustomMatcher extends StringMetric[CustomAlgorithm]
+object CustomMetric extends StringMetric[CustomAlgorithm]
 
-val customScore: Double = CustomMatcher.score("hello", "hello2")
-val customDist: Int = CustomMatcher.distance("hello", "hello2")
+val customScore: Double = CustomMetric.score("hello", "hello2")
+val customDist: Int = CustomMetric.distance("hello", "hello2")
 ```
