@@ -10,7 +10,6 @@ import com.github.vickumar1981.stringdistance.impl._
   *
   * val cosSimilarity: Double = Cosine.score("hello", "chello")
   * val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
-  * val diceCoefficientWeighted: Double = DiceCoefficient.score("martha", "marhta", 0.2)
   * val hammingDist: Int = Hamming.distance("martha", "marhta")
   * val hamming: Double = Hamming.score("martha", "marhta")
   * val jaccard: Double = Jaccard.score("karolin", "kathrin")
@@ -19,6 +18,8 @@ import com.github.vickumar1981.stringdistance.impl._
   * val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")
   * val levenshtein: Double = Levenshtein.score("martha", "marhta")
   * val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
+  * val ngramDist: Int = NGram.distance("karolin", "kathrin")
+  * val bigramDist: Double = NGram.distance("karolin", "kathrin", 2)
   * val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
   * val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
   * val overlap: Double = Overlap.score("karolin", "kathrin")

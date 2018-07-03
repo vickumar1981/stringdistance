@@ -1,6 +1,6 @@
-package com.github.vickumar1981.stringdistance.impl
+package com.github.vickumar1981.stringdistance.interfaces
 
-trait StringDistanceAlgo {
+trait CommonStringDistanceAlgo {
   final private lazy val MIN_PREFIX_LENGTH = 4
 
   protected def minStartPrefix(s1: String, s2: String, minPrefixLen: Int = MIN_PREFIX_LENGTH): Int = {

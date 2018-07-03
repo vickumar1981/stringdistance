@@ -3,7 +3,7 @@ package com.github.vickumar1981.stringdistance.impl
 import scala.collection.mutable.Set
 
 trait DiceCoefficientImpl {
-  protected def diceCoefficient(s1: String, s2: String, weight: Double = 0.1): Double = {
+  protected def diceCoefficient(s1: String, s2: String): Double = {
     val nx = Set[String]()
     val ny = Set[String]()
 

@@ -1,6 +1,8 @@
 package com.github.vickumar1981.stringdistance.impl
 
-trait JaroImpl extends StringDistanceAlgo {
+import com.github.vickumar1981.stringdistance.interfaces.CommonStringDistanceAlgo
+
+trait JaroImpl extends CommonStringDistanceAlgo {
   protected def jaroWinkler(s1: String, s2: String, weight: Double = 0.1): Double = {
     val jaroScore = jaro(s1, s2)
     val l = minStartPrefix(s1, s2)

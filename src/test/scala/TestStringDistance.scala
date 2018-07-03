@@ -56,6 +56,13 @@ class TestStringDistance extends FlatSpec with Matchers {
     })
   }
 
+  "The N-Gram Distance" should "match for all test cases" in {
+    testCases.filter(_.nGramDist.isDefined).map(t => {
+      val nGramDist = t.s1.nGramDist(t.s2)
+      roundToPrecision(nGramDist) should be (t.nGramDist.get)
+    })
+  }
+
   "The N-Gram Similarity" should "match for all test cases" in {
     testCases.filter(_.ngram.isDefined).map(t => {
       val nGram = t.s1.nGram(t.s2)

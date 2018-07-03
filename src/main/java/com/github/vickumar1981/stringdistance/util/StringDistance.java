@@ -32,11 +32,7 @@ public class StringDistance {
     }
 
     public static Double diceCoefficient(String s1, String s2) {
-        return diceCoefficient(s1, s2, 0.1);
-    }
-
-    public static Double diceCoefficient(String s1, String s2, Double weight) {
-        return dice.diceCoefficient(s1, s2, weight);
+        return diceCoefficient(s1, s2);
     }
 
     public static Double hamming(String s1, String s2) {
@@ -74,6 +70,10 @@ public class StringDistance {
     public static Integer longestCommonSeq(String s1, String s2) {
         return longestCommonSeq.longestCommonSeq(s1, s2);
     }
+
+    public static Integer nGramDist(String s1, String s2) { return nGramDist(s1, s2, 1); }
+
+    public static Integer nGramDist(String s1, String s2, Integer n) { return ngram.nGramDist(s1, s2, n); }
 
     public static Double nGram(String s1, String s2) { return nGram(s1, s2, 1); }
 

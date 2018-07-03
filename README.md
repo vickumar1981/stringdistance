@@ -49,7 +49,6 @@ val cosSimilarity: Double = Cosine.score("hello", "chello")
 
 // Dice Coefficient
 val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
-val diceCoefficientWeighted: Double = DiceCoefficient.score("martha", "marhta", 0.2)
 
 // Hamming Distance
 val hammingDist: Int = Hamming.distance("martha", "marhta")
@@ -69,7 +68,9 @@ val levenshtein: Double = Levenshtein.score("martha", "marhta")
 // Longest Common Subsequence
 val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
 
-// N-Gram Similarity
+// N-Gram Similarity and Distance
+val ngramDist: Int = NGram.distance("karolin", "kathrin")
+val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)
 val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
 val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
 
@@ -90,7 +91,6 @@ import com.github.vickumar1981.stringdistance.StringConverter._
 // Scores between two strings
 val cosSimilarity: Double = "hello".cosine("chello")
 val diceCoefficient: Double = "martha".diceCoefficient("marhta")
-val diceCoefficientWeighted: Double = "martha".diceCoefficient("marhta", 0.2)
 val hamming: Double = "martha".hamming("marhta")
 val jaccard: Double = "karolin".jaccard("kathrin")
 val jaro: Double = "martha".jaro("marhta")
@@ -105,6 +105,8 @@ val overlapBiGram: Double "karolin".overlap("kathrin", 2)
 val hammingDist: Int = "martha".hammingDist("marhta")
 val levenshteinDist: Int = "martha".levenshteinDist("marhta")
 val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
+val ngramDist: Int = "karolin".nGramDist("kathrin")
+val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
 ```
 ---
 
@@ -119,7 +121,6 @@ import com.github.vickumar1981.stringdistance.util.StringDistance;
 // Scores between two strings
 Double cosSimilarity = StringDistance.cosine("hello", "chello");
 Double diceCoefficient = StringDistance.diceCoefficient("martha", "marhta");
-Double diceCoefficientWeighted = StringDistance.diceCoefficient("martha", "marhta", 0.2);
 Double hamming = StringDistance.hamming("martha", "marhta");
 Double jaro = StringDistance.jaro("martha", "marhta");
 Double jaroWinkler = StringDistance.jaroWinkler("martha", "marhta");
@@ -133,5 +134,7 @@ Double overlapBiGram = StringDistance.overlap("karolin", "kathrin", 2);
 Integer hammingDist = StringDistance.hammingDist("martha", "marhta");
 Integer levenshteinDist = StringDistance.levenshteinDist("martha", "marhta");
 Integer longestCommonSeq = StringDistance.longestCommonSeq("martha", "marhta");
+Integer ngramDist = StringDistance.nGramDist("karolin", "kathrin");
+Integer bigramDist = StringDistance.nGramDist("karolin", "kathrin", 2);
 ```
 
