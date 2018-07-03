@@ -21,6 +21,6 @@ trait CosSimilarityImpl {
     val dotProduct = intersection.map { i => s1TermFreqs(i) * s2TermFreqs(i)}.sum
     val magnitudeS1 = s1TermFreqs.values.map { i => i * i }.sum
     val magnitudeS2 = s2TermFreqs.values.map { i => i * i }.sum
-    dotProduct/ Math.sqrt(magnitudeS1 * magnitudeS2)
+    dotProduct/ math.sqrt(magnitudeS1 * magnitudeS2)
   }
 }

@@ -123,7 +123,7 @@ package object stringdistance {
       * @return Returns the fuzzy score between Strings s1 and s2.
       */
     def score(s1: String, s2: String): Double = {
-      val maxLen = Math.max(s1.length, s2.length)
+      val maxLen = math.max(s1.length, s2.length)
       val minLen = maxLen - distance(s1, s2)
       (if (minLen < 0 || minLen > maxLen) 0d else minLen * 1d) / maxLen
     }

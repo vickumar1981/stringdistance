@@ -8,7 +8,7 @@ trait JaroImpl extends StringDistanceAlgo {
   }
 
   protected def jaro(s1: String, s2: String): Double = {
-    val minLen = Math.min(s1.length, s2.length)
+    val minLen = math.min(s1.length, s2.length)
     val halflen = (minLen / 2) + (minLen % 2)
     val common1 = getCommonChars(s1, s2, halflen)
     val common2 = getCommonChars(s2, s1, halflen)

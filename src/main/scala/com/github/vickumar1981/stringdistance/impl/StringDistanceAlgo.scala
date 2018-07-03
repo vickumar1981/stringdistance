@@ -25,7 +25,7 @@ trait StringDistanceAlgo {
     s1.zipWithIndex.foreach{
       case (ch, chIndex) => {
         var foundIt = false
-        var j = Math.max(0, chIndex - halfLen)
+        var j = math.max(0, chIndex - halfLen)
         while (!foundIt && j <= Math.min(chIndex + halfLen, m - 1)) {
           if (strCopy(j) == ch) {
             foundIt = true
