@@ -1,7 +1,7 @@
 package com.github.vickumar1981.stringdistance.impl
 
 trait StringDistanceAlgo {
-  final lazy val MIN_PREFIX_LENGTH = 4
+  final private lazy val MIN_PREFIX_LENGTH = 4
 
   protected def minStartPrefix(s1: String, s2: String, minPrefixLen: Int = MIN_PREFIX_LENGTH): Int = {
     var isSame = true

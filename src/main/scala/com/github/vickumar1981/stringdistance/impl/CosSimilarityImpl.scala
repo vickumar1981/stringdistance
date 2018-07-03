@@ -2,7 +2,7 @@ package com.github.vickumar1981.stringdistance.impl
 
 import com.github.vickumar1981.stringdistance.Strategy
 
-class CosSimilarityImpl {
+trait CosSimilarityImpl {
   private def termFrequencyMap(terms: Seq[String]): Map[String, Int] = {
     val retMap = scala.collection.mutable.Map[String, Int]()
     terms.foreach {
