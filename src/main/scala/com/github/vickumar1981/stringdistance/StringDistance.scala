@@ -26,16 +26,16 @@ import com.github.vickumar1981.stringdistance.impl._
   * }}}
   */
 object StringDistance {
-  object Cosine extends StringDistanceImpl[CosineAlgorithm]
-  object DiceCoefficient extends StringDistanceImpl[DiceCoefficientAlgorithm]
-  object Hamming extends StringDistanceImpl[HammingAlgorithm]
-  object Jaccard extends StringDistanceImpl[JaccardAlgorithm]
-  object Jaro extends StringDistanceImpl[JaroAlgorithm]
-  object JaroWinkler extends StringDistanceImpl[JaroWinklerAlgorithm]
-  object Levenshtein extends StringDistanceImpl[LevenshteinAlgorithm]
-  object LongestCommonSeq extends StringDistanceImpl[LongestCommonSeqAlorithm]
-  object NGram extends StringDistanceImpl[NGramAlgorithm]
-  object Overlap extends StringDistanceImpl[OverlapAlgorithm]
+  object Cosine extends StringMetric[CosineAlgorithm]
+  object DiceCoefficient extends StringMetric[DiceCoefficientAlgorithm]
+  object Hamming extends StringMetric[HammingAlgorithm]
+  object Jaccard extends StringMetric[JaccardAlgorithm]
+  object Jaro extends StringMetric[JaroAlgorithm]
+  object JaroWinkler extends StringMetric[JaroWinklerAlgorithm]
+  object Levenshtein extends StringMetric[LevenshteinAlgorithm]
+  object LongestCommonSeq extends StringMetric[LongestCommonSeqAlorithm]
+  object NGram extends StringMetric[NGramAlgorithm]
+  object Overlap extends StringMetric[OverlapAlgorithm]
 }
 
 /**

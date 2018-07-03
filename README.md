@@ -2,12 +2,11 @@
 
 [![Build Status](https://api.travis-ci.org/vickumar1981/stringdistance.svg?branch=master)](https://travis-ci.org/vickumar1981/stringdistance/builds) [![Coverage Status](https://coveralls.io/repos/github/vickumar1981/stringdistance/badge.svg?branch=master)](https://coveralls.io/github/vickumar1981/stringdistance?branch=master) [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html) [![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/github/vickumar1981/stringdistance_2.12/maven-metadata.xml.svg)](https://mvnrepository.com/artifact/com.github.vickumar1981/stringdistance) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-A String distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, Cosine similarity, Jaccard similarity, Longest common subsequence, and Hamming distance.
+A fuzzy matching string distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, Cosine similarity, Jaccard similarity, Longest common subsequence, Hamming distance, and more.
 
 For more detailed information, please refer to the [API Documentation](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html "API Documentation").
 
 ---
-
 ### Add it to your project ...
 
 __Using sbt:__
@@ -79,7 +78,6 @@ val overlap: Double = Overlap.score("karolin", "kathrin")
 val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)
 ```
 ---
-
 ### Scala: Use with Implicits
   -  To use implicits and extend the String class:  `import com.github.vickumar1981.stringdistance.StringConverter._`
 
@@ -109,7 +107,6 @@ val ngramDist: Int = "karolin".nGramDist("kathrin")
 val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
 ```
 ---
-
 ### Java Usage
   -  To use in Java:  `import com.github.vickumar1981.stringdistance.util.StringDistance`
 
@@ -137,4 +134,37 @@ Integer longestCommonSeq = StringDistance.longestCommonSeq("martha", "marhta");
 Integer ngramDist = StringDistance.nGramDist("karolin", "kathrin");
 Integer bigramDist = StringDistance.nGramDist("karolin", "kathrin", 2);
 ```
+---
 
+### Adding your own Distance or Scoring Algorithm 
+
+1.  Create a marker trait that extends `StringDistanceAlgorithm`:
+
+```scala
+trait CustomAlgorithm extends StringDistanceAlgorithm
+```
+
+2.  Create an implementation for that algorithm using an implicit object.  Override either the `score` or the `distance` method, depending upon whether the object extends `DistanceAlgorithm` or `ScoringAlgorithm`.
+
+```scala
+implicit object CustomDistance extends DistanceAlgorithm[CustomAlgorithm] {
+    override def distance(s1: String, s2: String): Int = {
+        // Implement distance between s1 and s2
+    }
+}
+
+implicit object CustomScore extends ScoringAlgorithm[CustomAlgorithm] {
+    override def score(s1: String, s2: String): Double = {
+        // Implement fuzzy score between s1 and s2
+    }
+}
+```
+
+3.  Create an object the extends `StringMetric` using your algorithm as the type parameter, and use the `score` and `distance` methods defined in the implicit object.
+
+```scala
+object CustomMatcher extends StringMetric[CustomAlgorithm]
+
+val customScore: Double = CustomMatcher.score("hello", "hello2")
+val customDist: Int = CustomMatcher.distance("hello", "hello2")
+```

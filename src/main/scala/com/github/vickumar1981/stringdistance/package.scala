@@ -152,7 +152,7 @@ package object stringdistance {
     * implicit definitions from [[DistanceAlgorithm]], [[ScoringAlgorithm]],
     * [[WeightedDistanceAlgorithm]], or [[WeightedScoringAlgorithm]]
     */
-  trait StringDistanceImpl[A <: StringDistanceAlgorithm] {
+  trait StringMetric[A <: StringDistanceAlgorithm] {
     def distance(s1: String, s2: String)
                 (implicit algo: DistanceAlgorithm[A]): Int = algo.distance(s1, s2)
     def distance[B](s1: String, s2: String, weight: B)
