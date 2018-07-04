@@ -42,6 +42,7 @@ __Example.scala__:
 ```scala
 // Scala example
 import com.github.vickumar1981.stringdistance.StringDistance._
+import com.github.vickumar1981.stringdistance.StringSound._
 
 // Cosine Similarity
 val cosSimilarity: Double = Cosine.score("hello", "chello")
@@ -76,6 +77,9 @@ val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
 // Overlap Similarity
 val overlap: Double = Overlap.score("karolin", "kathrin")
 val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)
+
+// Phonetic Similarity
+val metaphone = Metaphone.score("merci", "mercy")
 ```
 ---
 ### Scala: Use with Implicits
@@ -105,6 +109,9 @@ val levenshteinDist: Int = "martha".levenshteinDist("marhta")
 val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
 val ngramDist: Int = "karolin".nGramDist("kathrin")
 val bigramDist: Int = "karolin".nGramDist("kathrin", 2)
+
+// Phonetic similarity of two strings
+val metaphone: Boolean = "merci".metaphone("mercy")
 ```
 ---
 ### Java Usage
@@ -114,6 +121,7 @@ __Example.java__
 ```java
 // Java example
 import com.github.vickumar1981.stringdistance.util.StringDistance;
+import com.github.vickumar1981.stringdistance.util.StringSound;
 
 // Scores between two strings
 Double cosSimilarity = StringDistance.cosine("hello", "chello");
@@ -133,15 +141,18 @@ Integer levenshteinDist = StringDistance.levenshteinDist("martha", "marhta");
 Integer longestCommonSeq = StringDistance.longestCommonSeq("martha", "marhta");
 Integer ngramDist = StringDistance.nGramDist("karolin", "kathrin");
 Integer bigramDist = StringDistance.nGramDist("karolin", "kathrin", 2);
+
+// Phonetic similarity of two strings
+Boolean metaphone = StringSound.metaphone("merci", "mercy");
 ```
 ---
 
 ### Adding your own Distance or Scoring Algorithm 
 
-1.  Create a marker trait that extends `StringDistanceAlgorithm`:
+1.  Create a marker trait that extends `StringMetricAlgorithm`:
 
 ```scala
-trait CustomAlgorithm extends StringDistanceAlgorithm
+trait CustomAlgorithm extends StringMetricAlgorithm
 ```
 
 2.  Create an implementation for that algorithm using an implicit object.  Override either the `score` or the `distance` method, depending upon whether the object extends `DistanceAlgorithm` or `ScoringAlgorithm`.

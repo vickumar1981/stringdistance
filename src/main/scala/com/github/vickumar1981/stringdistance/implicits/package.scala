@@ -1,6 +1,7 @@
 package com.github.vickumar1981.stringdistance
 
 import com.github.vickumar1981.stringdistance.impl._
+import com.github.vickumar1981.stringdistance.impl.sound.MetaphoneImpl
 
 package object implicits {
   /**
@@ -160,5 +161,19 @@ package object implicits {
       * @return Returns the overlap similarity between Strings s1 and s2.
       */
     override def score(s1: String, s2: String, n: Int = 1): Double = overlap(s1, s2, n)
+  }
+
+  /**
+    * Implicit definition of metaphone score for [[OverlapAlgorithm]].
+    */
+  implicit object MetaphoneScore extends MetaphoneImpl with SoundScoringAlgorithm[MetaphoneAlgorithm] {
+    /**
+      * The score method takes two strings and returns whether they sound alike.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns true or false if String s1 sounds like string s2.
+      */
+    override def score(s1: String, s2: String): Boolean = metaphone(s1, s2)
   }
 }

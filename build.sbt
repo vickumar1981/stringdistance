@@ -35,6 +35,8 @@ lazy val testScalastyle = taskKey[Unit]("testScalastyle")
 testScalastyle := scalastyle.in(Test).toTask("").value
 (test in Test) := ((test in Test) dependsOn testScalastyle).value
 
+coverageExcludedPackages := "<empty>;.*stringdistance.interfaces.sound.*"
+
 coverageEnabled := true
 coverageMinimum := 100
 coverageFailOnMinimum := true
