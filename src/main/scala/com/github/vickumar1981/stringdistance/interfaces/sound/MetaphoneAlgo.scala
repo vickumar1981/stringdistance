@@ -1,11 +1,8 @@
 package com.github.vickumar1981.stringdistance.interfaces.sound
 
+import CommonSoundAlgo._
+
 object MetaphoneAlgo {
-  private val alphabet = ('a' to 'z').toSet ++ ('A' to 'Z').toSet
-  private val lowercaseVowel = Set('a', 'e', 'i', 'o', 'u')
-
-  def isAlpha(ch: Char): Boolean = alphabet.contains(ch)
-
   def compute(a: Array[Char]): Option[Array[Char]] =
     if (a.length == 0 || !isAlpha(a.head)) None
     else {

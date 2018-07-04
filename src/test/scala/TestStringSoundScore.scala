@@ -10,5 +10,12 @@ class TestStringSoundScore extends FlatSpec with Matchers {
       metaphone should be (t.metaphone.get)
     })
   }
+
+  "The Soundex Score" should "match for all test cases" in {
+    testCases.filter(_.soundex.isDefined).map(t => {
+      val soundex = t.s1.soundex(t.s2)
+      soundex should be (t.soundex.get)
+    })
+  }
 }
 

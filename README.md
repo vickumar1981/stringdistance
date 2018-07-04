@@ -80,6 +80,7 @@ val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)
 
 // Phonetic Similarity
 val metaphone = Metaphone.score("merci", "mercy")
+val soundex = Soundex.score("merci", "mercy")
 ```
 ---
 ### Scala: Use with Implicits
@@ -112,6 +113,7 @@ val bigramDist: Int = "karolin".nGramDist("kathrin", 2)
 
 // Phonetic similarity of two strings
 val metaphone: Boolean = "merci".metaphone("mercy")
+val soundex: Boolean = "merci".soundex("mercy")
 ```
 ---
 ### Java Usage
@@ -144,6 +146,7 @@ Integer bigramDist = StringDistance.nGramDist("karolin", "kathrin", 2);
 
 // Phonetic similarity of two strings
 Boolean metaphone = StringSound.metaphone("merci", "mercy");
+Boolean soundex = StringSound.soundex("merci", "mercy");
 ```
 ---
 

@@ -9,6 +9,11 @@ package object stringdistance {
   trait StringMetricAlgorithm
 
   /**
+    * A marker interface for the cosine similarity algorithm.
+    */
+  trait CosineAlgorithm extends StringMetricAlgorithm
+
+  /**
     * A marker interface for the dice coefficient algorithm.
     */
   trait DiceCoefficientAlgorithm extends StringMetricAlgorithm
@@ -59,9 +64,9 @@ package object stringdistance {
   trait OverlapAlgorithm extends StringMetricAlgorithm
 
   /**
-    * A marker interface for the cosine similarity algorithm.
+    * A marker interface for the soundex similarity algorithm.
     */
-  trait CosineAlgorithm extends StringMetricAlgorithm
+  trait SoundexAlgorithm extends StringMetricAlgorithm
 
   /**
     * The Strategy object has two strategies(reg ex) expressions on which to split input.
@@ -212,6 +217,7 @@ package object stringdistance {
     *
     * // Phonetic similarity of two strings
     * val metaphone: Boolean = "merci".metaphone("mercy")
+    * val soundex: Boolean = "merci".soundex("mercy")
     * }}}
     */
   object StringConverter {
@@ -235,6 +241,7 @@ package object stringdistance {
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)
 
       def metaphone(s2: String): Boolean = Metaphone.score(s1, s2)
+      def soundex(s2: String): Boolean = Soundex.score(s1, s2)
     }
   }
 }
