@@ -32,7 +32,7 @@ public class StringDistance {
     }
 
     public static Double diceCoefficient(String s1, String s2) {
-        return diceCoefficient(s1, s2);
+        return dice.diceCoefficient(s1, s2);
     }
 
     public static Double hamming(String s1, String s2) {
