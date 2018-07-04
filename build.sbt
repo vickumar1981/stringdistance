@@ -1,7 +1,7 @@
 import xerial.sbt.Sonatype._
 
 name := "stringdistance"
-version := "1.0.3"
+version := "1.0.4"
 scalaVersion := "2.12.6"
 organization := "com.github.vickumar1981"
 sonatypeProjectHosting := Some(GitHubHosting("vickumar1981", "stringdistance", "vickumar@gmail.com"))
@@ -37,7 +37,8 @@ testScalastyle := scalastyle.in(Test).toTask("").value
 
 coverageExcludedPackages := "<empty>;.*stringdistance.interfaces.sound.*"
 
-coverageEnabled := true
+coverageEnabled in(Test, compile) := true
+coverageEnabled in(Compile, compile) := false
 coverageMinimum := 100
 coverageFailOnMinimum := true
 scalastyleFailOnWarning := true
