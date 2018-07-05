@@ -16,7 +16,7 @@ Requires: Java 8+ or Scala 2.12+
 3.  [Using in Scala with implicits](https://github.com/vickumar1981/stringdistance#scala-use-with-implicits)
 4.  [Using in Java](https://github.com/vickumar1981/stringdistance#java-usage)
 5.  [Adding your own algorithm](https://github.com/vickumar1981/stringdistance#adding-your-own-distance-or-scoring-algorithm)
-6.  [Reporting an Issues](https://github.com/vickumar1981/stringdistance#reporting-an-issue)
+6.  [Reporting an Issue](https://github.com/vickumar1981/stringdistance#reporting-an-issue)
 7.  [License](https://github.com/vickumar1981/stringdistance#license)
 
 ---
