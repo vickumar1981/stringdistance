@@ -6,7 +6,7 @@ A fuzzy matching string distance library for Scala and Java that includes Levens
 
 For more detailed information, please refer to the [API Documentation](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html "API Documentation").
 
-Requires: Java 8+ or Scala 2.12+
+Requires: Java 8, 7 or Scala 2.12, 2.11
 
 ---
 ### Contents
@@ -26,7 +26,7 @@ __Using sbt:__
 
 In `build.sbt`:
 ```scala
-libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.0.4"
+libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.0.6"
 ```
 
 __Using gradle:__
@@ -34,7 +34,7 @@ __Using gradle:__
 In `build.gradle`:
 ```groovy
 dependencies {
-    compile 'com.github.vickumar1981:stringdistance_2.12:1.0.4'
+    compile 'com.github.vickumar1981:stringdistance_2.12:1.0.6'
 }
 ```
 
@@ -45,9 +45,12 @@ In `pom.xml`:
 <dependency>
     <groupId>com.github.vickumar1981</groupId>
     <artifactId>stringdistance_2.12</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.6</version>
 </dependency>
 ```
+
+Note: For Java 7 or Scala 2.11, please use the `stringdistance_2.11` artifact as a dependency instead.
+
 ---
 ### Scala Usage
 
