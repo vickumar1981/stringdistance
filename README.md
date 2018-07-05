@@ -6,6 +6,19 @@ A fuzzy matching string distance library for Scala and Java that includes Levens
 
 For more detailed information, please refer to the [API Documentation](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html "API Documentation").
 
+Requires: Java 8+ or Scala 2.12+
+
+---
+### Contents
+
+1.  [Add it to your project](https://github.com/vickumar1981/stringdistance#add-it-to-your-project-)
+2.  [Using in Scala](https://github.com/vickumar1981/stringdistance#scala-usage)
+3.  [Using in Scala with implicits](https://github.com/vickumar1981/stringdistance#scala-use-with-implicits)
+4.  [Using in Java](https://github.com/vickumar1981/stringdistance#java-usage)
+5.  [Adding your own algorithm](https://github.com/vickumar1981/stringdistance#adding-your-own-distance-or-scoring-algorithm)
+6.  [Reporting an Issues](https://github.com/vickumar1981/stringdistance#reporting-an-issue)
+7.  [License](https://github.com/vickumar1981/stringdistance#license)
+
 ---
 ### Add it to your project ...
 
@@ -174,7 +187,7 @@ implicit object CustomScore extends ScoringAlgorithm[CustomAlgorithm] {
 }
 ```
 
-3.  Create an object the extends `StringMetric` using your algorithm as the type parameter, and use the `score` and `distance` methods defined in the implicit object.
+3.  Create an object that extends `StringMetric` using your algorithm as the type parameter, and use the `score` and `distance` methods defined in the implicit object.
 
 ```scala
 object CustomMetric extends StringMetric[CustomAlgorithm]
@@ -182,3 +195,12 @@ object CustomMetric extends StringMetric[CustomAlgorithm]
 val customScore: Double = CustomMetric.score("hello", "hello2")
 val customDist: Int = CustomMetric.distance("hello", "hello2")
 ```
+---
+### Reporting an Issue
+
+Please report any issues or bugs to the [Github issues page](https://github.com/vickumar1981/stringdistance/issues).
+
+---
+### License
+
+This project is licensed under the [Apache 2 License](https://opensource.org/licenses/Apache-2.0).
