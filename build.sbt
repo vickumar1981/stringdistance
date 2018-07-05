@@ -9,6 +9,7 @@ publishMavenStyle := true
 licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 pomIncludeRepository := { _ => false }
 publishArtifact in Test := false
+crossScalaVersions := Seq("2.11.11", "2.12.6")
 
 // Add sonatype repository settings
 publishTo := Some(
