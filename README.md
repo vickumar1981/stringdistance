@@ -95,8 +95,8 @@ val overlap: Double = Overlap.score("karolin", "kathrin")
 val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)
 
 // Phonetic Similarity
-val metaphone = Metaphone.score("merci", "mercy")
-val soundex = Soundex.score("merci", "mercy")
+val metaphone: Boolean = Metaphone.score("merci", "mercy")
+val soundex: Boolean = Soundex.score("merci", "mercy")
 ```
 ---
 ### Scala: Use with Implicits
