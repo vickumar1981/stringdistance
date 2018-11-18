@@ -111,5 +111,20 @@ class TestStringDistance extends FlatSpec with Matchers {
       roundToPrecision(overlap) should be (t.overlap.get)
     })
   }
+
+  "The Tversky Score with weight 0.5" should "match the dice coefficient" in {
+    testCases.filter(_.diceCoefficient.isDefined).map(t => {
+      val tversky = t.s1 tversky (t.s2, 0.5)
+      roundToPrecision(tversky) should be (t.diceCoefficient.get)
+    })
+  }
+
+  "The Tversky Score with weight 1.0" should "match the jaccard score using bigrams" in {
+    testCases.filter(_.jaccard.isDefined).map(t => {
+      val tversky = t.s1 tversky (t.s2)
+      val jaccard = t.s1 jaccard (t.s2, 2)
+      roundToPrecision(tversky) should be (roundToPrecision(jaccard))
+    })
+  }
 }
 

@@ -205,4 +205,18 @@ package object implicits {
       */
     override def score(s1: String, s2: String): Boolean = soundex(s1, s2)
   }
+
+  /**
+    * Implicit definition of tversky score for [[TverskyAlgorithm]].
+    */
+  implicit object TverskyScore extends JaccardImpl with WeightedScoringAlgorithm[TverskyAlgorithm, Double] {
+    /**
+      * The score method takes two strings and returns tversky score between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the tversky score between Strings s1 and s2.
+      */
+    override def score(s1: String, s2: String, n: Double = 1): Double = tversky(s1, s2, n)
+  }
 }

@@ -5,7 +5,17 @@ import com.github.vickumar1981.stringdistance.interfaces.NGramTokenizer
 trait JaccardImpl extends NGramTokenizer {
   protected def jaccard(s1: String, s2: String, n: Int = 1): Double = {
     foldNGram(s1, s2, n)(0d)(_ => 1d) {
-      (s1TokLen, s2TokenLen, dist) => dist.toDouble / (s1TokLen + s2TokenLen - dist)
+      (s1Tok, s2Tok, dist) => dist.toDouble / (s1Tok.length + s2Tok.length - dist)
+    }
+  }
+
+  protected def tversky(s1: String, s2: String, n: Double = 1): Double = {
+    foldNGram(s1, s2, 2)(0d)(_ => 1d) {
+      (s1Tok, s2Tok, dist) => {
+        val s1Complement = s1Tok.map { s => !s2Tok.contains(s) }.filter { identity }
+        val s2Complement = s2Tok.map { s => !s1Tok.contains(s) }.filter { identity }
+        dist.toDouble / (dist.toDouble + (n * s1Complement.length) + (n * s2Complement.length))
+      }
     }
   }
 }

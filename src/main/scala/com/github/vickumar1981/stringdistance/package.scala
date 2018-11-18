@@ -74,6 +74,11 @@ package object stringdistance {
   trait SoundexAlgorithm extends StringMetricAlgorithm
 
   /**
+    * A marker interface for the tversky similarity algorithm.
+    */
+  trait TverskyAlgorithm extends StringMetricAlgorithm
+
+  /**
     * The Strategy object has two strategies(reg ex) expressions on which to split input.
     * [[Strategy.splitWord]] splits a word into a sequence of characters.
     * [[Strategy.splitSentence]] splits a sentence into a sequence of words.
@@ -248,6 +253,7 @@ package object stringdistance {
       def nGram(s2: String, nGram: Int = 1): Double = NGram.score(s1, s2, nGram)
       def nGramDist(s2: String, nGram: Int = 1): Double = NGram.distance(s1, s2, nGram)
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)
+      def tversky(s2: String, n: Double = 1): Double = Tversky.score(s1, s2, n)
 
       def metaphone(s2: String): Boolean = Metaphone.score(s1, s2)
       def soundex(s2: String): Boolean = Soundex.score(s1, s2)
