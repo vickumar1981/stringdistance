@@ -98,6 +98,9 @@ val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
 val overlap: Double = Overlap.score("karolin", "kathrin")
 val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)
 
+// Tversky Similarity
+val tversky: Double = Tversky.score("karolin", "kathrin", 0.5)
+
 // Phonetic Similarity
 val metaphone: Boolean = Metaphone.score("merci", "mercy")
 val soundex: Boolean = Soundex.score("merci", "mercy")
@@ -124,6 +127,7 @@ val ngramSimilarity: Double = "karolin".nGram("kathrin")
 val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
 val overlap: Double = "karolin".overlap("kathrin")
 val overlapBiGram: Double "karolin".overlap("kathrin", 2)
+val tversky: Double = "karolin".tversky("kathrin", 0.5)
 
 // Distances between two strings
 val damerauDist: Int = "martha".damerauDist("marhta")
@@ -152,6 +156,7 @@ Double cosSimilarity = StringDistance.cosine("hello", "chello");
 Double damerau = StringDistance.damerau("martha", "marhta");
 Double diceCoefficient = StringDistance.diceCoefficient("martha", "marhta");
 Double hamming = StringDistance.hamming("martha", "marhta");
+Double jaccard = StringDistance.jaccard("karolin", "kathrin");
 Double jaro = StringDistance.jaro("martha", "marhta");
 Double jaroWinkler = StringDistance.jaroWinkler("martha", "marhta");
 Double levenshtein = StringDistance.levenshtein("martha", "marhta");
@@ -159,6 +164,7 @@ Double ngramSimilarity = StringDistance.nGram("karolin", "kathrin");
 Double bigramSimilarity = StringDistance.nGram("karolin", "kathrin", 2);
 Double overlap = StringDistance.overlap("karolin", "kathrin");
 Double overlapBiGram = StringDistance.overlap("karolin", "kathrin", 2);
+Double tversky = StringDistance.score("karolin", "kathrin", 0.5);
 
 // Distances between two strings
 Integer damerauDist = StringDistance.damerauDist("martha", "marhta");
