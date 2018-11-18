@@ -35,6 +35,20 @@ class TestStringDistance extends FlatSpec with Matchers {
     })
   }
 
+  "The Damerau-Levenschtein Distance" should "match for all test cases" in {
+    testCases.filter(_.damerauDist.isDefined).map(t => {
+      val damerauDist = t.s1.damerauDist(t.s2)
+      damerauDist should be (t.damerauDist.get)
+    })
+  }
+
+  "The Damerau-Levenschtein Score" should "match for all test cases" in {
+    testCases.filter(_.damerau.isDefined).map(t => {
+      val damerau = t.s1.damerau(t.s2)
+      roundToPrecision(damerau) should be (t.damerau.get)
+    })
+  }
+
   "The Dice Coefficient" should "match for all test cases" in {
     testCases.filter(_.diceCoefficient.isDefined).map(t => {
       val diceCoefficient = t.s1.diceCoefficient(t.s2)
