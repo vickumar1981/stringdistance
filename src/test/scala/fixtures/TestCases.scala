@@ -45,7 +45,8 @@ object TestCases {
     TestCase("hello", "hellhole", cosine = Some(0.980)),
     TestCase("hello", "hello", cosine = Some(1), overlap = Some(1)),
     TestCase("ABCDGH", "AEDFHR", longestCommonSeq = Some(3)),
-    TestCase("AGGTAB", "GXTXAYB", longestCommonSeq = Some(4))
+    TestCase("AGGTAB", "GXTXAYB", longestCommonSeq = Some(4)),
+    TestCase("", "", Some(1), Some(1), Some(1), Some(0), Some(1), Some(1))
   )
 
   lazy val precision = 3

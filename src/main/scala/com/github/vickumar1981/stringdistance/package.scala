@@ -193,9 +193,10 @@ package object stringdistance {
     def distance[B](s1: String, s2: String, weight: B)
                    (implicit algo: WeightedDistanceAlgorithm[A, B]): Int = algo.distance(s1, s2, weight)
     def score(s1: String, s2: String)
-             (implicit algo: ScoringAlgorithm[A]): Double = algo.score(s1, s2)
+             (implicit algo: ScoringAlgorithm[A]): Double = if (s1.isEmpty && s2.isEmpty) 1d else algo.score(s1, s2)
     def score[B](s1: String, s2: String, weight: B)
-                (implicit algo: WeightedScoringAlgorithm[A, B]): Double = algo.score(s1, s2, weight)
+                (implicit algo: WeightedScoringAlgorithm[A, B]): Double =
+      if (s1.isEmpty && s2.isEmpty) 1d else algo.score(s1, s2, weight)
     def score(s1: String, s2: String)
              (implicit algo: SoundScoringAlgorithm[A]): Boolean = algo.score(s1, s2)
   }
