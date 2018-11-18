@@ -14,6 +14,11 @@ package object stringdistance {
   trait CosineAlgorithm extends StringMetricAlgorithm
 
   /**
+    * A marker interface for the damerau levenshtein distance algorithm.
+    */
+  trait DamerauLevenshteinAlgorithm extends StringMetricAlgorithm
+
+  /**
     * A marker interface for the dice coefficient algorithm.
     */
   trait DiceCoefficientAlgorithm extends StringMetricAlgorithm
@@ -198,6 +203,7 @@ package object stringdistance {
     *
     * // Scores between two strings
     * val cosSimilarity: Double = "hello".cosine("chello")
+    * val damerau: Double = "martha".damerau("marhta")
     * val diceCoefficient: Double = "martha".diceCoefficient("marhta")
     * val hamming: Double = "martha".hamming("marhta")
     * val jaccard: Double = "karolin".jaccard("kathrin")
@@ -209,6 +215,7 @@ package object stringdistance {
     * val overlap: Double = "karolin".overlap("kathrin")
     *
     * // Distances between two strings
+    * val damerauDist: int = "martha".damerauDist("marhta")
     * val hammingDist: Int = "martha".hammingDist("marhta")
     * val levenshteinDist: Int = "martha".levenshteinDist("marhta")
     * val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
@@ -226,6 +233,8 @@ package object stringdistance {
 
     implicit class StringToStringDistanceConverter(s1: String) {
       def cosine(s2: String, splitOn: String = Strategy.splitWord): Double = Cosine.score(s1, s2, splitOn)
+      def damerau(s2: String): Double = Damerau.score(s1, s2)
+      def damerauDist(s2: String): Int = Damerau.distance(s1, s2)
       def diceCoefficient(s2: String): Double = DiceCoefficient.score(s1, s2)
       def hamming(s2: String): Double = Hamming.score(s1, s2)
       def hammingDist(s2: String): Int = Hamming.distance(s1, s2)

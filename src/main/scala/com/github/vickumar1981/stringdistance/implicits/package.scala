@@ -20,6 +20,21 @@ package object implicits {
   }
 
   /**
+    * Implicit definition of damerau levenshtein distance for [[DamerauLevenshteinAlgorithm]].
+    */
+  implicit object DamerauLevenshteinDistance extends LevenshteinDistanceImpl
+    with DistanceAlgorithm[DamerauLevenshteinAlgorithm] with ScorableFromDistance[DamerauLevenshteinAlgorithm] {
+    /**
+      * The score method takes two strings and returns the damerau levenshtein distance between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the damerau levenshtein distance between Strings s1 and s2.
+      */
+    override def distance(s1: String, s2: String): Int = damerauLevenshtein(s1, s2)
+  }
+
+  /**
     * Implicit definition of dice coefficient score for [[DiceCoefficientAlgorithm]].
     */
   implicit object DiceCoefficientScore extends DiceCoefficientImpl

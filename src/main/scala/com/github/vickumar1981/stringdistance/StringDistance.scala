@@ -10,6 +10,7 @@ import com.github.vickumar1981.stringdistance.impl._
   *
   * // Scores between strings
   * val cosSimilarity: Double = Cosine.score("hello", "chello")
+  * val damerau: Double = Damerau.score("martha", "marhta")
   * val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
   * val hamming: Double = Hamming.score("martha", "marhta")
   * val jaccard: Double = Jaccard.score("karolin", "kathrin")
@@ -21,6 +22,7 @@ import com.github.vickumar1981.stringdistance.impl._
   * val overlap: Double = Overlap.score("karolin", "kathrin")
   *
   * // Distances between strings
+  * val damerauDist: Int = Damerau.distance("martha", "marhta")
   * val hammingDist: Int = Hamming.distance("martha", "marhta")
   * val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")
   * val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
@@ -30,6 +32,7 @@ import com.github.vickumar1981.stringdistance.impl._
   */
 object StringDistance {
   object Cosine extends StringMetric[CosineAlgorithm]
+  object Damerau extends StringMetric[DamerauLevenshteinAlgorithm]
   object DiceCoefficient extends StringMetric[DiceCoefficientAlgorithm]
   object Hamming extends StringMetric[HammingAlgorithm]
   object Jaccard extends StringMetric[JaccardAlgorithm]
