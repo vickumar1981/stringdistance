@@ -31,6 +31,14 @@ public class StringDistance {
         return cosine.cosSimilarity(s1, s2, splitOn);
     }
 
+    public static Double damerau(String s1, String s2) {
+        return scoreFromDistance(s1, s2, damerauDist(s1, s2));
+    }
+
+    public static Integer damerauDist(String s1, String s2) {
+        return levenshtein.damerauLevenshtein(s1, s2);
+    }
+
     public static Double diceCoefficient(String s1, String s2) {
         return dice.diceCoefficient(s1, s2);
     }

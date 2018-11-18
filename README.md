@@ -63,6 +63,10 @@ import com.github.vickumar1981.stringdistance.StringSound._
 // Cosine Similarity
 val cosSimilarity: Double = Cosine.score("hello", "chello")
 
+// Damerau-Levenshtein Distance
+val damerauDist: Int = Damerau.distance("martha", "marhta")
+val damerau: Double = Damerau.score("martha", "marhta")
+
 // Dice Coefficient
 val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
 
@@ -109,6 +113,7 @@ import com.github.vickumar1981.stringdistance.StringConverter._
 
 // Scores between two strings
 val cosSimilarity: Double = "hello".cosine("chello")
+val damerau: Double = "martha".damerau("marhta")
 val diceCoefficient: Double = "martha".diceCoefficient("marhta")
 val hamming: Double = "martha".hamming("marhta")
 val jaccard: Double = "karolin".jaccard("kathrin")
@@ -121,6 +126,7 @@ val overlap: Double = "karolin".overlap("kathrin")
 val overlapBiGram: Double "karolin".overlap("kathrin", 2)
 
 // Distances between two strings
+val damerauDist: Int = "martha".damerauDist("marhta")
 val hammingDist: Int = "martha".hammingDist("marhta")
 val levenshteinDist: Int = "martha".levenshteinDist("marhta")
 val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
@@ -143,6 +149,7 @@ import com.github.vickumar1981.stringdistance.util.StringSound;
 
 // Scores between two strings
 Double cosSimilarity = StringDistance.cosine("hello", "chello");
+Double damerau = StringDistance.damerau("martha", "marhta");
 Double diceCoefficient = StringDistance.diceCoefficient("martha", "marhta");
 Double hamming = StringDistance.hamming("martha", "marhta");
 Double jaro = StringDistance.jaro("martha", "marhta");
@@ -154,6 +161,7 @@ Double overlap = StringDistance.overlap("karolin", "kathrin");
 Double overlapBiGram = StringDistance.overlap("karolin", "kathrin", 2);
 
 // Distances between two strings
+Integer damerauDist = StringDistance.damerauDist("martha", "marhta");
 Integer hammingDist = StringDistance.hammingDist("martha", "marhta");
 Integer levenshteinDist = StringDistance.levenshteinDist("martha", "marhta");
 Integer longestCommonSeq = StringDistance.longestCommonSeq("martha", "marhta");
