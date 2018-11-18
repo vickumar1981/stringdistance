@@ -9,13 +9,13 @@ trait NGramTokenizer {
   protected def tokenizeNGram(a: String, n: Int): Array[String] = tokenize(a.toCharArray, n).map(_.mkString)
 
   @annotation.tailrec
-  private val sequence: ((Array[Char], Array[Array[Char]], Int) => Array[Array[Char]]) = (i, o, n) =>
+  private val sequence: (Array[Char], Array[Array[Char]], Int) => Array[Array[Char]] = (i, o, n) =>
     if (i.length <= n) o :+ i
     else sequence(i.tail, o :+ i.take(n), n)
 
   protected def foldNGram[T](s1: String, s2: String, n: Int = 1)
                             (err: => T)(success: (Int) => T)
-                            (fuzzy: (Int, Int, Int) => T): T = {
+                            (fuzzy: (Seq[String], Seq[String], Int) => T): T = {
     if (n <= 0 || s1.length < n || s2.length < n) err
     else if (s1.sameElements(s2)) {
       val s1Tokenized = tokenizeNGram(s1, n)
@@ -25,7 +25,7 @@ trait NGramTokenizer {
       val s1Tokenized = tokenizeNGram(s1, n)
       val s2Tokenized = tokenizeNGram(s2, n)
       val intersectionLength = intersectLength(s1Tokenized, s2Tokenized)
-      fuzzy(s1Tokenized.length, s2Tokenized.length, intersectionLength)
+      fuzzy(s1Tokenized.toSeq, s2Tokenized.toSeq, intersectionLength)
     }
   }
 }

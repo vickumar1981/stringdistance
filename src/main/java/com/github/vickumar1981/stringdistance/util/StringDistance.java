@@ -90,4 +90,8 @@ public class StringDistance {
     public static Double overlap(String s1, String s2) { return overlap(s1, s2, 1); }
 
     public static Double overlap(String s1, String s2, Integer n) { return overLap.overlap(s1, s2, n); }
+
+    public static Double tversky(String s1, String s2) { return tversky(s1, s2, 1d); }
+
+    public static Double tversky(String s1, String s2, Double n) { return jaccard.tversky(s1, s2, n); }
 }
