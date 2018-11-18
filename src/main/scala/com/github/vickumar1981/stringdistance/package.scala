@@ -189,11 +189,14 @@ package object stringdistance {
     */
   trait StringMetric[A <: StringMetricAlgorithm] {
     def distance(s1: String, s2: String)
-                (implicit algo: DistanceAlgorithm[A]): Int = algo.distance(s1, s2)
+                (implicit algo: DistanceAlgorithm[A]): Int =
+      if (s1.isEmpty && s2.isEmpty) 0 else algo.distance(s1, s2)
     def distance[B](s1: String, s2: String, weight: B)
-                   (implicit algo: WeightedDistanceAlgorithm[A, B]): Int = algo.distance(s1, s2, weight)
+                   (implicit algo: WeightedDistanceAlgorithm[A, B]): Int =
+      if (s1.isEmpty && s2.isEmpty) 0 else algo.distance(s1, s2, weight)
     def score(s1: String, s2: String)
-             (implicit algo: ScoringAlgorithm[A]): Double = if (s1.isEmpty && s2.isEmpty) 1d else algo.score(s1, s2)
+             (implicit algo: ScoringAlgorithm[A]): Double =
+      if (s1.isEmpty && s2.isEmpty) 1d else algo.score(s1, s2)
     def score[B](s1: String, s2: String, weight: B)
                 (implicit algo: WeightedScoringAlgorithm[A, B]): Double =
       if (s1.isEmpty && s2.isEmpty) 1d else algo.score(s1, s2, weight)
