@@ -83,7 +83,7 @@ public class StringDistance {
     }
 
     public static Double needlemanWunsch(String s1, String s2) {
-        return needlemanWunsch(s1, s2, 0d, -1d, -1d);
+        return needlemanWunsch(s1, s2, 1d, -1d, 0d);
     }
 
     public static Double needlemanWunsch(String s1, String s2,
