@@ -1,5 +1,7 @@
 package com.github.vickumar1981.stringdistance.util;
 
+import com.github.vickumar1981.stringdistance.impl.Gap;
+
 public class StringDistance {
     private final static CosSimilarityImpl cosine = new CosSimilarityImpl();
     private final static JaccardImpl jaccard = new JaccardImpl();
@@ -8,6 +10,7 @@ public class StringDistance {
     private final static DiceCoefficientImpl dice = new DiceCoefficientImpl();
     private final static LevenshteinDistanceImpl levenshtein = new LevenshteinDistanceImpl();
     private final static LongestCommonSeqImpl longestCommonSeq = new LongestCommonSeqImpl();
+    private final static NeedlemanWunschImpl needlemanWunsch = new NeedlemanWunschImpl();
     private final static NGramImpl ngram = new NGramImpl();
     private final static OverlapImpl overLap = new OverlapImpl();
 
@@ -77,6 +80,15 @@ public class StringDistance {
 
     public static Integer longestCommonSeq(String s1, String s2) {
         return longestCommonSeq.longestCommonSeq(s1, s2);
+    }
+
+    public static Double needlemanWunsch(String s1, String s2) {
+        return needlemanWunsch(s1, s2, 0d, -1d, -1d);
+    }
+
+    public static Double needlemanWunsch(String s1, String s2,
+                                         Double matchValue, Double misMatchValue, Double gapValue) {
+            return needlemanWunsch.needleman(s1, s2, new Gap(matchValue, misMatchValue, gapValue));
     }
 
     public static Integer nGramDist(String s1, String s2) { return nGramDist(s1, s2, 1); }
