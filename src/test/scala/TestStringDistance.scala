@@ -1,5 +1,7 @@
 import org.scalatest._
 import com.github.vickumar1981.stringdistance.StringConverter._
+import com.github.vickumar1981.stringdistance.impl.ConstantGap
+
 import scala.math.BigDecimal
 import fixtures.TestCases.{precision, testCases}
 
@@ -124,6 +126,42 @@ class TestStringDistance extends FlatSpec with Matchers {
       val tversky = t.s1 tversky (t.s2)
       val jaccard = t.s1 jaccard (t.s2, 2)
       roundToPrecision(tversky) should be (roundToPrecision(jaccard))
+    })
+  }
+
+  "The Needleman-Wunsch Score with Gap(1, -1, 0)" should "match the damerau score when strings have same length" in {
+    testCases.filter(t => t.s1.length == t.s2.length && t.damerau.isDefined).map(t => {
+      val needlemanWunsch = t.s1.needlemanWunsch(
+        t.s2,
+        ConstantGap(
+          matchValue = 1,
+          misMatchValue = -1,
+          gapValue = 0
+        ))
+      val damerau = t.s1.damerau(t.s2)
+      roundToPrecision(needlemanWunsch) should be (roundToPrecision(damerau))
+    })
+  }
+
+  "The Needleman-Wunsch Score with Gap(1, -1, 1)" should "match the levenshtein score when strings have same length" in {
+    testCases.filter(t => t.s1.length == t.s2.length && t.levenshtein.isDefined).map(t => {
+      val needlemanWunsch = t.s1.needlemanWunsch(
+        t.s2,
+        ConstantGap(
+          matchValue = 1,
+          misMatchValue = -1,
+          gapValue = -1
+        ))
+      val levenshtein = t.s1.levenshtein(t.s2)
+      roundToPrecision(needlemanWunsch) should be (roundToPrecision(levenshtein))
+    })
+  }
+
+  "The Needleman-Wunsch Score" should "score symmetrically when either string is empty" in {
+    testCases.filter(_.s1.isEmpty).map(t => {
+      val needlemanWunsch1 = t.s1.needlemanWunsch(t.s2)
+      val needlemanWunsch2 = t.s2.needlemanWunsch(t.s1)
+      roundToPrecision(needlemanWunsch1) should be (roundToPrecision(needlemanWunsch2))
     })
   }
 }

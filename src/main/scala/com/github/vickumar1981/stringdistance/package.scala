@@ -1,5 +1,7 @@
 package com.github.vickumar1981
 
+import com.github.vickumar1981.stringdistance.impl.ConstantGap
+
 package object stringdistance {
   import implicits._
 
@@ -57,6 +59,11 @@ package object stringdistance {
     * A marker interface for the metaphone algorithm.
     */
   trait MetaphoneAlgorithm extends StringMetricAlgorithm
+
+  /**
+    * A marker interface for the needleman wunsch similarity algorithm.
+    */
+  trait NeedlemanWunschAlgorithm extends StringMetricAlgorithm
 
   /**
     * A marker interface for the n-gram similarity algorithm.
@@ -219,9 +226,11 @@ package object stringdistance {
     * val jaro: Double = "martha".jaro("marhta")
     * val jaroWinkler: Double = "martha".jaroWinkler("marhta")
     * val levenshtein: Double = "martha".levenshtein("marhta")
+    * val needlemanWunsch: Double = "martha".needlemanWusnch("marhta")
     * val ngramSimilarity: Double = "karolin".nGram("kathrin")
     * val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
     * val overlap: Double = "karolin".overlap("kathrin")
+    * val tversky: Double = "karolin".tversky("kathrin", 0.5)
     *
     * // Distances between two strings
     * val damerauDist: int = "martha".damerauDist("marhta")
@@ -254,6 +263,7 @@ package object stringdistance {
       def levenshtein(s2: String): Double = Levenshtein.score(s1, s2)
       def levenshteinDist(s2: String): Int = Levenshtein.distance(s1, s2)
       def longestCommonSeq(s2: String): Int = LongestCommonSeq.distance(s1, s2)
+      def needlemanWunsch(s2: String, gap: ConstantGap = ConstantGap()): Double = NeedlemanWunsch.score(s1, s2, gap)
       def nGram(s2: String, nGram: Int = 1): Double = NGram.score(s1, s2, nGram)
       def nGramDist(s2: String, nGram: Int = 1): Double = NGram.distance(s1, s2, nGram)
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)

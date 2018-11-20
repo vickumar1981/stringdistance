@@ -17,6 +17,7 @@ import com.github.vickumar1981.stringdistance.impl._
   * val jaro: Double = Jaro.score("martha", "marhta")
   * val jaroWinkler: Double = JaroWinkler.score("martha", "marhta")
   * val levenshtein: Double = Levenshtein.score("martha", "marhta")
+  * val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta")
   * val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
   * val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
   * val overlap: Double = Overlap.score("karolin", "kathrin")
@@ -41,6 +42,7 @@ object StringDistance {
   object JaroWinkler extends StringMetric[JaroWinklerAlgorithm]
   object Levenshtein extends StringMetric[LevenshteinAlgorithm]
   object LongestCommonSeq extends StringMetric[LongestCommonSeqAlorithm]
+  object NeedlemanWunsch extends StringMetric[NeedlemanWunschAlgorithm]
   object NGram extends StringMetric[NGramAlgorithm]
   object Overlap extends StringMetric[OverlapAlgorithm]
   object Tversky extends StringMetric[TverskyAlgorithm]
@@ -82,6 +84,11 @@ class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
 class LongestCommonSeqWrapper extends LongestCommonSeqImpl
 
 /**
+  * Jave Wrapper for needleman wunsch similarity.
+  */
+class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl
+
+/**
   * Jave Wrapper for n-gram similarity.
   */
 class NGramImplWrapper extends NGramImpl
@@ -90,3 +97,4 @@ class NGramImplWrapper extends NGramImpl
   * Jave Wrapper for overlap similarity.
   */
 class OverlapImplWrapper extends OverlapImpl
+

@@ -164,7 +164,7 @@ Double ngramSimilarity = StringDistance.nGram("karolin", "kathrin");
 Double bigramSimilarity = StringDistance.nGram("karolin", "kathrin", 2);
 Double overlap = StringDistance.overlap("karolin", "kathrin");
 Double overlapBiGram = StringDistance.overlap("karolin", "kathrin", 2);
-Double tversky = StringDistance.score("karolin", "kathrin", 0.5);
+Double tversky = StringDistance.tversky("karolin", "kathrin", 0.5);
 
 // Distances between two strings
 Integer damerauDist = StringDistance.damerauDist("martha", "marhta");

@@ -137,6 +137,22 @@ package object implicits {
   }
 
   /**
+    * Implicit definition of needleman wunsch score for [[NeedlemanWunschAlgorithm]].
+    */
+  implicit object NeedlemanWunschScore extends NeedlemanWunschImpl
+    with WeightedScoringAlgorithm[NeedlemanWunschAlgorithm, ConstantGap] {
+    /**
+      * The score method takes two strings and returns needleman wunsch similarity between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the needleman wunsch similarity between Strings s1 and s2.
+      */
+    override def score(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double =
+      needleman(s1, s2, gap)
+  }
+
+  /**
     * Implicit definition of n-gram distance for [[NGramAlgorithm]].
     */
   implicit object NGramDistance extends NGramImpl with WeightedDistanceAlgorithm[NGramAlgorithm, Int] {
