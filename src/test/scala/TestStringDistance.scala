@@ -1,6 +1,6 @@
 import org.scalatest._
 import com.github.vickumar1981.stringdistance.StringConverter._
-import com.github.vickumar1981.stringdistance.impl.Gap
+import com.github.vickumar1981.stringdistance.impl.ConstantGap
 
 import scala.math.BigDecimal
 import fixtures.TestCases.{precision, testCases}
@@ -133,7 +133,7 @@ class TestStringDistance extends FlatSpec with Matchers {
     testCases.filter(t => t.s1.length == t.s2.length && t.damerau.isDefined).map(t => {
       val needlemanWunsch = t.s1.needlemanWunsch(
         t.s2,
-        Gap(
+        ConstantGap(
           matchValue = 1,
           misMatchValue = -1,
           gapValue = 0
@@ -147,7 +147,7 @@ class TestStringDistance extends FlatSpec with Matchers {
     testCases.filter(t => t.s1.length == t.s2.length && t.levenshtein.isDefined).map(t => {
       val needlemanWunsch = t.s1.needlemanWunsch(
         t.s2,
-        Gap(
+        ConstantGap(
           matchValue = 1,
           misMatchValue = -1,
           gapValue = -1

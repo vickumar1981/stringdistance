@@ -2,10 +2,8 @@ package com.github.vickumar1981.stringdistance.impl
 
 import scala.math.{max, min}
 
-case class Gap(matchValue: Double = 1, misMatchValue: Double = -1, gapValue: Double = 0)
-
 trait NeedlemanWunschImpl {
-  def needleman(s1: String, s2: String, gap: Gap = Gap()): Double = {
+  def needleman(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double = {
     if (s1 == s2) 1
     else {
       val maxDist = max(s1.length, s2.length) * max(gap.matchValue, gap.gapValue)
@@ -18,7 +16,7 @@ trait NeedlemanWunschImpl {
     if (a(aIndex) == b(bIndex)) gap.matchValue else gap.misMatchValue
   }
 
-  private def needlemanW(s1: String, s2: String, gap: Gap): Double = {
+  private def needlemanW(s1: String, s2: String, gap: ConstantGap): Double = {
     (s1.length, s2.length) match {
       case (0, s2Len) => -gap.gapValue * s2Len
       case (s1Len, 0) => -gap.gapValue * s1Len

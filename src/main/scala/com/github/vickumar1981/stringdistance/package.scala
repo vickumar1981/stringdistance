@@ -1,5 +1,7 @@
 package com.github.vickumar1981
 
+import com.github.vickumar1981.stringdistance.impl.ConstantGap
+
 package object stringdistance {
   import implicits._
 
@@ -261,8 +263,7 @@ package object stringdistance {
       def levenshtein(s2: String): Double = Levenshtein.score(s1, s2)
       def levenshteinDist(s2: String): Int = Levenshtein.distance(s1, s2)
       def longestCommonSeq(s2: String): Int = LongestCommonSeq.distance(s1, s2)
-      def needlemanWunsch(s2: String, gap: com.github.vickumar1981.stringdistance.impl.Gap =
-        com.github.vickumar1981.stringdistance.impl.Gap()): Double = NeedlemanWunsch.score(s1, s2, gap)
+      def needlemanWunsch(s2: String, gap: ConstantGap = ConstantGap()): Double = NeedlemanWunsch.score(s1, s2, gap)
       def nGram(s2: String, nGram: Int = 1): Double = NGram.score(s1, s2, nGram)
       def nGramDist(s2: String, nGram: Int = 1): Double = NGram.distance(s1, s2, nGram)
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)

@@ -1,6 +1,6 @@
 package com.github.vickumar1981.stringdistance.util;
 
-import com.github.vickumar1981.stringdistance.impl.Gap;
+import com.github.vickumar1981.stringdistance.impl.ConstantGap;
 
 public class StringDistance {
     private final static CosSimilarityImpl cosine = new CosSimilarityImpl();
@@ -83,12 +83,11 @@ public class StringDistance {
     }
 
     public static Double needlemanWunsch(String s1, String s2) {
-        return needlemanWunsch(s1, s2, 1d, -1d, 0d);
+        return needlemanWunsch(s1, s2, new ConstantGap(1d, -1d, 0d));
     }
 
-    public static Double needlemanWunsch(String s1, String s2,
-                                         Double matchValue, Double misMatchValue, Double gapValue) {
-            return needlemanWunsch.needleman(s1, s2, new Gap(matchValue, misMatchValue, gapValue));
+    public static Double needlemanWunsch(String s1, String s2, ConstantGap gap) {
+            return needlemanWunsch.needleman(s1, s2, gap);
     }
 
     public static Integer nGramDist(String s1, String s2) { return nGramDist(s1, s2, 1); }
