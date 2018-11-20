@@ -4,6 +4,9 @@ import scala.math.{max, min}
 
 trait NeedlemanWunschImpl {
   def needleman(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double = {
+    require(gap.matchValue > 0, "NeedlmanWunsch match value must be a number > 0.")
+    require(gap.misMatchValue < 0, "NeedlemanWunsh mismatch value must be a number < 0.")
+    require(gap.gapValue <= 0, "Needleman Wunsh gap value must be a number <= 0.")
     if (s1 == s2) 1
     else {
       val maxDist = max(s1.length, s2.length) * max(gap.matchValue, gap.gapValue)
