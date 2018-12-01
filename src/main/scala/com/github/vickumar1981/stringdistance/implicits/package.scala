@@ -20,6 +20,21 @@ package object implicits {
   }
 
   /**
+    * Implicit definition of damerau levenshtein distance for [[DamerauLevenshteinAlgorithm]].
+    */
+  implicit object DamerauLevenshteinDistance extends LevenshteinDistanceImpl
+    with DistanceAlgorithm[DamerauLevenshteinAlgorithm] with ScorableFromDistance[DamerauLevenshteinAlgorithm] {
+    /**
+      * The score method takes two strings and returns the damerau levenshtein distance between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the damerau levenshtein distance between Strings s1 and s2.
+      */
+    override def distance(s1: String, s2: String): Int = damerauLevenshtein(s1, s2)
+  }
+
+  /**
     * Implicit definition of dice coefficient score for [[DiceCoefficientAlgorithm]].
     */
   implicit object DiceCoefficientScore extends DiceCoefficientImpl
@@ -122,6 +137,22 @@ package object implicits {
   }
 
   /**
+    * Implicit definition of needleman wunsch score for [[NeedlemanWunschAlgorithm]].
+    */
+  implicit object NeedlemanWunschScore extends NeedlemanWunschImpl
+    with WeightedScoringAlgorithm[NeedlemanWunschAlgorithm, ConstantGap] {
+    /**
+      * The score method takes two strings and returns needleman wunsch similarity between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the needleman wunsch similarity between Strings s1 and s2.
+      */
+    override def score(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double =
+      needleman(s1, s2, gap)
+  }
+
+  /**
     * Implicit definition of n-gram distance for [[NGramAlgorithm]].
     */
   implicit object NGramDistance extends NGramImpl with WeightedDistanceAlgorithm[NGramAlgorithm, Int] {
@@ -178,6 +209,39 @@ package object implicits {
   }
 
   /**
+    * Implicit definition of smith waterman score for [[SmithWatermanAlgorithm]].
+    */
+  implicit object SmithWatermanScore extends SmithWatermanImpl
+    with WeightedScoringAlgorithm[SmithWatermanAlgorithm, (Gap, Int)] {
+    /**
+      * The score method takes two strings and returns smith waterman similarity between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the smith waterman similarity between Strings s1 and s2.
+      */
+    override def score(s1: String, s2: String,
+                       gapAndWindowSize: (Gap, Int) = (LinearGap(gapValue = 1), Integer.MAX_VALUE)): Double =
+      smithWaterman(s1, s2, gapAndWindowSize._1, gapAndWindowSize._2)
+  }
+
+  /**
+    * Implicit definition of smith waterman gotoh score for [[SmithWatermanGotohAlgorithm]].
+    */
+  implicit object SmithWatermanGotohScore extends SmithWatermanImpl
+    with WeightedScoringAlgorithm[SmithWatermanGotohAlgorithm, ConstantGap] {
+    /**
+      * The score method takes two strings and returns smith waterman similarity between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the smith waterman gotoh similarity between Strings s1 and s2.
+      */
+    override def score(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double =
+      smithWatermanGotoh(s1, s2, gap)
+  }
+
+  /**
     * Implicit definition of soundex score for [[SoundexAlgorithm]].
     */
   implicit object SoundexScore extends SoundexImpl with SoundScoringAlgorithm[SoundexAlgorithm] {
@@ -189,5 +253,19 @@ package object implicits {
       * @return Returns true or false if String s1 sounds like string s2.
       */
     override def score(s1: String, s2: String): Boolean = soundex(s1, s2)
+  }
+
+  /**
+    * Implicit definition of tversky score for [[TverskyAlgorithm]].
+    */
+  implicit object TverskyScore extends JaccardImpl with WeightedScoringAlgorithm[TverskyAlgorithm, Double] {
+    /**
+      * The score method takes two strings and returns tversky score between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the tversky score between Strings s1 and s2.
+      */
+    override def score(s1: String, s2: String, n: Double = 1): Double = tversky(s1, s2, n)
   }
 }

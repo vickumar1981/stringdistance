@@ -1,9 +1,10 @@
 import xerial.sbt.Sonatype._
 
 name := "stringdistance"
-version := "1.0.6"
+version := "1.0.7-SNAPSHOT"
 scalaVersion := "2.12.6"
 organization := "com.github.vickumar1981"
+description := "A fuzzy matching string distance library for Scala and Java."
 sonatypeProjectHosting := Some(GitHubHosting("vickumar1981", "stringdistance", "vickumar@gmail.com"))
 publishMavenStyle := true
 licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
@@ -36,7 +37,7 @@ lazy val testScalastyle = taskKey[Unit]("testScalastyle")
 testScalastyle := scalastyle.in(Test).toTask("").value
 (test in Test) := ((test in Test) dependsOn testScalastyle).value
 
-coverageExcludedPackages := "<empty>;.*stringdistance.interfaces.sound.*"
+coverageExcludedPackages := "<empty>;.*stringdistance.interfaces.sound.*;.*stringdistance.impl.*Gap"
 
 coverageEnabled in(Test, compile) := true
 coverageEnabled in(Compile, compile) := false

@@ -4,6 +4,7 @@ import com.github.vickumar1981.stringdistance.interfaces.CommonStringDistanceAlg
 
 trait JaroImpl extends CommonStringDistanceAlgo {
   protected def jaroWinkler(s1: String, s2: String, weight: Double = 0.1): Double = {
+    require(weight >= 0 && weight <= 1, "Jaro-Winkler weight must be a number between 0 and 1.")
     val jaroScore = jaro(s1, s2)
     val l = minStartPrefix(s1, s2)
     jaroScore + (l * weight * (1 - jaroScore))

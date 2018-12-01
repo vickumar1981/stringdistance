@@ -1,5 +1,7 @@
 import org.scalatest._
 import com.github.vickumar1981.stringdistance.StringConverter._
+import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
+
 import scala.math.BigDecimal
 import fixtures.TestCases.{precision, testCases}
 
@@ -32,6 +34,20 @@ class TestStringDistance extends FlatSpec with Matchers {
     testCases.filter(_.levenshtein.isDefined).map(t => {
       val levenschtein = t.s1.levenshtein(t.s2)
       roundToPrecision(levenschtein) should be (t.levenshtein.get)
+    })
+  }
+
+  "The Damerau-Levenschtein Distance" should "match for all test cases" in {
+    testCases.filter(_.damerauDist.isDefined).map(t => {
+      val damerauDist = t.s1.damerauDist(t.s2)
+      damerauDist should be (t.damerauDist.get)
+    })
+  }
+
+  "The Damerau-Levenschtein Score" should "match for all test cases" in {
+    testCases.filter(_.damerau.isDefined).map(t => {
+      val damerau = t.s1.damerau(t.s2)
+      roundToPrecision(damerau) should be (t.damerau.get)
     })
   }
 
@@ -96,6 +112,86 @@ class TestStringDistance extends FlatSpec with Matchers {
       val overlap = t.s1.overlap(t.s2)
       roundToPrecision(overlap) should be (t.overlap.get)
     })
+  }
+
+  "The Tversky Score with weight 0.5" should "match the dice coefficient" in {
+    testCases.filter(_.diceCoefficient.isDefined).map(t => {
+      val tversky = t.s1 tversky (t.s2, 0.5)
+      roundToPrecision(tversky) should be (t.diceCoefficient.get)
+    })
+  }
+
+  "The Tversky Score with weight 1.0" should "match the jaccard score using bigrams" in {
+    testCases.filter(_.jaccard.isDefined).map(t => {
+      val tversky = t.s1 tversky (t.s2)
+      val jaccard = t.s1 jaccard (t.s2, 2)
+      roundToPrecision(tversky) should be (roundToPrecision(jaccard))
+    })
+  }
+
+  "The Needleman-Wunsch Score with a ConstantGap(1, -1, 0)" should "match the damerau score when strings have same length" in {
+    testCases.filter(t => t.s1.length == t.s2.length && t.damerau.isDefined).map(t => {
+      val needlemanWunsch = t.s1.needlemanWunsch(
+        t.s2,
+        ConstantGap(
+          matchValue = 1,
+          misMatchValue = -1,
+          gapValue = 0
+        ))
+      val damerau = t.s1.damerau(t.s2)
+      roundToPrecision(needlemanWunsch) should be (roundToPrecision(damerau))
+    })
+  }
+
+  "The Needleman-Wunsch Score with a ConstantGap(1, -1, 1)" should "match the levenshtein score when strings have same length" in {
+    testCases.filter(t => t.s1.length == t.s2.length && t.levenshtein.isDefined).map(t => {
+      val needlemanWunsch = t.s1.needlemanWunsch(
+        t.s2,
+        ConstantGap(
+          matchValue = 1,
+          misMatchValue = -1,
+          gapValue = -1
+        ))
+      val levenshtein = t.s1.levenshtein(t.s2)
+      roundToPrecision(needlemanWunsch) should be (roundToPrecision(levenshtein))
+    })
+  }
+
+  "The Needleman-Wunsch Score" should "score symmetrically when either string is empty" in {
+    testCases.filter(_.s1.isEmpty).map(t => {
+      val needlemanWunsch1 = t.s1.needlemanWunsch(t.s2)
+      val needlemanWunsch2 = t.s2.needlemanWunsch(t.s1)
+      roundToPrecision(needlemanWunsch1) should be (roundToPrecision(needlemanWunsch2))
+    })
+  }
+
+  "The Smith Waterman Score with an LinearGap(1, -1, 1)" should "match the levenshtein score when strings have same length" in {
+    testCases.filter(t => t.s1.length == t.s2.length && t.levenshtein.isDefined).map(t => {
+      val smithWaterman = t.s1.smithWaterman(
+        t.s2,
+        LinearGap(
+          matchValue = 1,
+          misMatchValue = -1,
+          gapValue = 1
+        ))
+      val levenshtein = t.s1.levenshtein(t.s2)
+      roundToPrecision(smithWaterman) should be (roundToPrecision(levenshtein))
+    })
+  }
+
+  "The Smith Waterman Score" should "be 0 if only one string is empty" in {
+    "".smithWaterman("abc") should be (0)
+  }
+
+  "The Smith Waterman Gotoh Score" should "match for all test cases" in {
+    testCases.filter(_.smithWatermanGotoh.isDefined).map(t => {
+      val smithWatermanGotoh = t.s1.smithWatermanGotoh(t.s2)
+      roundToPrecision(smithWatermanGotoh) should be (t.smithWatermanGotoh.get)
+    })
+  }
+
+  "The Smith Waterman Gotoh Score" should "be 0 if only one string is empty" in {
+    "".smithWatermanGotoh("abc") should be (0)
   }
 }
 
