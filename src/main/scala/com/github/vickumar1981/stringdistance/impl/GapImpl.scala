@@ -1,5 +1,11 @@
 package com.github.vickumar1981.stringdistance.impl
 
+trait GapSubstitution {
+  protected def subst(a: String, aIndex: Int, b: String, bIndex: Int, gap: Gap): Double = {
+    if (a(aIndex) == b(bIndex)) gap.matchValue else gap.misMatchValue
+  }
+}
+
 trait Gap {
   def matchValue: Double
   def misMatchValue: Double
@@ -10,6 +16,7 @@ trait Gap {
 
 case class ConstantGap(matchValue: Double = 1, misMatchValue: Double = -1, gapValue: Double = 0) extends Gap {
   def value(fromIndex: Double, toIndex: Double): Double = gapValue
+  def value: Double = gapValue
   def max: Double = gapValue
   def min: Double = gapValue
 }
