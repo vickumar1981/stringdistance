@@ -38,4 +38,24 @@ class TestInvalidArguments extends FlatSpec with Matchers {
   "Overlap score" should "only accept a positive number for n-gram size" in {
     assertThrows[IllegalArgumentException] { "abc".overlap("abc", -1) }
   }
+
+  "Smith Waterman score" should "only accept a match value > 0" in {
+    assertThrows[IllegalArgumentException] { "abc".smithWaterman("abc", ConstantGap(-1, -1, 0)) }
+  }
+
+  "Smith Waterman score" should "only accept a mismatch value < 0" in {
+    assertThrows[IllegalArgumentException] { "abc".smithWaterman("abc", ConstantGap(1, 1, 0)) }
+  }
+
+  "Smith Waterman score" should "only accept a window size > 0" in {
+    assertThrows[IllegalArgumentException] { "abc".smithWaterman("abc", ConstantGap(1, -1, 0), -1) }
+  }
+
+  "Smith Waterman Gotoh score" should "only accept a match value > 0" in {
+    assertThrows[IllegalArgumentException] { "abc".smithWatermanGotoh("abc", ConstantGap(-1, -1, 0)) }
+  }
+
+  "Smith Waterman Gotoh score" should "only accept a mismatch value < 0" in {
+    assertThrows[IllegalArgumentException] { "abc".smithWatermanGotoh("abc", ConstantGap(1, 1, 0)) }
+  }
 }

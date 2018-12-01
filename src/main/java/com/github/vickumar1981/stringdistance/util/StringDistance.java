@@ -1,6 +1,8 @@
 package com.github.vickumar1981.stringdistance.util;
 
 import com.github.vickumar1981.stringdistance.impl.ConstantGap;
+import com.github.vickumar1981.stringdistance.impl.Gap;
+import com.github.vickumar1981.stringdistance.impl.LinearGap;
 
 public class StringDistance {
     private final static CosSimilarityImpl cosine = new CosSimilarityImpl();
@@ -13,6 +15,7 @@ public class StringDistance {
     private final static NeedlemanWunschImpl needlemanWunsch = new NeedlemanWunschImpl();
     private final static NGramImpl ngram = new NGramImpl();
     private final static OverlapImpl overLap = new OverlapImpl();
+    private final static SmithWatermanImpl smithWaterman = new SmithWatermanImpl();
 
     private final static String splitOnWord = "(?!^)";
     private final static String splitOnSentence = "\\W+";
@@ -101,6 +104,26 @@ public class StringDistance {
     public static Double overlap(String s1, String s2) { return overlap(s1, s2, 1); }
 
     public static Double overlap(String s1, String s2, Integer n) { return overLap.overlap(s1, s2, n); }
+
+    public static Double smithWaterman(String s1, String s2) {
+        return smithWaterman(s1, s2, new LinearGap(1d, -1d, 1d));
+    }
+
+    public static Double smithWaterman(String s1, String s2, Gap gap) {
+        return smithWaterman.smithWaterman(s1, s2, gap, Integer.MAX_VALUE);
+    }
+
+    public static Double smithWaterman(String s1, String s2, Gap gap, Integer windowSize) {
+        return smithWaterman.smithWaterman(s1, s2, gap, windowSize);
+    }
+
+    public static Double smithWatermanGotoh(String s1, String s2) {
+        return smithWatermanGotoh(s1, s2, new ConstantGap(1d, -1d, 1d));
+    }
+
+    public static Double smithWatermanGotoh(String s1, String s2, ConstantGap gap) {
+        return smithWaterman.smithWatermanGotoh(s1, s2, gap);
+    }
 
     public static Double tversky(String s1, String s2) { return tversky(s1, s2, 1d); }
 

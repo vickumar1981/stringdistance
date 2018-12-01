@@ -1,6 +1,6 @@
 package com.github.vickumar1981
 
-import com.github.vickumar1981.stringdistance.impl.ConstantGap
+import com.github.vickumar1981.stringdistance.impl.{ConstantGap, Gap, LinearGap}
 
 package object stringdistance {
   import implicits._
@@ -74,6 +74,17 @@ package object stringdistance {
     * A marker interface for the overlap similarity algorithm.
     */
   trait OverlapAlgorithm extends StringMetricAlgorithm
+
+
+  /**
+    * A marker interface for the smith waterman similarity algorithm.
+    */
+  trait SmithWatermanAlgorithm extends StringMetricAlgorithm
+
+  /**
+    * A marker interface for the smith waterman gotoh similarity algorithm.
+    */
+  trait SmithWatermanGotohAlgorithm extends StringMetricAlgorithm
 
   /**
     * A marker interface for the soundex similarity algorithm.
@@ -230,6 +241,8 @@ package object stringdistance {
     * val ngramSimilarity: Double = "karolin".nGram("kathrin")
     * val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
     * val overlap: Double = "karolin".overlap("kathrin")
+    * val smithWaterman: Double = "martha".smithWaterman("marhta")
+    * val smithWatermanGotoh: Double = "martha".smithWatermanGotoh("marhta")
     * val tversky: Double = "karolin".tversky("kathrin", 0.5)
     *
     * // Distances between two strings
@@ -268,6 +281,11 @@ package object stringdistance {
       def nGramDist(s2: String, nGram: Int = 1): Double = NGram.distance(s1, s2, nGram)
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)
       def tversky(s2: String, n: Double = 1): Double = Tversky.score(s1, s2, n)
+      def smithWaterman(s2: String, gap: Gap = LinearGap(gapValue = 1),
+                        windowSize: Int = Integer.MAX_VALUE): Double =
+        SmithWaterman.score(s1, s2, (gap, windowSize))
+      def smithWatermanGotoh(s2: String, gap: ConstantGap = ConstantGap()): Double =
+        SmithWatermanGotoh.score(s1, s2, gap)
 
       def metaphone(s2: String): Boolean = Metaphone.score(s1, s2)
       def soundex(s2: String): Boolean = Soundex.score(s1, s2)
