@@ -1,6 +1,6 @@
 import org.scalatest._
 import com.github.vickumar1981.stringdistance.StringConverter._
-import com.github.vickumar1981.stringdistance.impl.{AffineGap, ConstantGap}
+import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
 
 import scala.math.BigDecimal
 import fixtures.TestCases.{precision, testCases}
@@ -165,11 +165,11 @@ class TestStringDistance extends FlatSpec with Matchers {
     })
   }
 
-  "The Smith Waterman Score with an AffineGap(1, -1, 1)" should "match the levenshtein score when strings have same length" in {
+  "The Smith Waterman Score with an LinearGap(1, -1, 1)" should "match the levenshtein score when strings have same length" in {
     testCases.filter(t => t.s1.length == t.s2.length && t.levenshtein.isDefined).map(t => {
       val smithWaterman = t.s1.smithWaterman(
         t.s2,
-        AffineGap(
+        LinearGap(
           matchValue = 1,
           misMatchValue = -1,
           gapValue = 1
@@ -178,10 +178,6 @@ class TestStringDistance extends FlatSpec with Matchers {
       roundToPrecision(smithWaterman) should be (roundToPrecision(levenshtein))
     })
   }
-
-//  "The Smith Waterman Score" should "be 1 when both strings are empty" in {
-//    "".smithWaterman("") should be (1)
-//  }
 
   "The Smith Waterman Score" should "be 0 if only one string is empty" in {
     "".smithWaterman("abc") should be (0)
@@ -193,10 +189,6 @@ class TestStringDistance extends FlatSpec with Matchers {
       roundToPrecision(smithWatermanGotoh) should be (t.smithWatermanGotoh.get)
     })
   }
-
-//  "The Smith Waterman Gotoh Score" should "be 1 when both strings are empty" in {
-//    "".smithWatermanGotoh("") should be (1)
-//  }
 
   "The Smith Waterman Gotoh Score" should "be 0 if only one string is empty" in {
     "".smithWatermanGotoh("abc") should be (0)

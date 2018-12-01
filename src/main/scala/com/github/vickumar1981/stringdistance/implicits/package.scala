@@ -221,7 +221,7 @@ package object implicits {
       * @return Returns the smith waterman similarity between Strings s1 and s2.
       */
     override def score(s1: String, s2: String,
-                       gapAndWindowSize: (Gap, Int) = (ConstantGap(), Integer.MAX_VALUE)): Double =
+                       gapAndWindowSize: (Gap, Int) = (LinearGap(gapValue = 1), Integer.MAX_VALUE)): Double =
       smithWaterman(s1, s2, gapAndWindowSize._1, gapAndWindowSize._2)
   }
 
