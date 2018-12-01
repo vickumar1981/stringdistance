@@ -8,23 +8,24 @@ trait SmithWatermanImpl extends GapSubstitution {
                     windowSize: Int = Integer.MAX_VALUE): Double = {
     require(gap.matchValue > 0, "Smith Waterman match value must be a number > 0.")
     require(gap.misMatchValue < 0, "Smith Waterman mismatch value must be a number < 0.")
+    require(windowSize > 0, "Smith Waterman window size must be a number > 0")
 
-    if (s1.isEmpty && s2.isEmpty) 1d
-    else if (s1.isEmpty || s2.isEmpty) 0d
+    if (s1.isEmpty || s2.isEmpty) 0d
     else {
       val maxDist = min(s1.length, s2.length) * max(gap.matchValue, gap.min)
-      calculateSmithWaterman(s1, s2, gap, windowSize) / maxDist
+      val calcScore = calculateSmithWaterman(s1, s2, gap, windowSize)
+      1 - ((calcScore - maxDist) / maxDist)
     }
   }
 
   def smithWatermanGotoh(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double = {
     require(gap.matchValue > 0, "Smith Waterman Gotoh match value must be a number > 0.")
     require(gap.misMatchValue < 0, "Smith Waterman Gotoh mismatch value must be a number < 0.")
-    if (s1.isEmpty && s2.isEmpty) 1d
-    else if (s1.isEmpty || s2.isEmpty) 0d
+    if (s1.isEmpty || s2.isEmpty) 0d
     else {
       val maxDist = min(s1.length, s2.length) * max(gap.matchValue, gap.gapValue)
-      calculateSmithWatermanGotoh(s1, s2, gap) / maxDist
+      val calcScore = calculateSmithWatermanGotoh(s1, s2, gap)
+      (maxDist - calcScore) / maxDist
     }
   }
 
@@ -41,7 +42,6 @@ trait SmithWatermanImpl extends GapSubstitution {
         (max(1, i - windowSize) until i).foreach {
           k => maxGapCost = max(maxGapCost, d(i - k)(0) + gap.value(i - k, i))
         }
-
         d(i)(0) = max(max(0, maxGapCost), subst(s1, i, s2, 0, gap))
         maxValue = max(maxValue, d(i)(0))
       }
@@ -54,7 +54,7 @@ trait SmithWatermanImpl extends GapSubstitution {
         (max(1, j - windowSize) until j).foreach {
           k => maxGapCost = max(maxGapCost, d(0)(j - k) + gap.value(j - k, j))
         }
-        d(0)(j) = max(max(0, maxGapCost), subst(s1, 0, s2, j, gap))
+        d(0)(j) = max(max(0d, maxGapCost), subst(s1, 0, s2, j, gap))
         maxValue = max(maxValue, d(0)(j))
       }
     }
@@ -73,7 +73,7 @@ trait SmithWatermanImpl extends GapSubstitution {
               k => maxGapCost = max(maxGapCost, d(i)(j - k) + gap.value(j - k, j))
             }
 
-            d(i)(j) = max(max(0, maxGapCost), d(i - 1)(j - 1) + subst(s1, 1, s2, j, gap))
+            d(i)(j) = max(max(0d, maxGapCost), d(i - 1)(j - 1) + subst(s1, i, s2, j, gap))
             maxValue = max(maxValue, d(i)(j))
           }
         }

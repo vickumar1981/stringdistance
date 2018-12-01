@@ -22,6 +22,8 @@ import com.github.vickumar1981.stringdistance.impl._
   * val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
   * val overlap: Double = Overlap.score("karolin", "kathrin")
   * val tversky: Double = Tversky.score("karolin", "kathrin", 0.5)
+  * val smithWaterman: Double = SmithWaterman.score("martha", "marhta")
+  * val smithWatermanGotoh: Double = SmithWatermanGotoh.score("martha", "marhta")
   *
   * // Distances between strings
   * val damerauDist: Int = Damerau.distance("martha", "marhta")
@@ -45,6 +47,8 @@ object StringDistance {
   object NeedlemanWunsch extends StringMetric[NeedlemanWunschAlgorithm]
   object NGram extends StringMetric[NGramAlgorithm]
   object Overlap extends StringMetric[OverlapAlgorithm]
+  object SmithWaterman extends StringMetric[SmithWatermanAlgorithm]
+  object SmithWatermanGotoh extends StringMetric[SmithWatermanGotohAlgorithm]
   object Tversky extends StringMetric[TverskyAlgorithm]
 }
 
@@ -97,4 +101,10 @@ class NGramImplWrapper extends NGramImpl
   * Jave Wrapper for overlap similarity.
   */
 class OverlapImplWrapper extends OverlapImpl
+
+
+/**
+  * Jave Wrapper for smith waterman similarity.
+  */
+class SmithWatermanImplWrapper extends SmithWatermanImpl
 

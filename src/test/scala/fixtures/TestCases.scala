@@ -17,15 +17,14 @@ case class TestCase (s1: String,
                      overlap: Option[Double] = None,
                      nGramDist: Option[Int] = None,
                      damerau: Option[Double] = None,
-                     damerauDist: Option[Int] = None)
+                     damerauDist: Option[Int] = None,
+                     smithWatermanGotoh: Option[Double] = None)
 
 object TestCases {
   lazy val testCases: List[TestCase] = List(
     TestCase("MARTHA", "MARHTA", Some(0.944), Some(0.961), Some(0.667), Some(2), Some(0.4),
-      ngram = Some(0),
-      longestCommonSeq = Some(5), overlap = Some(0),
-      damerau = Some(0.833),
-      damerauDist = Some(1)),
+      ngram = Some(0), longestCommonSeq = Some(5), overlap = Some(0),
+      damerau = Some(0.833), damerauDist = Some(1), smithWatermanGotoh = Some(0.5)),
     TestCase("DWAYNE", "DUANE", Some(0.822), Some(0.840), Some(0.667), Some(2), Some(0.222),
       damerau = Some(0.667), damerauDist = Some(2)),
     TestCase("DIXON", "DICKSONX", Some(0.767), Some(0.813), Some(0.5), Some(4), Some(0.364)),

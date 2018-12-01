@@ -209,6 +209,39 @@ package object implicits {
   }
 
   /**
+    * Implicit definition of smith waterman score for [[SmithWatermanAlgorithm]].
+    */
+  implicit object SmithWatermanScore extends SmithWatermanImpl
+    with WeightedScoringAlgorithm[SmithWatermanAlgorithm, (Gap, Int)] {
+    /**
+      * The score method takes two strings and returns smith waterman similarity between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the smith waterman similarity between Strings s1 and s2.
+      */
+    override def score(s1: String, s2: String,
+                       gapAndWindowSize: (Gap, Int) = (ConstantGap(), Integer.MAX_VALUE)): Double =
+      smithWaterman(s1, s2, gapAndWindowSize._1, gapAndWindowSize._2)
+  }
+
+  /**
+    * Implicit definition of smith waterman gotoh score for [[SmithWatermanGotohAlgorithm]].
+    */
+  implicit object SmithWatermanGotohScore extends SmithWatermanImpl
+    with WeightedScoringAlgorithm[SmithWatermanGotohAlgorithm, ConstantGap] {
+    /**
+      * The score method takes two strings and returns smith waterman similarity between them.
+      *
+      * @param s1 The 1st String.
+      * @param s2 The 2nd String.
+      * @return Returns the smith waterman gotoh similarity between Strings s1 and s2.
+      */
+    override def score(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double =
+      smithWatermanGotoh(s1, s2, gap)
+  }
+
+  /**
     * Implicit definition of soundex score for [[SoundexAlgorithm]].
     */
   implicit object SoundexScore extends SoundexImpl with SoundScoringAlgorithm[SoundexAlgorithm] {
