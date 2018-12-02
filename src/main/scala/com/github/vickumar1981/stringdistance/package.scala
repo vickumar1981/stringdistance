@@ -2,6 +2,26 @@ package com.github.vickumar1981
 
 import com.github.vickumar1981.stringdistance.impl.{ConstantGap, Gap, LinearGap}
 
+
+/** Provides classes for calculating distances and fuzzy match similarities between two strings.  Also provides
+  * implicits for using distance and fuzzy match scores as an operator, like:
+  * {{{
+  * val result = "abc" levenshtein "abc"
+  * }}}
+  *
+  * ==Overview==
+  *  The main class to use is [[com.github.vickumar1981.stringdistance.StringDistance]]
+  *
+  *  If you include [[com.github.vickumar1981.stringdistance.StringConverter]], you can
+  *  convert/use the string distance and score functions as an operator between two strings.
+  *
+  * | Class | Description |
+  * | :---:  | ---  |
+  * | StringDistance | Singleton class with fuzzy match scores and distances |
+  * | StringConverter | Implicit converstions between strings s1 and s2 |
+  *
+  *
+  */
 package object stringdistance {
   import implicits._
 
