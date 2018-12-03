@@ -3,7 +3,7 @@ package com.github.vickumar1981.stringdistance
 import com.github.vickumar1981.stringdistance.impl.sound.{MetaphoneImpl, SoundexImpl}
 
 /**
-  * Main class to organize functionality of different string distance algorithms
+  * Main class to organize functionality of different phonetic/sound string algorithms
   *
   * {{{
   * import com.github.vickumar1981.stringdistance.StringSound._
