@@ -28,7 +28,7 @@ import com.github.vickumar1981.stringdistance.impl.{ConstantGap, Gap, LinearGap}
   *
   *
   * | Class | Description |
-  * | :---:  | ---  |
+  * | :---  | :---  |
   * | [[com.github.vickumar1981.stringdistance.StringDistance]] | Singleton class with fuzzy match scores and distances |
   * | [[com.github.vickumar1981.stringdistance.StringConverter]] | Implicit converstions between strings s1 and s2 |
   * | [[com.github.vickumar1981.stringdistance.StringSound]] | Phonetic comparison between strings s1 and s2 |
