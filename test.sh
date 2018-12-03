@@ -1,2 +1,2 @@
-sbt clean scalastyle coverageOn test coverageReport
+./sbt clean scalastyle coverageOn test coverageReport
 
