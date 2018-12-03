@@ -9,16 +9,31 @@ import com.github.vickumar1981.stringdistance.impl.{ConstantGap, Gap, LinearGap}
   * val result = "abc" levenshtein "abc"
   * }}}
   *
+  * Includes functionality for phonetic comparisons between strings.
+  *
   * ==Overview==
   *  The main class to use is [[com.github.vickumar1981.stringdistance.StringDistance]]
   *
   *  If you include [[com.github.vickumar1981.stringdistance.StringConverter]], you can
   *  convert/use the string distance and score functions as an operator between two strings.
   *
+  *  To compare two strings phonetically, i.e. if they sound alike,  use the
+  *  [[com.github.vickumar1981.stringdistance.util.StringSound]] class.
+  *
+  *  To use in Java, please use the corresponding classes in the
+  *  [[com.github.vickumar1981.stringdistance.util]] package.
+  *
+  *   - Java String Distance Class: [[com.github.vickumar1981.stringdistance.util.StringDistance]]
+  *   - Java String Sound Class: [[com.github.vickumar1981.stringdistance.util.StringSound]]
+  *
+  *
   * | Class | Description |
   * | :---:  | ---  |
-  * | StringDistance | Singleton class with fuzzy match scores and distances |
-  * | StringConverter | Implicit converstions between strings s1 and s2 |
+  * | [[com.github.vickumar1981.stringdistance.StringDistance]] | Singleton class with fuzzy match scores and distances |
+  * | [[com.github.vickumar1981.stringdistance.StringConverter]] | Implicit converstions between strings s1 and s2 |
+  * | [[com.github.vickumar1981.stringdistance.StringSound]] | Phonetic comparison between strings s1 and s2 |
+  * | [[com.github.vickumar1981.stringdistance.util.StringDistance]] | Java class for fuzzy match scores and distances |
+  * | [[com.github.vickumar1981.stringdistance.util.StringSound]] | Java class for phonetic comparison between strings s1 and s2 |
   *
   *
   */

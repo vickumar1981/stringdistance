@@ -8,7 +8,7 @@ A fuzzy matching string distance library for Scala and Java that includes Levens
 
 For more detailed information, please refer to the [API Documentation](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html "API Documentation").
 
-Requires: Java 8, 7 or Scala 2.12, 2.11
+Requires: Java 8+, 7 or Scala 2.12, 2.11
 
 ---
 ### Contents
