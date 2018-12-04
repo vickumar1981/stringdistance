@@ -19,10 +19,11 @@ Requires: Java 8+, 7 or Scala 2.12, 2.11
 4.  [Using in Java](https://github.com/vickumar1981/stringdistance#java-usage)
 5.  [Adding your own algorithm](https://github.com/vickumar1981/stringdistance#adding-your-own-distance-or-scoring-algorithm)
 6.  [Reporting an Issue](https://github.com/vickumar1981/stringdistance#reporting-an-issue)
-7.  [License](https://github.com/vickumar1981/stringdistance#license)
+7.  [Contributing](https://github.com/vickumar1981/stringdistance#contributing)
+8.  [License](https://github.com/vickumar1981/stringdistance#license)
 
 ---
-### Add it to your project ...
+### 1. Add it to your project ...
 
 __Using sbt:__
 
@@ -54,7 +55,7 @@ In `pom.xml`:
 Note: For Java 7 or Scala 2.11, please use the `stringdistance_2.11` artifact as a dependency instead.
 
 ---
-### Scala Usage
+### 2. Scala Usage
 
 __Example.scala__:
 ```scala
@@ -115,7 +116,7 @@ val metaphone: Boolean = Metaphone.score("merci", "mercy")
 val soundex: Boolean = Soundex.score("merci", "mercy")
 ```
 ---
-### Scala: Use with Implicits
+### 3. Scala: Use with Implicits
   -  To use implicits and extend the String class:  `import com.github.vickumar1981.stringdistance.StringConverter._`
 
 __Example.scala__
@@ -154,7 +155,7 @@ val metaphone: Boolean = "merci".metaphone("mercy")
 val soundex: Boolean = "merci".soundex("mercy")
 ```
 ---
-### Java Usage
+### 4. Java Usage
   -  To use in Java:  `import com.github.vickumar1981.stringdistance.util.StringDistance`
 
 __Example.java__
@@ -195,7 +196,7 @@ Boolean soundex = StringSound.soundex("merci", "mercy");
 ```
 ---
 
-### Adding your own Distance or Scoring Algorithm 
+### 5. Adding your own Distance or Scoring Algorithm 
 
 1.  Create a marker trait that extends `StringMetricAlgorithm`:
 
@@ -228,11 +229,16 @@ val customScore: Double = CustomMetric.score("hello", "hello2")
 val customDist: Int = CustomMetric.distance("hello", "hello2")
 ```
 ---
-### Reporting an Issue
+### 6. Reporting an Issue
 
 Please report any issues or bugs to the [Github issues page](https://github.com/vickumar1981/stringdistance/issues).
 
 ---
-### License
+### 7. Contributing
+
+Please view the [contributing guidelines](CONTRIBUTING.md) 
+
+---
+### 8. License
 
 This project is licensed under the [Apache 2 License](https://opensource.org/licenses/Apache-2.0).
