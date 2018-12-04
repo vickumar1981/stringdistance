@@ -38,6 +38,7 @@ __Compile the project:__
 
 -  Please feel free to report any bugs or issues to the [Github issues page](https://github.com/vickumar1981/stringdistance/issues).
 
+---
 ### 3. Running tests
 
 __Running unit tests:__
@@ -54,10 +55,11 @@ __Run linter, unit tests, & code coverage:__
 ./test.sh
 ```
 
+---
 ### 4. Testing with a local Java/Scala project
 
 To test local changes against a java project, it is sometimes useful to publish the
-artifact locally, and then bring those changes into your `gradle` or `sbt` build. 
+artifact locally, and then bring those changes into your `gradle` or `sbt` project. 
 
 __To publish locally:__
 
@@ -66,6 +68,7 @@ __To publish locally:__
 ./sbt publishLocal
 ```
 
+---
 ### 5. Updating the Documentation
 
 To test/view changes to the documentation, simply use `sbt`.
