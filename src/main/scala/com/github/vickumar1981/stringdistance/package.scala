@@ -28,7 +28,7 @@ import com.github.vickumar1981.stringdistance.impl.{ConstantGap, Gap, LinearGap}
   *
   *
   * | Class | Description |
-  * | :---  | :---  |
+  * | :---  | :--- |
   * | [[com.github.vickumar1981.stringdistance.StringDistance]] | Singleton class with fuzzy match scores and distances |
   * | [[com.github.vickumar1981.stringdistance.StringConverter]] | Implicit converstions between strings s1 and s2 |
   * | [[com.github.vickumar1981.stringdistance.StringSound]] | Phonetic comparison between strings s1 and s2 |
@@ -316,7 +316,7 @@ package object stringdistance {
       def nGramDist(s2: String, nGram: Int = 1): Double = NGram.distance(s1, s2, nGram)
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)
       def tversky(s2: String, n: Double = 1): Double = Tversky.score(s1, s2, n)
-      def smithWaterman(s2: String, gap: Gap = LinearGap(gapValue = 1),
+      def smithWaterman(s2: String, gap: Gap = LinearGap(gapValue = -1),
                         windowSize: Int = Integer.MAX_VALUE): Double =
         SmithWaterman.score(s1, s2, (gap, windowSize))
       def smithWatermanGotoh(s2: String, gap: ConstantGap = ConstantGap()): Double =
