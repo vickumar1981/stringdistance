@@ -64,56 +64,56 @@ import com.github.vickumar1981.stringdistance.StringDistance._
 import com.github.vickumar1981.stringdistance.StringSound._
 
 // Cosine Similarity
-val cosSimilarity: Double = Cosine.score("hello", "chello")
+val cosSimilarity: Double = Cosine.score("hello", "chello")  // 0.935
 
 // Damerau-Levenshtein Distance
-val damerauDist: Int = Damerau.distance("martha", "marhta")
-val damerau: Double = Damerau.score("martha", "marhta")
+val damerauDist: Int = Damerau.distance("martha", "marhta")  // 1
+val damerau: Double = Damerau.score("martha", "marhta")  // 0.833
 
 // Dice Coefficient
-val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
+val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")  // 0.4
 
 // Hamming Distance
-val hammingDist: Int = Hamming.distance("martha", "marhta")
-val hamming: Double = Hamming.score("martha", "marhta")
+val hammingDist: Int = Hamming.distance("martha", "marhta")  // 2
+val hamming: Double = Hamming.score("martha", "marhta")  // 0.667
 
 // Jaccard Similarity
 val jaccard: Double = Jaccard.score("karolin", "kathrin")
 
 // Jaro and Jaro Winkler
-val jaro: Double = Jaro.score("martha", "marhta")
-val jaroWinkler: Double = JaroWinkler.score("martha", "marhta")
+val jaro: Double = Jaro.score("martha", "marhta")  // 0.944
+val jaroWinkler: Double = JaroWinkler.score("martha", "marhta")  // 0.961
 
 // Levenshtein Distance
-val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")
-val levenshtein: Double = Levenshtein.score("martha", "marhta")
+val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")  // 2
+val levenshtein: Double = Levenshtein.score("martha", "marhta")  // 0.667
 
 // Longest Common Subsequence
-val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
+val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")  // 5
 
 // Needleman Wunsch
-val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta")
+val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta")  // 0.667
 
 // N-Gram Similarity and Distance
-val ngramDist: Int = NGram.distance("karolin", "kathrin")
-val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)
-val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
-val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
+val ngramDist: Int = NGram.distance("karolin", "kathrin")  // 5
+val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)  // 2
+val ngramSimilarity: Double = NGram.score("karolin", "kathrin")  // 0.286
+val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)  // 0.667
 
 // Overlap Similarity
-val overlap: Double = Overlap.score("karolin", "kathrin")
-val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)
+val overlap: Double = Overlap.score("karolin", "kathrin")  // 0.286
+val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)  // 0.667
 
 // Smith Waterman Similarities
 val smithWaterman: Double = SmithWaterman.score("martha", "marhta")
 val smithWatermanGotoh: Double = SmithWatermanGotoh.score("martha", "marhta")
 
 // Tversky Similarity
-val tversky: Double = Tversky.score("karolin", "kathrin", 0.5)
+val tversky: Double = Tversky.score("karolin", "kathrin", 0.5)  // 0.333
 
 // Phonetic Similarity
-val metaphone: Boolean = Metaphone.score("merci", "mercy")
-val soundex: Boolean = Soundex.score("merci", "mercy")
+val metaphone: Boolean = Metaphone.score("merci", "mercy")  // true
+val soundex: Boolean = Soundex.score("merci", "mercy")  // true
 ```
 ---
 ### 3. Scala: Use with Implicits
@@ -133,7 +133,7 @@ val jaccard: Double = "karolin".jaccard("kathrin")
 val jaro: Double = "martha".jaro("marhta")
 val jaroWinkler: Double = "martha".jaroWinkler("marhta")
 val levenshtein: Double = "martha".levenshtein("marhta")
-val needlemanWunsch: Double = "martha".needlemanWusnch("marhta")
+val needlemanWunsch: Double = "martha".needlemanWunsch("marhta")
 val ngramSimilarity: Double = "karolin".nGram("kathrin")
 val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
 val overlap: Double = "karolin".overlap("kathrin")
@@ -143,7 +143,7 @@ val smithWatermanGotoh: Double = "martha".smithWatermanGotoh("marhta")
 val tversky: Double = "karolin".tversky("kathrin", 0.5)
 
 // Distances between two strings
-val damerauDist: Int = "martha".damerauDist("marhta")
+val damerauDist: Int = "martha".damerauDist("marhta")  // 1
 val hammingDist: Int = "martha".hammingDist("marhta")
 val levenshteinDist: Int = "martha".levenshteinDist("marhta")
 val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")

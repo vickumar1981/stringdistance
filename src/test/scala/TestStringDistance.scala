@@ -1,6 +1,6 @@
 import org.scalatest._
 import com.github.vickumar1981.stringdistance.StringConverter._
-import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
+import com.github.vickumar1981.stringdistance.impl.{AffineGap, ConstantGap, LinearGap}
 
 import scala.math.BigDecimal
 import fixtures.TestCases.{precision, testCases}
@@ -121,7 +121,7 @@ class TestStringDistance extends FlatSpec with Matchers {
     })
   }
 
-  "The Tversky Score with weight 1.0" should "match the jaccard score using bigrams" in {
+  "The Tversky Score with weight 2.0" should "match the jaccard score using bigrams" in {
     testCases.filter(_.jaccard.isDefined).map(t => {
       val tversky = t.s1 tversky (t.s2)
       val jaccard = t.s1 jaccard (t.s2, 2)
@@ -143,7 +143,7 @@ class TestStringDistance extends FlatSpec with Matchers {
     })
   }
 
-  "The Needleman-Wunsch Score with a ConstantGap(1, -1, 1)" should "match the levenshtein score when strings have same length" in {
+  "The Needleman-Wunsch Score with a ConstantGap(1, -1, -1)" should "match the levenshtein score when strings have same length" in {
     testCases.filter(t => t.s1.length == t.s2.length && t.levenshtein.isDefined).map(t => {
       val needlemanWunsch = t.s1.needlemanWunsch(
         t.s2,
@@ -165,17 +165,17 @@ class TestStringDistance extends FlatSpec with Matchers {
     })
   }
 
-  "The Smith Waterman Score with an LinearGap(1, -1, 1)" should "match the levenshtein score when strings have same length" in {
+  "The Smith Waterman Score with an LinearGap(1, -1, -1)" should "match the damerau score when strings have same length" in {
     testCases.filter(t => t.s1.length == t.s2.length && t.levenshtein.isDefined).map(t => {
       val smithWaterman = t.s1.smithWaterman(
         t.s2,
         LinearGap(
           matchValue = 1,
           misMatchValue = -1,
-          gapValue = 1
+          gapValue = -1
         ))
-      val levenshtein = t.s1.levenshtein(t.s2)
-      roundToPrecision(smithWaterman) should be (roundToPrecision(levenshtein))
+      val damerau= t.s1.damerau(t.s2)
+      roundToPrecision(smithWaterman) should be (roundToPrecision(damerau))
     })
   }
 
