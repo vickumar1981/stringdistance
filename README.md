@@ -2,7 +2,7 @@
 
 # StringDistance  
 
-[![Build Status](https://api.travis-ci.org/vickumar1981/stringdistance.svg?branch=master)](https://travis-ci.org/vickumar1981/stringdistance/builds) [![Coverage Status](https://coveralls.io/repos/github/vickumar1981/stringdistance/badge.svg?branch=master)](https://coveralls.io/github/vickumar1981/stringdistance?branch=master) [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html) [![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/github/vickumar1981/stringdistance_2.12/maven-metadata.xml.svg)](https://mvnrepository.com/artifact/com.github.vickumar1981/stringdistance) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Build Status](https://api.travis-ci.org/vickumar1981/stringdistance.svg?branch=master)](https://travis-ci.org/vickumar1981/stringdistance/builds) [![Coverage Status](https://coveralls.io/repos/github/vickumar1981/stringdistance/badge.svg?branch=master)](https://coveralls.io/github/vickumar1981/stringdistance?branch=master) [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html) [![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/github/vickumar1981/stringdistance_2.12/maven-metadata.xml.svg)](https://mvnrepository.com/artifact/com.github.vickumar1981/stringdistance) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
 
 A fuzzy matching string distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, Cosine similarity, Jaccard similarity, Longest common subsequence, Hamming distance, and more.
 
@@ -241,4 +241,4 @@ Please view the [contributing guidelines](CONTRIBUTING.md)
 ---
 ### 8. License
 
-This project is licensed under the [Apache 2 License](https://opensource.org/licenses/Apache-2.0).
+This project is licensed under the [Apache 2 License](LICENSE.md).
