@@ -2,6 +2,41 @@ package com.github.vickumar1981
 
 import com.github.vickumar1981.stringdistance.impl.{ConstantGap, Gap, LinearGap}
 
+
+/** Provides classes for calculating distances and fuzzy match similarities between two strings.  Also provides
+  * implicits for using distance and fuzzy match scores as an operator, like:
+  * {{{
+  * val result = "abc" levenshtein "abc"
+  * }}}
+  *
+  * Includes functionality for phonetic comparisons between strings.
+  *
+  * ==Overview==
+  *  The main class to use is [[com.github.vickumar1981.stringdistance.StringDistance]]
+  *
+  *  If you include [[com.github.vickumar1981.stringdistance.StringConverter]], you can
+  *  convert/use the string distance and score functions as an operator between two strings.
+  *
+  *  To compare two strings phonetically, i.e. if they sound alike,  use the
+  *  [[com.github.vickumar1981.stringdistance.util.StringSound]] class.
+  *
+  *  To use in Java, please use the corresponding classes in the
+  *  [[com.github.vickumar1981.stringdistance.util]] package.
+  *
+  *   - Java String Distance Class: [[com.github.vickumar1981.stringdistance.util.StringDistance]]
+  *   - Java String Sound Class: [[com.github.vickumar1981.stringdistance.util.StringSound]]
+  *
+  *
+  * | Class | Description |
+  * | :---  | :--- |
+  * | [[com.github.vickumar1981.stringdistance.StringDistance]] | Singleton class with fuzzy match scores and distances |
+  * | [[com.github.vickumar1981.stringdistance.StringConverter]] | Implicit converstions between strings s1 and s2 |
+  * | [[com.github.vickumar1981.stringdistance.StringSound]] | Phonetic comparison between strings s1 and s2 |
+  * | [[com.github.vickumar1981.stringdistance.util.StringDistance]] | Java class for fuzzy match scores and distances |
+  * | [[com.github.vickumar1981.stringdistance.util.StringSound]] | Java class for phonetic comparison between strings s1 and s2 |
+  *
+  *
+  */
 package object stringdistance {
   import implicits._
 
@@ -281,7 +316,7 @@ package object stringdistance {
       def nGramDist(s2: String, nGram: Int = 1): Double = NGram.distance(s1, s2, nGram)
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)
       def tversky(s2: String, n: Double = 1): Double = Tversky.score(s1, s2, n)
-      def smithWaterman(s2: String, gap: Gap = LinearGap(gapValue = 1),
+      def smithWaterman(s2: String, gap: Gap = LinearGap(gapValue = -1),
                         windowSize: Int = Integer.MAX_VALUE): Double =
         SmithWaterman.score(s1, s2, (gap, windowSize))
       def smithWatermanGotoh(s2: String, gap: ConstantGap = ConstantGap()): Double =

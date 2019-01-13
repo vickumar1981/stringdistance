@@ -47,6 +47,10 @@ class TestInvalidArguments extends FlatSpec with Matchers {
     assertThrows[IllegalArgumentException] { "abc".smithWaterman("abc", ConstantGap(1, 1, 0)) }
   }
 
+  "Smith Waterman score" should "only accept a gap value <= 0" in {
+    assertThrows[IllegalArgumentException] { "abc".smithWaterman("abc", ConstantGap(1, -1, 1)) }
+  }
+
   "Smith Waterman score" should "only accept a window size > 0" in {
     assertThrows[IllegalArgumentException] { "abc".smithWaterman("abc", ConstantGap(1, -1, 0), -1) }
   }
@@ -57,5 +61,9 @@ class TestInvalidArguments extends FlatSpec with Matchers {
 
   "Smith Waterman Gotoh score" should "only accept a mismatch value < 0" in {
     assertThrows[IllegalArgumentException] { "abc".smithWatermanGotoh("abc", ConstantGap(1, 1, 0)) }
+  }
+
+  "Smith Waterman Gotoh score" should "only accept a gap value <= 0" in {
+    assertThrows[IllegalArgumentException] { "abc".smithWatermanGotoh("abc", ConstantGap(1, -1, 1)) }
   }
 }

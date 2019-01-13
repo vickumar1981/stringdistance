@@ -1,8 +1,8 @@
 import xerial.sbt.Sonatype._
 
 name := "stringdistance"
-version := "1.0.7"
-scalaVersion := "2.12.6"
+version := "1.0.8-SNAPSHOT"
+scalaVersion := "2.12.7"
 organization := "com.github.vickumar1981"
 description := "A fuzzy matching string distance library for Scala and Java."
 sonatypeProjectHosting := Some(GitHubHosting("vickumar1981", "stringdistance", "vickumar@gmail.com"))
@@ -10,7 +10,7 @@ publishMavenStyle := true
 licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 pomIncludeRepository := { _ => false }
 publishArtifact in Test := false
-crossScalaVersions := Seq("2.11.11", "2.12.6")
+crossScalaVersions := Seq("2.11.11", "2.12.7")
 
 // Add sonatype repository settings
 publishTo := Some(

@@ -4,28 +4,30 @@ import scala.math.{max, min}
 
 trait SmithWatermanImpl extends GapSubstitution {
   def smithWaterman(s1: String, s2: String,
-                    gap: Gap = ConstantGap(),
+                    gap: Gap = LinearGap(),
                     windowSize: Int = Integer.MAX_VALUE): Double = {
     require(gap.matchValue > 0, "Smith Waterman match value must be a number > 0.")
     require(gap.misMatchValue < 0, "Smith Waterman mismatch value must be a number < 0.")
+    require(gap.gapValue <= 0, "Smith Waterman gap value must be a number <= 0")
     require(windowSize > 0, "Smith Waterman window size must be a number > 0")
 
     if (s1.isEmpty || s2.isEmpty) 0d
     else {
       val maxDist = min(s1.length, s2.length) * max(gap.matchValue, gap.min)
       val calcScore = calculateSmithWaterman(s1, s2, gap, windowSize)
-      1 - ((calcScore - maxDist) / maxDist)
+      calcScore / maxDist
     }
   }
 
   def smithWatermanGotoh(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double = {
     require(gap.matchValue > 0, "Smith Waterman Gotoh match value must be a number > 0.")
     require(gap.misMatchValue < 0, "Smith Waterman Gotoh mismatch value must be a number < 0.")
+    require(gap.gapValue <= 0, "Smith Waterman Gotoh gap value must be a number <= 0")
     if (s1.isEmpty || s2.isEmpty) 0d
     else {
       val maxDist = min(s1.length, s2.length) * max(gap.matchValue, gap.gapValue)
       val calcScore = calculateSmithWatermanGotoh(s1, s2, gap)
-      (maxDist - calcScore) / maxDist
+      calcScore / maxDist
     }
   }
 

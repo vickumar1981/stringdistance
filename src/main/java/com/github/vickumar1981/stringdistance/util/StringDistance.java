@@ -106,7 +106,7 @@ public class StringDistance {
     public static Double overlap(String s1, String s2, Integer n) { return overLap.overlap(s1, s2, n); }
 
     public static Double smithWaterman(String s1, String s2) {
-        return smithWaterman(s1, s2, new LinearGap(1d, -1d, 1d));
+        return smithWaterman(s1, s2, new LinearGap(1d, -1d, -1d));
     }
 
     public static Double smithWaterman(String s1, String s2, Gap gap) {
@@ -118,7 +118,7 @@ public class StringDistance {
     }
 
     public static Double smithWatermanGotoh(String s1, String s2) {
-        return smithWatermanGotoh(s1, s2, new ConstantGap(1d, -1d, 1d));
+        return smithWatermanGotoh(s1, s2, new ConstantGap(1d, -1d, -1d));
     }
 
     public static Double smithWatermanGotoh(String s1, String s2, ConstantGap gap) {

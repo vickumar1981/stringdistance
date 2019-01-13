@@ -1,12 +1,14 @@
-# StringDistance
+![Logo](logo.png)
 
-[![Build Status](https://api.travis-ci.org/vickumar1981/stringdistance.svg?branch=master)](https://travis-ci.org/vickumar1981/stringdistance/builds) [![Coverage Status](https://coveralls.io/repos/github/vickumar1981/stringdistance/badge.svg?branch=master)](https://coveralls.io/github/vickumar1981/stringdistance?branch=master) [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html) [![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/github/vickumar1981/stringdistance_2.12/maven-metadata.xml.svg)](https://mvnrepository.com/artifact/com.github.vickumar1981/stringdistance) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+# StringDistance  
+
+[![Build Status](https://api.travis-ci.org/vickumar1981/stringdistance.svg?branch=master)](https://travis-ci.org/vickumar1981/stringdistance/builds) [![Coverage Status](https://coveralls.io/repos/github/vickumar1981/stringdistance/badge.svg?branch=master)](https://coveralls.io/github/vickumar1981/stringdistance?branch=master) [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html) [![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/github/vickumar1981/stringdistance_2.12/maven-metadata.xml.svg)](https://mvnrepository.com/artifact/com.github.vickumar1981/stringdistance) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
 
 A fuzzy matching string distance library for Scala and Java that includes Levenshtein distance, Jaro distance, Jaro-Winkler distance, Dice coefficient, N-Gram similarity, Cosine similarity, Jaccard similarity, Longest common subsequence, Hamming distance, and more.
 
 For more detailed information, please refer to the [API Documentation](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/index.html "API Documentation").
 
-Requires: Java 8, 7 or Scala 2.12, 2.11
+Requires: Java 8+, 7 or Scala 2.12, 2.11
 
 ---
 ### Contents
@@ -17,10 +19,11 @@ Requires: Java 8, 7 or Scala 2.12, 2.11
 4.  [Using in Java](https://github.com/vickumar1981/stringdistance#java-usage)
 5.  [Adding your own algorithm](https://github.com/vickumar1981/stringdistance#adding-your-own-distance-or-scoring-algorithm)
 6.  [Reporting an Issue](https://github.com/vickumar1981/stringdistance#reporting-an-issue)
-7.  [License](https://github.com/vickumar1981/stringdistance#license)
+7.  [Contributing](https://github.com/vickumar1981/stringdistance#contributing)
+8.  [License](https://github.com/vickumar1981/stringdistance#license)
 
 ---
-### Add it to your project ...
+### 1. Add it to your project ...
 
 __Using sbt:__
 
@@ -52,7 +55,7 @@ In `pom.xml`:
 Note: For Java 7 or Scala 2.11, please use the `stringdistance_2.11` artifact as a dependency instead.
 
 ---
-### Scala Usage
+### 2. Scala Usage
 
 __Example.scala__:
 ```scala
@@ -61,59 +64,59 @@ import com.github.vickumar1981.stringdistance.StringDistance._
 import com.github.vickumar1981.stringdistance.StringSound._
 
 // Cosine Similarity
-val cosSimilarity: Double = Cosine.score("hello", "chello")
+val cosSimilarity: Double = Cosine.score("hello", "chello")  // 0.935
 
 // Damerau-Levenshtein Distance
-val damerauDist: Int = Damerau.distance("martha", "marhta")
-val damerau: Double = Damerau.score("martha", "marhta")
+val damerauDist: Int = Damerau.distance("martha", "marhta")  // 1
+val damerau: Double = Damerau.score("martha", "marhta")  // 0.833
 
 // Dice Coefficient
-val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
+val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")  // 0.4
 
 // Hamming Distance
-val hammingDist: Int = Hamming.distance("martha", "marhta")
-val hamming: Double = Hamming.score("martha", "marhta")
+val hammingDist: Int = Hamming.distance("martha", "marhta")  // 2
+val hamming: Double = Hamming.score("martha", "marhta")  // 0.667
 
 // Jaccard Similarity
 val jaccard: Double = Jaccard.score("karolin", "kathrin")
 
 // Jaro and Jaro Winkler
-val jaro: Double = Jaro.score("martha", "marhta")
-val jaroWinkler: Double = JaroWinkler.score("martha", "marhta")
+val jaro: Double = Jaro.score("martha", "marhta")  // 0.944
+val jaroWinkler: Double = JaroWinkler.score("martha", "marhta")  // 0.961
 
 // Levenshtein Distance
-val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")
-val levenshtein: Double = Levenshtein.score("martha", "marhta")
+val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")  // 2
+val levenshtein: Double = Levenshtein.score("martha", "marhta")  // 0.667
 
 // Longest Common Subsequence
-val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
+val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")  // 5
 
 // Needleman Wunsch
-val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta")
+val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta")  // 0.667
 
 // N-Gram Similarity and Distance
-val ngramDist: Int = NGram.distance("karolin", "kathrin")
-val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)
-val ngramSimilarity: Double = NGram.score("karolin", "kathrin")
-val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
+val ngramDist: Int = NGram.distance("karolin", "kathrin")  // 5
+val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)  // 2
+val ngramSimilarity: Double = NGram.score("karolin", "kathrin")  // 0.286
+val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)  // 0.667
 
 // Overlap Similarity
-val overlap: Double = Overlap.score("karolin", "kathrin")
-val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)
+val overlap: Double = Overlap.score("karolin", "kathrin")  // 0.286
+val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)  // 0.667
 
 // Smith Waterman Similarities
 val smithWaterman: Double = SmithWaterman.score("martha", "marhta")
 val smithWatermanGotoh: Double = SmithWatermanGotoh.score("martha", "marhta")
 
 // Tversky Similarity
-val tversky: Double = Tversky.score("karolin", "kathrin", 0.5)
+val tversky: Double = Tversky.score("karolin", "kathrin", 0.5)  // 0.333
 
 // Phonetic Similarity
-val metaphone: Boolean = Metaphone.score("merci", "mercy")
-val soundex: Boolean = Soundex.score("merci", "mercy")
+val metaphone: Boolean = Metaphone.score("merci", "mercy")  // true
+val soundex: Boolean = Soundex.score("merci", "mercy")  // true
 ```
 ---
-### Scala: Use with Implicits
+### 3. Scala: Use with Implicits
   -  To use implicits and extend the String class:  `import com.github.vickumar1981.stringdistance.StringConverter._`
 
 __Example.scala__
@@ -130,7 +133,7 @@ val jaccard: Double = "karolin".jaccard("kathrin")
 val jaro: Double = "martha".jaro("marhta")
 val jaroWinkler: Double = "martha".jaroWinkler("marhta")
 val levenshtein: Double = "martha".levenshtein("marhta")
-val needlemanWunsch: Double = "martha".needlemanWusnch("marhta")
+val needlemanWunsch: Double = "martha".needlemanWunsch("marhta")
 val ngramSimilarity: Double = "karolin".nGram("kathrin")
 val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
 val overlap: Double = "karolin".overlap("kathrin")
@@ -140,7 +143,7 @@ val smithWatermanGotoh: Double = "martha".smithWatermanGotoh("marhta")
 val tversky: Double = "karolin".tversky("kathrin", 0.5)
 
 // Distances between two strings
-val damerauDist: Int = "martha".damerauDist("marhta")
+val damerauDist: Int = "martha".damerauDist("marhta")  // 1
 val hammingDist: Int = "martha".hammingDist("marhta")
 val levenshteinDist: Int = "martha".levenshteinDist("marhta")
 val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
@@ -152,7 +155,7 @@ val metaphone: Boolean = "merci".metaphone("mercy")
 val soundex: Boolean = "merci".soundex("mercy")
 ```
 ---
-### Java Usage
+### 4. Java Usage
   -  To use in Java:  `import com.github.vickumar1981.stringdistance.util.StringDistance`
 
 __Example.java__
@@ -193,7 +196,7 @@ Boolean soundex = StringSound.soundex("merci", "mercy");
 ```
 ---
 
-### Adding your own Distance or Scoring Algorithm 
+### 5. Adding your own Distance or Scoring Algorithm 
 
 1.  Create a marker trait that extends `StringMetricAlgorithm`:
 
@@ -226,11 +229,16 @@ val customScore: Double = CustomMetric.score("hello", "hello2")
 val customDist: Int = CustomMetric.distance("hello", "hello2")
 ```
 ---
-### Reporting an Issue
+### 6. Reporting an Issue
 
 Please report any issues or bugs to the [Github issues page](https://github.com/vickumar1981/stringdistance/issues).
 
 ---
-### License
+### 7. Contributing
 
-This project is licensed under the [Apache 2 License](https://opensource.org/licenses/Apache-2.0).
+Please view the [contributing guidelines](CONTRIBUTING.md) 
+
+---
+### 8. License
+
+This project is licensed under the [Apache 2 License](LICENSE.md).
