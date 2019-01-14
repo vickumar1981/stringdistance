@@ -13,14 +13,14 @@ Requires: Java 8+, 7 or Scala 2.12, 2.11
 ---
 ### Contents
 
-1.  [Add it to your project](https://github.com/vickumar1981/stringdistance#add-it-to-your-project-)
-2.  [Using in Scala](https://github.com/vickumar1981/stringdistance#scala-usage)
-3.  [Using in Scala with implicits](https://github.com/vickumar1981/stringdistance#scala-use-with-implicits)
-4.  [Using in Java](https://github.com/vickumar1981/stringdistance#java-usage)
-5.  [Adding your own algorithm](https://github.com/vickumar1981/stringdistance#adding-your-own-distance-or-scoring-algorithm)
-6.  [Reporting an Issue](https://github.com/vickumar1981/stringdistance#reporting-an-issue)
-7.  [Contributing](https://github.com/vickumar1981/stringdistance#contributing)
-8.  [License](https://github.com/vickumar1981/stringdistance#license)
+1.  [Add it to your project](https://github.com/vickumar1981/stringdistance#1-add-it-to-your-project-)
+2.  [Using in Scala](https://github.com/vickumar1981/stringdistance#2-scala-usage)
+3.  [Using in Scala with implicits](https://github.com/vickumar1981/stringdistance#3-scala-use-with-implicits)
+4.  [Using in Java](https://github.com/vickumar1981/stringdistance#4-java-usage)
+5.  [Adding your own algorithm](https://github.com/vickumar1981/stringdistance#5-adding-your-own-distance-or-scoring-algorithm)
+6.  [Reporting an Issue](https://github.com/vickumar1981/stringdistance#6-reporting-an-issue)
+7.  [Contributing](https://github.com/vickumar1981/stringdistance#7-contributing)
+8.  [License](https://github.com/vickumar1981/stringdistance#8-license)
 
 ---
 ### 1. Add it to your project ...
