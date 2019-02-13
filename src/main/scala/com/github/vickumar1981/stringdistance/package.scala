@@ -244,15 +244,21 @@ package object stringdistance {
     def distance(s1: String, s2: String)
                 (implicit algo: DistanceAlgorithm[A]): Int =
       if (s1.isEmpty && s2.isEmpty) 0 else algo.distance(s1, s2)
-    def distance[B](s1: String, s2: String, weight: B)
-                   (implicit algo: WeightedDistanceAlgorithm[A, B]): Int =
-      if (s1.isEmpty && s2.isEmpty) 0 else algo.distance(s1, s2, weight)
     def score(s1: String, s2: String)
              (implicit algo: ScoringAlgorithm[A]): Double =
       if (s1.isEmpty && s2.isEmpty) 1d else algo.score(s1, s2)
-    def score[B](s1: String, s2: String, weight: B)
-                (implicit algo: WeightedScoringAlgorithm[A, B]): Double =
+  }
+
+  trait WeightedStringMetric[A <: StringMetricAlgorithm, B] {
+    def distance(s1: String, s2: String, weight: B)
+                (implicit algo: WeightedDistanceAlgorithm[A, B]): Int =
+      if (s1.isEmpty && s2.isEmpty) 0 else algo.distance(s1, s2, weight)
+    def score(s1: String, s2: String, weight: B)
+             (implicit algo: WeightedScoringAlgorithm[A, B]): Double =
       if (s1.isEmpty && s2.isEmpty) 1d else algo.score(s1, s2, weight)
+  }
+
+  trait StringSoundMetric[A <: StringMetricAlgorithm]{
     def score(s1: String, s2: String)
              (implicit algo: SoundScoringAlgorithm[A]): Boolean = algo.score(s1, s2)
   }
@@ -313,7 +319,7 @@ package object stringdistance {
       def longestCommonSeq(s2: String): Int = LongestCommonSeq.distance(s1, s2)
       def needlemanWunsch(s2: String, gap: ConstantGap = ConstantGap()): Double = NeedlemanWunsch.score(s1, s2, gap)
       def nGram(s2: String, nGram: Int = 1): Double = NGram.score(s1, s2, nGram)
-      def nGramDist(s2: String, nGram: Int = 1): Double = NGram.distance(s1, s2, nGram)
+      def nGramDist(s2: String, nGram: Int = 1): Int = NGram.distance(s1, s2, nGram)
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)
       def tversky(s2: String, n: Double = 1): Double = Tversky.score(s1, s2, n)
       def smithWaterman(s2: String, gap: Gap = LinearGap(gapValue = -1),

@@ -16,7 +16,8 @@ package object implicits {
       * @param s2 The 2nd String.
       * @return Returns the cosine similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, splitOn: String = Strategy.splitWord): Double = cosSimilarity(s1, s2)
+    override def score(s1: String, s2: String, splitOn: String = Strategy.splitWord): Double =
+      cosSimilarity(s1, s2, splitOn)
   }
 
   /**

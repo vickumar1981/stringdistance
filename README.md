@@ -60,11 +60,15 @@ Note: For Java 7 or Scala 2.11, please use the `stringdistance_2.11` artifact as
 __Example.scala__:
 ```scala
 // Scala example
+import com.github.vickumar1981.stringdistance.Strategy
 import com.github.vickumar1981.stringdistance.StringDistance._
 import com.github.vickumar1981.stringdistance.StringSound._
+import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
+import com.github.vickumar1981.stringdistance.implicits._
+
 
 // Cosine Similarity
-val cosSimilarity: Double = Cosine.score("hello", "chello")  // 0.935
+val cosSimilarity: Double = Cosine.score("hello", "chello", Strategy.splitWord)  // 0.935
 
 // Damerau-Levenshtein Distance
 val damerauDist: Int = Damerau.distance("martha", "marhta")  // 1
@@ -78,11 +82,11 @@ val hammingDist: Int = Hamming.distance("martha", "marhta")  // 2
 val hamming: Double = Hamming.score("martha", "marhta")  // 0.667
 
 // Jaccard Similarity
-val jaccard: Double = Jaccard.score("karolin", "kathrin")
+val jaccard: Double = Jaccard.score("karolin", "kathrin", 1)
 
 // Jaro and Jaro Winkler
 val jaro: Double = Jaro.score("martha", "marhta")  // 0.944
-val jaroWinkler: Double = JaroWinkler.score("martha", "marhta")  // 0.961
+val jaroWinkler: Double = JaroWinkler.score("martha", "marhta", 0.1)  // 0.961
 
 // Levenshtein Distance
 val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")  // 2
@@ -92,21 +96,21 @@ val levenshtein: Double = Levenshtein.score("martha", "marhta")  // 0.667
 val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")  // 5
 
 // Needleman Wunsch
-val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta")  // 0.667
+val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta", ConstantGap())  // 0.667
 
 // N-Gram Similarity and Distance
-val ngramDist: Int = NGram.distance("karolin", "kathrin")  // 5
+val ngramDist: Int = NGram.distance("karolin", "kathrin", 1)  // 5
 val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)  // 2
-val ngramSimilarity: Double = NGram.score("karolin", "kathrin")  // 0.286
+val ngramSimilarity: Double = NGram.score("karolin", "kathrin", 1)  // 0.286
 val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)  // 0.667
 
 // Overlap Similarity
-val overlap: Double = Overlap.score("karolin", "kathrin")  // 0.286
+val overlap: Double = Overlap.score("karolin", "kathrin", 1)  // 0.286
 val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)  // 0.667
 
 // Smith Waterman Similarities
-val smithWaterman: Double = SmithWaterman.score("martha", "marhta")
-val smithWatermanGotoh: Double = SmithWatermanGotoh.score("martha", "marhta")
+val smithWaterman: Double = SmithWaterman.score("martha", "marhta", (LinearGap(gapValue = -1), Integer.MAX_VALUE))
+val smithWatermanGotoh: Double = SmithWatermanGotoh.score("martha", "marhta", ConstantGap())
 
 // Tversky Similarity
 val tversky: Double = Tversky.score("karolin", "kathrin", 0.5)  // 0.333

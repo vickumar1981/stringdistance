@@ -7,6 +7,7 @@ import com.github.vickumar1981.stringdistance.impl.sound.{MetaphoneImpl, Soundex
   *
   * {{{
   * import com.github.vickumar1981.stringdistance.StringSound._
+  * import com.github.vickumar1981.stringdistance.implicits._
   *
   * // Phonetic similarity between strings
   * val metaphone: Boolean = Metaphone.score("merci", "mercy")
@@ -14,8 +15,8 @@ import com.github.vickumar1981.stringdistance.impl.sound.{MetaphoneImpl, Soundex
   * }}}
   */
 object StringSound {
-  object Metaphone extends StringMetric[MetaphoneAlgorithm]
-  object Soundex extends StringMetric[SoundexAlgorithm]
+  object Metaphone extends StringSoundMetric[MetaphoneAlgorithm]
+  object Soundex extends StringSoundMetric[SoundexAlgorithm]
 }
 
 /**
