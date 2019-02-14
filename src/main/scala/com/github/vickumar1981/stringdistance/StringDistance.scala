@@ -9,7 +9,6 @@ import com.github.vickumar1981.stringdistance.impl._
   * import com.github.vickumar1981.stringdistance.Strategy
   * import com.github.vickumar1981.stringdistance.StringDistance._
   * import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
-  * import com.github.vickumar1981.stringdistance.implicits._
   *
   * // Scores between strings
   * val cosSimilarity: Double = Cosine.score("hello", "chello", Strategy.splitWord)
