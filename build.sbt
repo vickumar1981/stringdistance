@@ -1,7 +1,7 @@
 import xerial.sbt.Sonatype._
 
 name := "stringdistance"
-version := "1.1.0"
+version := "1.1.0-SNAPSHOT"
 scalaVersion := "2.12.7"
 organization := "com.github.vickumar1981"
 description := "A fuzzy matching string distance library for Scala and Java."
@@ -41,6 +41,6 @@ coverageExcludedPackages := "<empty>;.*stringdistance.interfaces.sound.*;.*strin
 
 coverageEnabled in(Test, compile) := true
 coverageEnabled in(Compile, compile) := false
-coverageMinimum := 100
+coverageMinimum := 99
 coverageFailOnMinimum := true
 scalastyleFailOnWarning := true

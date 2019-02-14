@@ -1,9 +1,10 @@
-package com.github.vickumar1981.stringdistance
+package com.github.vickumar1981.stringdistance.implicits
 
+import com.github.vickumar1981.stringdistance._
 import com.github.vickumar1981.stringdistance.impl._
-import com.github.vickumar1981.stringdistance.impl.sound.{MetaphoneImpl, SoundexImpl}
 
-package object implicits {
+trait ScoreDefinitions {
+
   /**
     * Implicit definition of cosine similarity score for [[CosineAlgorithm]].
     */
@@ -16,23 +17,9 @@ package object implicits {
       * @param s2 The 2nd String.
       * @return Returns the cosine similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, splitOn: String = Strategy.splitWord): Double =
+    override def score(s1: String, s2: String, splitOn: String): Double =
       cosSimilarity(s1, s2, splitOn)
-  }
-
-  /**
-    * Implicit definition of damerau levenshtein distance for [[DamerauLevenshteinAlgorithm]].
-    */
-  implicit object DamerauLevenshteinDistance extends LevenshteinDistanceImpl
-    with DistanceAlgorithm[DamerauLevenshteinAlgorithm] with ScorableFromDistance[DamerauLevenshteinAlgorithm] {
-    /**
-      * The score method takes two strings and returns the damerau levenshtein distance between them.
-      *
-      * @param s1 The 1st String.
-      * @param s2 The 2nd String.
-      * @return Returns the damerau levenshtein distance between Strings s1 and s2.
-      */
-    override def distance(s1: String, s2: String): Int = damerauLevenshtein(s1, s2)
+    override def score(s1: String, s2: String): Double = cosSimilarity(s1, s2)
   }
 
   /**
@@ -50,20 +37,6 @@ package object implicits {
     override def score(s1: String, s2: String): Double = diceCoefficient(s1, s2)
   }
 
-  /**
-    * Implicit definition of hamming distance for [[HammingAlgorithm]].
-    */
-  implicit object HammingDistance extends HammingImpl
-    with DistanceAlgorithm[HammingAlgorithm] with ScorableFromDistance[HammingAlgorithm] {
-    /**
-      * The distance method takes two strings and returns the hamming distance between them.
-      *
-      * @param s1 The 1st String.
-      * @param s2 The 2nd String.
-      * @return Returns the hamming distance between Strings s1 and s2.
-      */
-    override def distance(s1: String, s2: String): Int = hamming(s1, s2)
-  }
 
   /**
     * Implicit definition of jaccard score for [[JaccardAlgorithm]].
@@ -76,7 +49,8 @@ package object implicits {
       * @param s2 The 2nd String.
       * @return Returns the jaccard score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, n: Int = 1): Double = jaccard(s1, s2, n)
+    override def score(s1: String, s2: String, n: Int): Double = jaccard(s1, s2, n)
+    override def score(s1: String, s2: String): Double = jaccard(s1, s2)
   }
 
   /**
@@ -105,36 +79,7 @@ package object implicits {
       * @return Returns the jaro winkler score between Strings s1 and s2.
       */
     override def score(s1: String, s2: String, weight: Double = 0.1): Double = jaroWinkler(s1, s2, weight)
-  }
-
-  /**
-    * Implicit definition of levenshtein distance for [[LevenshteinAlgorithm]].
-    */
-  implicit object LevenshteinDistance extends LevenshteinDistanceImpl
-    with DistanceAlgorithm[LevenshteinAlgorithm] with ScorableFromDistance[LevenshteinAlgorithm] {
-    /**
-      * The score method takes two strings and returns the levenshtein distance between them.
-      *
-      * @param s1 The 1st String.
-      * @param s2 The 2nd String.
-      * @return Returns the levenshtein distance between Strings s1 and s2.
-      */
-    override def distance(s1: String, s2: String): Int = levenshtein(s1, s2)
-  }
-
-  /**
-    * Implicit definition of longest common subsequence for [[CosineAlgorithm]].
-    */
-  implicit object LongestCommonSeqDistance extends LongestCommonSeqImpl
-    with DistanceAlgorithm[LongestCommonSeqAlorithm] {
-    /**
-      * The score method takes two strings and returns longest common subsequence distance between them.
-      *
-      * @param s1 The 1st String.
-      * @param s2 The 2nd String.
-      * @return Returns the longest common subsequence distance between Strings s1 and s2.
-      */
-    override def distance(s1: String, s2: String): Int = longestCommonSeq(s1, s2)
+    override def score(s1: String, s2: String): Double = jaroWinkler(s1, s2)
   }
 
   /**
@@ -151,20 +96,7 @@ package object implicits {
       */
     override def score(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double =
       needleman(s1, s2, gap)
-  }
-
-  /**
-    * Implicit definition of n-gram distance for [[NGramAlgorithm]].
-    */
-  implicit object NGramDistance extends NGramImpl with WeightedDistanceAlgorithm[NGramAlgorithm, Int] {
-    /**
-      * The score method takes two strings and returns n-gram similarity between them.
-      *
-      * @param s1 The 1st String.
-      * @param s2 The 2nd String.
-      * @return Returns the n-gram distance between Strings s1 and s2.
-      */
-    override def distance(s1: String, s2: String, n: Int = 1): Int = nGramDist(s1, s2, n)
+    override def score(s1: String, s2: String): Double = needleman(s1, s2)
   }
 
   /**
@@ -178,7 +110,8 @@ package object implicits {
       * @param s2 The 2nd String.
       * @return Returns the n-gram similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, n: Int = 1): Double = nGram(s1, s2, n)
+    override def score(s1: String, s2: String, n: Int): Double = nGram(s1, s2, n)
+    override def score(s1: String, s2: String): Double = nGram(s1, s2)
   }
 
   /**
@@ -193,20 +126,7 @@ package object implicits {
       * @return Returns the overlap similarity between Strings s1 and s2.
       */
     override def score(s1: String, s2: String, n: Int = 1): Double = overlap(s1, s2, n)
-  }
-
-  /**
-    * Implicit definition of metaphone score for [[MetaphoneAlgorithm]].
-    */
-  implicit object MetaphoneScore extends MetaphoneImpl with SoundScoringAlgorithm[MetaphoneAlgorithm] {
-    /**
-      * The score method takes two strings and returns whether they sound alike.
-      *
-      * @param s1 The 1st String.
-      * @param s2 The 2nd String.
-      * @return Returns true or false if String s1 sounds like string s2.
-      */
-    override def score(s1: String, s2: String): Boolean = metaphone(s1, s2)
+    override def score(s1: String, s2: String): Double = overlap(s1, s2)
   }
 
   /**
@@ -221,9 +141,9 @@ package object implicits {
       * @param s2 The 2nd String.
       * @return Returns the smith waterman similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String,
-                       gapAndWindowSize: (Gap, Int) = (LinearGap(gapValue = 1), Integer.MAX_VALUE)): Double =
+    override def score(s1: String, s2: String, gapAndWindowSize: (Gap, Int)): Double =
       smithWaterman(s1, s2, gapAndWindowSize._1, gapAndWindowSize._2)
+    override def score(s1: String, s2: String): Double = smithWaterman(s1, s2)
   }
 
   /**
@@ -238,22 +158,9 @@ package object implicits {
       * @param s2 The 2nd String.
       * @return Returns the smith waterman gotoh similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double =
+    override def score(s1: String, s2: String, gap: ConstantGap): Double =
       smithWatermanGotoh(s1, s2, gap)
-  }
-
-  /**
-    * Implicit definition of soundex score for [[SoundexAlgorithm]].
-    */
-  implicit object SoundexScore extends SoundexImpl with SoundScoringAlgorithm[SoundexAlgorithm] {
-    /**
-      * The score method takes two strings and returns whether they sound alike.
-      *
-      * @param s1 The 1st String.
-      * @param s2 The 2nd String.
-      * @return Returns true or false if String s1 sounds like string s2.
-      */
-    override def score(s1: String, s2: String): Boolean = soundex(s1, s2)
+    override def score(s1: String, s2: String): Double = smithWatermanGotoh(s1, s2)
   }
 
   /**
@@ -267,6 +174,7 @@ package object implicits {
       * @param s2 The 2nd String.
       * @return Returns the tversky score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, n: Double = 1): Double = tversky(s1, s2, n)
+    override def score(s1: String, s2: String, n: Double): Double = tversky(s1, s2, n)
+    override def score(s1: String, s2: String): Double = tversky(s1, s2)
   }
 }

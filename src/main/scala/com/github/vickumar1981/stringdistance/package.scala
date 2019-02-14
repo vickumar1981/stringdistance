@@ -1,6 +1,7 @@
 package com.github.vickumar1981
 
 import com.github.vickumar1981.stringdistance.impl.{ConstantGap, Gap, LinearGap}
+import com.github.vickumar1981.stringdistance.implicits.{DistanceDefinitions, ScoreDefinitions, SoundDefinitions}
 
 
 /** Provides classes for calculating distances and fuzzy match similarities between two strings.  Also provides
@@ -37,8 +38,7 @@ import com.github.vickumar1981.stringdistance.impl.{ConstantGap, Gap, LinearGap}
   *
   *
   */
-package object stringdistance {
-  import implicits._
+package object stringdistance extends DistanceDefinitions with ScoreDefinitions with SoundDefinitions {
 
   /**
     * A marker interface for the string metric algorithm.
@@ -168,6 +168,7 @@ package object stringdistance {
       * @return Returns the fuzzy score between Strings s1 and s2.
       */
     def distance(s1: String, s2: String, weight: B): Int
+    def distance(s1: String, s2: String): Int
   }
 
   /**
@@ -197,6 +198,7 @@ package object stringdistance {
       * @return Returns the fuzzy score between Strings s1 and s2.
       */
     def score(s1: String, s2: String, weight: B): Double
+    def score(s1: String, s2: String): Double
   }
 
   /**
@@ -253,9 +255,15 @@ package object stringdistance {
     def distance(s1: String, s2: String, weight: B)
                 (implicit algo: WeightedDistanceAlgorithm[A, B]): Int =
       if (s1.isEmpty && s2.isEmpty) 0 else algo.distance(s1, s2, weight)
+    def distance(s1: String, s2: String)
+                (implicit algo: WeightedDistanceAlgorithm[A, B]): Int =
+      if (s1.isEmpty && s2.isEmpty) 0 else algo.distance(s1, s2)
     def score(s1: String, s2: String, weight: B)
              (implicit algo: WeightedScoringAlgorithm[A, B]): Double =
       if (s1.isEmpty && s2.isEmpty) 1d else algo.score(s1, s2, weight)
+    def score(s1: String, s2: String)
+             (implicit algo: WeightedScoringAlgorithm[A, B]): Double =
+      if (s1.isEmpty && s2.isEmpty) 1d else algo.score(s1, s2)
   }
 
   trait StringSoundMetric[A <: StringMetricAlgorithm]{
