@@ -1,8 +1,8 @@
-addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.7")
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.9")
 
 addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.3")
 
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.1")
+addSbtPlugin("io.crashbox" % "sbt-gpg" % "0.2.0")
 
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
 
