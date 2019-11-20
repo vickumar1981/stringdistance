@@ -29,7 +29,7 @@ __Using sbt:__
 
 In `build.sbt`:
 ```scala
-libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.1.2"
+libraryDependencies += "com.github.vickumar1981" %% "stringdistance" % "1.1.3"
 ```
 
 __Using gradle:__
@@ -37,7 +37,7 @@ __Using gradle:__
 In `build.gradle`:
 ```groovy
 dependencies {
-    compile 'com.github.vickumar1981:stringdistance_2.12:1.1.2'
+    compile 'com.github.vickumar1981:stringdistance_2.12:1.1.3'
 }
 ```
 
@@ -48,7 +48,7 @@ In `pom.xml`:
 <dependency>
     <groupId>com.github.vickumar1981</groupId>
     <artifactId>stringdistance_2.12</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
 </dependency>
 ```
 
