@@ -1,10 +1,8 @@
 package com.github.vickumar1981.stringdistance.impl
 
-import com.github.vickumar1981.stringdistance.Strategy
-
-trait CosSimilarityImpl {
-  private def termFrequencyMap(terms: Seq[String]): Map[String, Int] = {
-    val retMap = scala.collection.mutable.Map[String, Int]()
+trait CosSimilarityImpl[T] {
+  private def termFrequencyMap(terms: Array[Array[T]]): Map[Array[T], Int] = {
+    val retMap = scala.collection.mutable.Map[Array[T], Int]()
     terms.foreach {
       t => {
         val n = retMap.getOrElse(t, 0)
@@ -14,9 +12,9 @@ trait CosSimilarityImpl {
     retMap.toMap
   }
 
-  protected def cosSimilarity(s1: String, s2: String, splitOn: String = Strategy.splitWord): Double = {
-    val s1TermFreqs = termFrequencyMap(s1.split(splitOn))
-    val s2TermFreqs = termFrequencyMap(s2.split(splitOn))
+  protected def cosSimilarity(s1: Array[T], s2: Array[T]): Double = {
+    val s1TermFreqs = termFrequencyMap(s1.map(e => Array(e)))
+    val s2TermFreqs = termFrequencyMap(s2.map(e => Array(e)))
     val intersection = (s1TermFreqs.keySet intersect s2TermFreqs.keySet).toList
     val dotProduct = intersection.map { i => s1TermFreqs(i) * s2TermFreqs(i)}.sum
     val magnitudeS1 = s1TermFreqs.values.map { i => i * i }.sum

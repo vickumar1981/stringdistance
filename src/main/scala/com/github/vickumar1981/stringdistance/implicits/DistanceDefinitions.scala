@@ -4,11 +4,10 @@ import com.github.vickumar1981.stringdistance._
 import com.github.vickumar1981.stringdistance.impl.{HammingImpl, LevenshteinDistanceImpl, LongestCommonSeqImpl, NGramImpl}
 
 trait DistanceDefinitions {
-
   /**
     * Implicit definition of damerau levenshtein distance for [[DamerauLevenshteinAlgorithm]].
     */
-  implicit object DamerauLevenshteinDistance extends LevenshteinDistanceImpl
+  implicit object DamerauLevenshteinDistance extends LevenshteinDistanceImpl[Char]
     with DistanceAlgorithm[DamerauLevenshteinAlgorithm] with ScorableFromDistance[DamerauLevenshteinAlgorithm] {
     /**
       * The score method takes two strings and returns the damerau levenshtein distance between them.
@@ -17,7 +16,7 @@ trait DistanceDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the damerau levenshtein distance between Strings s1 and s2.
       */
-    override def distance(s1: String, s2: String): Int = damerauLevenshtein(s1, s2)
+    override def distance(s1: String, s2: String): Int = damerauLevenshtein(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -38,7 +37,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of levenshtein distance for [[LevenshteinAlgorithm]].
     */
-  implicit object LevenshteinDistance extends LevenshteinDistanceImpl
+  implicit object LevenshteinDistance extends LevenshteinDistanceImpl[Char]
     with DistanceAlgorithm[LevenshteinAlgorithm] with ScorableFromDistance[LevenshteinAlgorithm] {
     /**
       * The score method takes two strings and returns the levenshtein distance between them.
@@ -47,7 +46,7 @@ trait DistanceDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the levenshtein distance between Strings s1 and s2.
       */
-    override def distance(s1: String, s2: String): Int = levenshtein(s1, s2)
+    override def distance(s1: String, s2: String): Int = levenshtein(s1.toCharArray, s2.toCharArray)
   }
 
   /**

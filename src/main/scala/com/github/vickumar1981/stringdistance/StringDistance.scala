@@ -82,7 +82,7 @@ class JaroImplWrapper extends JaroImpl
 /**
   * Jave Wrapper for levenshtein distance.
   */
-class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
+class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl[Char]
 
 /**
   * Jave Wrapper for longest comment sequence.
