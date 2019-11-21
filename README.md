@@ -99,8 +99,8 @@ val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta", Constant
 // N-Gram Similarity and Distance
 val ngramDist: Int = NGram.distance("karolin", "kathrin", 1)  // 5
 val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)  // 2
-val ngramSimilarity: Double = NGram.score("karolin", "kathrin", 1)  // 0.286
-val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)  // 0.667
+val ngramSimilarity: Double = NGram.score("karolin", "kathrin", 1)  // 0.714
+val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)  // 0.333
 
 // Overlap Similarity
 val overlap: Double = Overlap.score("karolin", "kathrin", 1)  // 0.286
@@ -139,7 +139,7 @@ val needlemanWunsch: Double = "martha".needlemanWunsch("marhta")
 val ngramSimilarity: Double = "karolin".nGram("kathrin")
 val bigramSimilarity: Double = "karolin".nGram("kathrin", 2)
 val overlap: Double = "karolin".overlap("kathrin")
-val overlapBiGram: Double "karolin".overlap("kathrin", 2)
+val overlapBiGram: Double = "karolin".overlap("kathrin", 2)
 val smithWaterman: Double = "martha".smithWaterman("marhta")
 val smithWatermanGotoh: Double = "martha".smithWatermanGotoh("marhta")
 val tversky: Double = "karolin".tversky("kathrin", 0.5)
