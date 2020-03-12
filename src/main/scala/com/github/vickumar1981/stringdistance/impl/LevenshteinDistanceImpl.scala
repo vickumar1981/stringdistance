@@ -1,6 +1,7 @@
 package com.github.vickumar1981.stringdistance.impl
 
 import scala.math.min
+import scala.language.postfixOps
 
 trait LevenshteinDistanceImpl {
   protected def levenshtein(a: String, b: String): Int =

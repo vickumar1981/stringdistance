@@ -1,8 +1,9 @@
-import org.scalatest.{FlatSpec, Matchers}
 import com.github.vickumar1981.stringdistance.StringConverter._
 import com.github.vickumar1981.stringdistance.impl.ConstantGap
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class TestInvalidArguments extends FlatSpec with Matchers {
+class TestInvalidArguments extends AnyFlatSpec with Matchers {
   "Jaccard score" should "only accept a positive number for n-gram size" in {
     assertThrows[IllegalArgumentException] { "abc".jaccard("abc", -1) }
   }

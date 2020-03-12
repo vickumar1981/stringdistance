@@ -1,7 +1,7 @@
 import com.github.vickumar1981.stringdistance.StringDistance._
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class TestValidArguments extends FlatSpec {
+class TestValidArguments extends AnyFlatSpec {
   "All distances" should "be greater than zero for non-like strings" in {
     assert(Damerau.distance("martha", "marhta") > 0)
     assert(Hamming.distance("martha", "marhta") > 0)

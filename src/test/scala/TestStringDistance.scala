@@ -1,11 +1,12 @@
-import org.scalatest._
 import com.github.vickumar1981.stringdistance.StringConverter._
 import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
 
 import scala.math.BigDecimal
 import fixtures.TestCases.{precision, testCases}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class TestStringDistance extends FlatSpec with Matchers {
+class TestStringDistance extends AnyFlatSpec with Matchers {
   private def roundToPrecision(v: Double) =
     BigDecimal(v).setScale(precision, BigDecimal.RoundingMode.HALF_UP).toDouble
 

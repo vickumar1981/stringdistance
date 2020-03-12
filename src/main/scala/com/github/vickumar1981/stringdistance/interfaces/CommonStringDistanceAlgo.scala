@@ -30,7 +30,7 @@ trait CommonStringDistanceAlgo {
           if (strCopy(j) == ch) {
             foundIt = true
             commonChars.append(ch)
-            strCopy.setCharAt(j, '\0')
+            strCopy.setCharAt(j, '\u0000')
           }
           j += 1
         }

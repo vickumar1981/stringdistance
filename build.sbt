@@ -1,8 +1,8 @@
 import xerial.sbt.Sonatype._
 
 name := "stringdistance"
-version := "1.1.4"
-scalaVersion := "2.12.7"
+version := "1.1.5"
+scalaVersion := "2.13.1"
 organization := "com.github.vickumar1981"
 description := "A fuzzy matching string distance library for Scala and Java."
 sonatypeProjectHosting := Some(GitHubHosting("vickumar1981", "stringdistance", "vickumar@gmail.com"))
@@ -10,7 +10,7 @@ publishMavenStyle := true
 licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 pomIncludeRepository := { _ => false }
 publishArtifact in Test := false
-crossScalaVersions := Seq("2.11.11", "2.12.7")
+crossScalaVersions := Seq("2.11.11", "2.12.7", "2.13.1")
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false, includeDependency = false)
 
 // Add sonatype repository settings
@@ -22,11 +22,11 @@ publishTo := Some(
 )
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
-assemblyJarName := "stringdistance_2.12-" + version.value + ".jar"
+assemblyJarName := "stringdistance_2.13-" + version.value + ".jar"
 test in assembly := {}
 
-libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1" % Test
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % Test
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.0-M4" % Test
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0-M4" % Test
 
 lazy val testScalastyle = taskKey[Unit]("testScalastyle")
 testScalastyle := scalastyle.in(Test).toTask("").value
