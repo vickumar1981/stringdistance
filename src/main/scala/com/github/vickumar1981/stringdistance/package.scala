@@ -131,15 +131,6 @@ package object stringdistance extends DistanceDefinitions with ScoreDefinitions 
     */
   trait TverskyAlgorithm extends StringMetricAlgorithm
 
-  /**
-    * The Strategy object has two strategies(reg ex) expressions on which to split input.
-    * [[Strategy.splitWord]] splits a word into a sequence of characters.
-    * [[Strategy.splitSentence]] splits a sentence into a sequence of words.
-    */
-  object Strategy {
-    final lazy val splitWord = "(?!^)"
-    final lazy val splitSentence = "\\W+"
-  }
 
   /**
     * A type class to extend a distance method to [[StringMetricAlgorithm]].
@@ -312,7 +303,7 @@ package object stringdistance extends DistanceDefinitions with ScoreDefinitions 
     import StringSound._
 
     implicit class StringToStringDistanceConverter(s1: String) {
-      def cosine(s2: String, splitOn: String = Strategy.splitWord): Double = Cosine.score(s1, s2, splitOn)
+      def cosine(s2: String): Double = Cosine.score(s1, s2)
       def damerau(s2: String): Double = Damerau.score(s1, s2)
       def damerauDist(s2: String): Int = Damerau.distance(s1, s2)
       def diceCoefficient(s2: String): Double = DiceCoefficient.score(s1, s2)

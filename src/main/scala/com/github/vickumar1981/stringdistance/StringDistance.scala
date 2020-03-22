@@ -57,7 +57,7 @@ object StringDistance {
 /**
   * Jave Wrapper for cosine similarity.
   */
-class CosineSimilarityImplWrapper extends CosSimilarityImpl
+class CosineSimilarityImplWrapper extends CosSimilarityImpl[Char]
 
 /**
   * Jave Wrapper for dice coefficient similarity.

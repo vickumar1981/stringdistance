@@ -17,9 +17,6 @@ public class StringDistance {
     private final static OverlapImpl overLap = new OverlapImpl();
     private final static SmithWatermanImpl smithWaterman = new SmithWatermanImpl();
 
-    private final static String splitOnWord = "(?!^)";
-    private final static String splitOnSentence = "\\W+";
-
     private static Double scoreFromDistance(String s1, String s2, Integer distance) {
         int maxLen = Math.max(s1.length(), s2.length());
         int minLen = maxLen - distance;
@@ -30,11 +27,7 @@ public class StringDistance {
     }
 
     public static Double cosine(String s1, String s2) {
-        return cosine(s1, s2, splitOnWord);
-    }
-
-    public static Double cosine(String s1, String s2, String splitOn) {
-        return cosine.cosSimilarity(s1, s2, splitOn);
+        return cosine.cosSimilarity(s1.toCharArray(), s2.toCharArray());
     }
 
     public static Double damerau(String s1, String s2) {
@@ -42,7 +35,7 @@ public class StringDistance {
     }
 
     public static Integer damerauDist(String s1, String s2) {
-        return levenshtein.damerauLevenshtein(s1, s2);
+        return levenshtein.damerauLevenshtein(s1.toCharArray(), s2.toCharArray());
     }
 
     public static Double diceCoefficient(String s1, String s2) {
@@ -78,7 +71,7 @@ public class StringDistance {
     }
 
     public static Integer levenshteinDist(String s1, String s2) {
-        return levenshtein.levenshtein(s1, s2);
+        return levenshtein.levenshtein(s1.toCharArray(), s2.toCharArray());
     }
 
     public static Integer longestCommonSeq(String s1, String s2) {

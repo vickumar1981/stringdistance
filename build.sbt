@@ -36,6 +36,6 @@ coverageExcludedPackages := "<empty>;.*stringdistance.interfaces.sound.*;.*strin
 
 coverageEnabled in(Test, compile) := true
 coverageEnabled in(Compile, compile) := false
-coverageMinimum := 99
+coverageMinimum := 98
 coverageFailOnMinimum := true
 scalastyleFailOnWarning := true
