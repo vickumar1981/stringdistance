@@ -47,12 +47,14 @@ public class StringDistance {
     }
 
     public static Integer hammingDist(String s1, String s2) {
-        return hamming.hamming(s1, s2);
+        return hamming.hamming(s1.toCharArray(), s2.toCharArray());
     }
 
     public static Double jaccard(String s1, String s2) { return jaccard(s1, s2, 1); }
 
-    public static Double jaccard(String s1, String s2, Integer n) { return jaccard.jaccard(s1, s2, n); }
+    public static Double jaccard(String s1, String s2, Integer n) {
+        return jaccard.jaccard(s1.toCharArray(), s2.toCharArray(), n);
+    }
 
     public static Double jaroWinkler(String s1, String s2) {
         return jaroWinkler(s1, s2, 0.1);
@@ -88,15 +90,20 @@ public class StringDistance {
 
     public static Integer nGramDist(String s1, String s2) { return nGramDist(s1, s2, 1); }
 
-    public static Integer nGramDist(String s1, String s2, Integer n) { return ngram.nGramDist(s1, s2, n); }
+    public static Integer nGramDist(String s1, String s2, Integer n) {
+        return ngram.nGramDist(s1.toCharArray(), s2.toCharArray(), n);
+    }
 
     public static Double nGram(String s1, String s2) { return nGram(s1, s2, 1); }
 
-    public static Double nGram(String s1, String s2, Integer n) { return ngram.nGram(s1, s2, n); }
+    public static Double nGram(String s1, String s2, Integer n) {
+        return ngram.nGram(s1.toCharArray(), s2.toCharArray(), n);
+    }
 
     public static Double overlap(String s1, String s2) { return overlap(s1, s2, 1); }
 
-    public static Double overlap(String s1, String s2, Integer n) { return overLap.overlap(s1, s2, n); }
+    public static Double overlap(String s1, String s2, Integer n) {
+        return overLap.overlap(s1.toCharArray(), s2.toCharArray(), n); }
 
     public static Double smithWaterman(String s1, String s2) {
         return smithWaterman(s1, s2, new LinearGap(1d, -1d, -1d));
@@ -120,5 +127,7 @@ public class StringDistance {
 
     public static Double tversky(String s1, String s2) { return tversky(s1, s2, 1d); }
 
-    public static Double tversky(String s1, String s2, Double n) { return jaccard.tversky(s1, s2, n); }
+    public static Double tversky(String s1, String s2, Double n) {
+        return jaccard.tversky(s1.toCharArray(), s2.toCharArray(), n);
+    }
 }

@@ -22,7 +22,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of hamming distance for [[HammingAlgorithm]].
     */
-  implicit object HammingDistance extends HammingImpl
+  implicit object HammingDistance extends HammingImpl[Char]
     with DistanceAlgorithm[HammingAlgorithm] with ScorableFromDistance[HammingAlgorithm] {
     /**
       * The distance method takes two strings and returns the hamming distance between them.
@@ -31,7 +31,7 @@ trait DistanceDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the hamming distance between Strings s1 and s2.
       */
-    override def distance(s1: String, s2: String): Int = hamming(s1, s2)
+    override def distance(s1: String, s2: String): Int = hamming(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -67,7 +67,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of n-gram distance for [[NGramAlgorithm]].
     */
-  implicit object NGramDistance extends NGramImpl with WeightedDistanceAlgorithm[NGramAlgorithm, Int] {
+  implicit object NGramDistance extends NGramImpl[Char] with WeightedDistanceAlgorithm[NGramAlgorithm, Int] {
     /**
       * The score method takes two strings and returns n-gram similarity between them.
       *
@@ -75,7 +75,7 @@ trait DistanceDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the n-gram distance between Strings s1 and s2.
       */
-    override def distance(s1: String, s2: String, n: Int): Int = nGramDist(s1, s2, n)
-    override def distance(s1: String, s2: String): Int = nGramDist(s1, s2)
+    override def distance(s1: String, s2: String, n: Int): Int = nGramDist(s1.toCharArray, s2.toCharArray, n)
+    override def distance(s1: String, s2: String): Int = nGramDist(s1.toCharArray, s2.toCharArray)
   }
 }

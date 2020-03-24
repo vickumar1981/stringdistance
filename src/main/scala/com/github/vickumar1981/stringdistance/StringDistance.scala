@@ -55,58 +55,58 @@ object StringDistance {
 }
 
 /**
-  * Jave Wrapper for cosine similarity.
+  * Java Wrapper for cosine similarity.
   */
 class CosineSimilarityImplWrapper extends CosSimilarityImpl[Char]
 
 /**
-  * Jave Wrapper for dice coefficient similarity.
+  * Java Wrapper for dice coefficient similarity.
   */
 class DiceCoefficientImplWrapper extends DiceCoefficientImpl[Char]
 
 /**
-  * Jave Wrapper for hamming distance.
+  * Java Wrapper for hamming distance.
   */
-class HammingImplWrapper extends HammingImpl
+class HammingImplWrapper extends HammingImpl[Char]
 
 /**
-  * Jave Wrapper for jaccard similarity.
+  * Java Wrapper for jaccard similarity.
   */
-class JaccardImplWrapper extends JaccardImpl
+class JaccardImplWrapper extends JaccardImpl[Char]
 
 /**
-  * Jave Wrapper for jaro and jaro winkler similarity.
+  * Java Wrapper for jaro and jaro winkler similarity.
   */
 class JaroImplWrapper extends JaroImpl
 
 /**
-  * Jave Wrapper for levenshtein distance.
+  * Java Wrapper for levenshtein distance.
   */
 class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl[Char]
 
 /**
-  * Jave Wrapper for longest comment sequence.
+  * Java Wrapper for longest comment sequence.
   */
 class LongestCommonSeqWrapper extends LongestCommonSeqImpl
 
 /**
-  * Jave Wrapper for needleman wunsch similarity.
+  * Java Wrapper for needleman wunsch similarity.
   */
 class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl
 
 /**
-  * Jave Wrapper for n-gram similarity.
+  * Java Wrapper for n-gram similarity.
   */
-class NGramImplWrapper extends NGramImpl
+class NGramImplWrapper extends NGramImpl[Char]
 
 /**
-  * Jave Wrapper for overlap similarity.
+  * Java Wrapper for overlap similarity.
   */
-class OverlapImplWrapper extends OverlapImpl
+class OverlapImplWrapper extends OverlapImpl[Char]
 
 
 /**
-  * Jave Wrapper for smith waterman similarity.
+  * Java Wrapper for smith waterman similarity.
   */
 class SmithWatermanImplWrapper extends SmithWatermanImpl
 
