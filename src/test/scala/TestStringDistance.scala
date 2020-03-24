@@ -134,11 +134,8 @@ class TestStringDistance extends AnyFlatSpec with Matchers {
     testCases.filter(t => t.s1.length == t.s2.length && t.damerau.isDefined).map(t => {
       val needlemanWunsch = t.s1.needlemanWunsch(
         t.s2,
-        ConstantGap(
-          matchValue = 1,
-          misMatchValue = -1,
-          gapValue = 0
-        ))
+        ConstantGap(misMatchValue = -1)
+      )
       val damerau = t.s1.damerau(t.s2)
       roundToPrecision(needlemanWunsch) should be (roundToPrecision(damerau))
     })
@@ -149,7 +146,6 @@ class TestStringDistance extends AnyFlatSpec with Matchers {
       val needlemanWunsch = t.s1.needlemanWunsch(
         t.s2,
         ConstantGap(
-          matchValue = 1,
           misMatchValue = -1,
           gapValue = -1
         ))
@@ -171,7 +167,6 @@ class TestStringDistance extends AnyFlatSpec with Matchers {
       val smithWaterman = t.s1.smithWaterman(
         t.s2,
         LinearGap(
-          matchValue = 1,
           misMatchValue = -1,
           gapValue = -1
         ))

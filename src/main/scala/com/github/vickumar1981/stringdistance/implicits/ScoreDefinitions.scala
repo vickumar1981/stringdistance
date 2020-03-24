@@ -10,7 +10,7 @@ trait ScoreDefinitions {
     * Implicit definition of cosine similarity score for [[CosineAlgorithm]].
     */
   implicit object CosSimilarityScore extends CosSimilarityImpl[Char]
-    with WeightedScoringAlgorithm[CosineAlgorithm, String] {
+    with ScoringAlgorithm[CosineAlgorithm] {
     /**
       * The score method takes two strings and returns the cosine similarity between them.
       *
@@ -18,8 +18,6 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the cosine similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, splitOn: String): Double =
-      cosSimilarity(s1.toCharArray, s2.toCharArray)
     override def score(s1: String, s2: String): Double = cosSimilarity(s1.toCharArray, s2.toCharArray)
   }
 

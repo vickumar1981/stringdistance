@@ -62,13 +62,12 @@ In `pom.xml`:
 __Example.scala__:
 ```scala
 // Scala example
-import com.github.vickumar1981.stringdistance.Strategy
 import com.github.vickumar1981.stringdistance.StringDistance._
 import com.github.vickumar1981.stringdistance.StringSound._
 import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
 
 // Cosine Similarity
-val cosSimilarity: Double = Cosine.score("hello", "chello", Strategy.splitWord)  // 0.935
+val cosSimilarity: Double = Cosine.score("hello", "chello")  // 0.935
 
 // Damerau-Levenshtein Distance
 val damerauDist: Int = Damerau.distance("martha", "marhta")  // 1

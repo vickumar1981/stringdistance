@@ -6,12 +6,11 @@ import com.github.vickumar1981.stringdistance.impl._
   * Main class to organize functionality of different string distance algorithms
   *
   * {{{
-  * import com.github.vickumar1981.stringdistance.Strategy
   * import com.github.vickumar1981.stringdistance.StringDistance._
   * import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
   *
   * // Scores between strings
-  * val cosSimilarity: Double = Cosine.score("hello", "chello", Strategy.splitWord)
+  * val cosSimilarity: Double = Cosine.score("hello", "chello")
   * val damerau: Double = Damerau.score("martha", "marhta")
   * val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
   * val hamming: Double = Hamming.score("martha", "marhta")
@@ -37,7 +36,7 @@ import com.github.vickumar1981.stringdistance.impl._
   * }}}
   */
 object StringDistance {
-  object Cosine extends WeightedStringMetric[CosineAlgorithm, String]
+  object Cosine extends StringMetric[CosineAlgorithm]
   object Damerau extends StringMetric[DamerauLevenshteinAlgorithm]
   object DiceCoefficient extends StringMetric[DiceCoefficientAlgorithm]
   object Hamming extends StringMetric[HammingAlgorithm]
