@@ -56,7 +56,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of jaro score for [[JaroAlgorithm]].
     */
-  implicit object JaroScore extends JaroImpl with ScoringAlgorithm[JaroAlgorithm] {
+  implicit object JaroScore extends JaroImpl[Char] with ScoringAlgorithm[JaroAlgorithm] {
     /**
       * The score method takes two strings and returns the jaro score between them.
       *
@@ -64,13 +64,13 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the jaro score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String): Double = jaro(s1, s2)
+    override def score(s1: String, s2: String): Double = jaro(s1.toCharArray, s2.toCharArray)
   }
 
   /**
     * Implicit definition of jaro winkler score for [[JaroWinklerAlgorithm]].
     */
-  implicit object JaroWinklerScore extends JaroImpl with WeightedScoringAlgorithm[JaroWinklerAlgorithm, Double] {
+  implicit object JaroWinklerScore extends JaroImpl[Char] with WeightedScoringAlgorithm[JaroWinklerAlgorithm, Double] {
     /**
       * The score method takes two strings and returns the jaro winkler score between them.
       *
@@ -78,8 +78,9 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the jaro winkler score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, weight: Double = 0.1): Double = jaroWinkler(s1, s2, weight)
-    override def score(s1: String, s2: String): Double = jaroWinkler(s1, s2)
+    override def score(s1: String, s2: String, weight: Double = 0.1): Double =
+      jaroWinkler(s1.toCharArray, s2.toCharArray, weight)
+    override def score(s1: String, s2: String): Double = jaroWinkler(s1.toCharArray, s2.toCharArray)
   }
 
   /**

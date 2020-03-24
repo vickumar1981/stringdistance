@@ -77,7 +77,7 @@ class JaccardImplWrapper extends JaccardImpl[Char]
 /**
   * Java Wrapper for jaro and jaro winkler similarity.
   */
-class JaroImplWrapper extends JaroImpl
+class JaroImplWrapper extends JaroImpl[Char]
 
 /**
   * Java Wrapper for levenshtein distance.

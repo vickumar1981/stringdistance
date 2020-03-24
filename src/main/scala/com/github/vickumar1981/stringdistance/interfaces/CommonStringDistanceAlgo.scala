@@ -1,9 +1,12 @@
 package com.github.vickumar1981.stringdistance.interfaces
 
-trait CommonStringDistanceAlgo {
+import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
+
+trait CommonStringDistanceAlgo[T] {
   final private lazy val MIN_PREFIX_LENGTH = 4
 
-  protected def minStartPrefix(s1: String, s2: String, minPrefixLen: Int = MIN_PREFIX_LENGTH): Int = {
+  protected def minStartPrefix(s1: Array[T], s2: Array[T], minPrefixLen: Int = MIN_PREFIX_LENGTH): Int = {
     var isSame = true
     var minPrefix = 0
     s1.zipWithIndex.foreach{
@@ -17,9 +20,9 @@ trait CommonStringDistanceAlgo {
     Math.min(minPrefix, minPrefixLen)
   }
 
-  protected def getCommonChars(s1: String, s2: String, halfLen: Int): String = {
-    val commonChars = new StringBuilder()
-    val strCopy = new StringBuilder(s2)
+  protected def getCommonChars(s1: List[T], s2: List[T], halfLen: Int): List[T] = {
+    val commonChars: mutable.ListBuffer[T] = ListBuffer.empty[T]
+    val strCopy: mutable.ListBuffer[T] = ListBuffer.from(s2)
     var n = s1.length
     val m = s2.length
     s1.zipWithIndex.foreach{
@@ -29,12 +32,12 @@ trait CommonStringDistanceAlgo {
         while (!foundIt && j <= Math.min(chIndex + halfLen, m - 1)) {
           if (strCopy(j) == ch) {
             foundIt = true
-            commonChars.append(ch)
-            strCopy.setCharAt(j, '\u0000')
+            commonChars += ch
           }
           j += 1
         }
       }}
-    commonChars.toString
+    //Array.from(commonChars.toList)
+    commonChars.toList
   }
 }

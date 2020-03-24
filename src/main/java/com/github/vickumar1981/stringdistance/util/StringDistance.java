@@ -61,11 +61,11 @@ public class StringDistance {
     }
 
     public static Double jaroWinkler(String s1, String s2, Double weight) {
-        return jaro.jaroWinkler(s1, s2, weight);
+        return jaro.jaroWinkler(s1.toCharArray(), s2.toCharArray(), weight);
     }
 
     public static Double jaro(String s1, String s2) {
-        return jaro.jaro(s1, s2);
+        return jaro.jaro(s1.toCharArray(), s2.toCharArray());
     }
 
     public static Double levenshtein(String s1, String s2) {
