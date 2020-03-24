@@ -37,7 +37,6 @@ trait CommonStringDistanceAlgo[T] {
           j += 1
         }
       }}
-    //Array.from(commonChars.toList)
     commonChars.toList
   }
 }
