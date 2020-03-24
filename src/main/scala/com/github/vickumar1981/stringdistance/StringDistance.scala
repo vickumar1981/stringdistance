@@ -62,7 +62,7 @@ class CosineSimilarityImplWrapper extends CosSimilarityImpl[Char]
 /**
   * Jave Wrapper for dice coefficient similarity.
   */
-class DiceCoefficientImplWrapper extends DiceCoefficientImpl
+class DiceCoefficientImplWrapper extends DiceCoefficientImpl[Char]
 
 /**
   * Jave Wrapper for hamming distance.

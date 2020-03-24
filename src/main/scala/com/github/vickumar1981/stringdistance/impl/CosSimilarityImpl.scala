@@ -13,8 +13,7 @@ trait CosSimilarityImpl[T] {
   }
 
   protected def cosSimilarity(s1: Array[T], s2: Array[T]): Double = {
-    val s1TermFreqs = termFrequencyMap(s1.toSeq)
-    val s2TermFreqs = termFrequencyMap(s2.toSeq)
+    val (s1TermFreqs, s2TermFreqs) = (termFrequencyMap(s1.toSeq), termFrequencyMap(s2.toSeq))
     val intersection = (s1TermFreqs.keySet intersect s2TermFreqs.keySet).toList
     val dotProduct = intersection.map { i => s1TermFreqs(i) * s2TermFreqs(i)}.sum
     val magnitudeS1 = s1TermFreqs.values.map { i => i * i }.sum

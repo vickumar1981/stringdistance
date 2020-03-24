@@ -25,7 +25,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of dice coefficient score for [[DiceCoefficientAlgorithm]].
     */
-  implicit object DiceCoefficientScore extends DiceCoefficientImpl
+  implicit object DiceCoefficientScore extends DiceCoefficientImpl[Char]
     with ScoringAlgorithm[DiceCoefficientAlgorithm] {
     /**
       * The score method takes two strings and returns the dice coefficient score between them.
@@ -34,7 +34,7 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the dice coefficient score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String): Double = diceCoefficient(s1, s2)
+    override def score(s1: String, s2: String): Double = diceCoefficient(s1.toCharArray, s2.toCharArray)
   }
 
 

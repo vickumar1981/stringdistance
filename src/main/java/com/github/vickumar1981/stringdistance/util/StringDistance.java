@@ -39,7 +39,7 @@ public class StringDistance {
     }
 
     public static Double diceCoefficient(String s1, String s2) {
-        return dice.diceCoefficient(s1, s2);
+        return dice.diceCoefficient(s1.toCharArray(), s2.toCharArray());
     }
 
     public static Double hamming(String s1, String s2) {

@@ -1,25 +1,9 @@
 package com.github.vickumar1981.stringdistance.impl
 
-import scala.collection.mutable.Set
-
-trait DiceCoefficientImpl {
-  protected def diceCoefficient(s1: String, s2: String): Double = {
-    val nx = Set[String]()
-    val ny = Set[String]()
-
-    s1.zipWithIndex.foreach {
-      case (ch, chIndex) => {
-        if (chIndex < s1.length - 1)
-          nx += ("" + s1(chIndex) + s1(chIndex + 1))
-      }
-    }
-
-    s2.zipWithIndex.foreach {
-      case (ch, chIndex) => {
-        if (chIndex < s2.length - 1)
-          ny += ("" + s2(chIndex) + s2(chIndex + 1))
-      }
-    }
+trait DiceCoefficientImpl[T] {
+  protected def diceCoefficient(s1: Array[T], s2: Array[T]): Double = {
+    val nx = s1.zip(s1.tail).toSet
+    val ny = s2.zip(s2.tail).toSet
     val intersection = nx intersect ny
     2.0 * intersection.size / (nx.size + ny.size)
   }
