@@ -24,7 +24,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of hamming distance for [[HammingAlgorithm]].
     */
-  implicit object HammingDistance extends HammingImpl[Char]
+  implicit object HammingDistance extends HammingImpl
     with DistanceAlgorithm[HammingAlgorithm] with ScorableFromDistance[HammingAlgorithm] {
     /**
       * The distance method takes two strings and returns the hamming distance between them.
@@ -69,7 +69,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of n-gram distance for [[NGramAlgorithm]].
     */
-  implicit object NGramDistance extends NGramImpl[Char] with WeightedDistanceAlgorithm[NGramAlgorithm, Int] {
+  implicit object NGramDistance extends NGramImpl with WeightedDistanceAlgorithm[NGramAlgorithm, Int] {
     /**
       * The score method takes two strings and returns n-gram similarity between them.
       *

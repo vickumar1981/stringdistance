@@ -1,7 +1,7 @@
 package com.github.vickumar1981.stringdistance.impl
 
-trait CosSimilarityImpl[T] {
-  private def termFrequencyMap(terms: Seq[T]): Map[T, Int] = {
+trait CosSimilarityImpl {
+  private def termFrequencyMap[T](terms: Seq[T]): Map[T, Int] = {
     val retMap = scala.collection.mutable.Map[T, Int]()
     terms.foreach {
       t => {
@@ -12,7 +12,7 @@ trait CosSimilarityImpl[T] {
     retMap.toMap
   }
 
-  protected def cosSimilarity(s1: Array[T], s2: Array[T]): Double = {
+  protected def cosSimilarity[T](s1: Array[T], s2: Array[T]): Double = {
     val (s1TermFreqs, s2TermFreqs) = (termFrequencyMap(s1.toSeq), termFrequencyMap(s2.toSeq))
     val intersection = (s1TermFreqs.keySet intersect s2TermFreqs.keySet).toList
     val dotProduct = intersection.map { i => s1TermFreqs(i) * s2TermFreqs(i)}.sum

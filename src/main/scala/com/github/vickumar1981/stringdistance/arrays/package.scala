@@ -3,8 +3,8 @@ package com.github.vickumar1981.stringdistance
 import com.github.vickumar1981.stringdistance.impl._
 
 package object arrays {
-  sealed trait ScoreMetric[T] {
-    def score(arr1: Array[T], arr2: Array[T]): Double
+  sealed trait ScoreMetric {
+    def score[T](arr1: Array[T], arr2: Array[T]): Double
   }
 
   sealed trait DistanceMetric[T] {
@@ -30,33 +30,33 @@ package object arrays {
     }
   }
 
-  class Cosine[T] extends ScoreMetric[T] with CosSimilarityImpl[T] {
-    override def score(arr1: Array[T], arr2: Array[T]): Double = cosSimilarity(arr1, arr2)
+  object Cosine extends ScoreMetric with CosSimilarityImpl {
+    override def score[T](arr1: Array[T], arr2: Array[T]): Double = cosSimilarity(arr1, arr2)
   }
 
-  class Damerau[T] extends ScoreFromDistanceMetric[T] with LevenshteinDistanceImpl[T] {
-    override def distance(arr1: Array[T], arr2: Array[T]): Int = damerauLevenshtein(arr1, arr2)
-  }
-
-  class DiceCoefficient[T] extends ScoreMetric[T] with DiceCoefficientImpl[T] {
-    override def score(arr1: Array[T], arr2: Array[T]): Double = diceCoefficient(arr1, arr2)
-  }
-
-  class Hamming[T] extends ScoreFromDistanceMetric[T] with HammingImpl[T] {
-    override def distance(arr1: Array[T], arr2: Array[T]): Int = hamming(arr1, arr2)
-  }
-
-  class Jaccard[T] extends WeightedScoreMetric[T, Int] with JaccardImpl[T] {
-    override def score(arr1: Array[T], arr2: Array[T]): Double = jaccard(arr1, arr2)
-    override def score(arr1: Array[T], arr2: Array[T], weight: Int): Double = jaccard(arr1, arr2, weight)
-  }
-
-  object Jaro extends StringMetric[JaroAlgorithm]
-  object JaroWinkler extends WeightedStringMetric[JaroWinklerAlgorithm, Double]
-
-  class Levenshtein[T] extends ScoreFromDistanceMetric[T] with LevenshteinDistanceImpl[T] {
-    override def distance(arr1: Array[T], arr2: Array[T]): Int = levenshtein(arr1, arr2)
-  }
+//  class Damerau[T] extends ScoreFromDistanceMetric[T] with LevenshteinDistanceImpl[T] {
+//    override def distance(arr1: Array[T], arr2: Array[T]): Int = damerauLevenshtein(arr1, arr2)
+//  }
+//
+//  class DiceCoefficient[T] extends ScoreMetric[T] with DiceCoefficientImpl[T] {
+//    override def score(arr1: Array[T], arr2: Array[T]): Double = diceCoefficient(arr1, arr2)
+//  }
+//
+//  class Hamming[T] extends ScoreFromDistanceMetric[T] with HammingImpl[T] {
+//    override def distance(arr1: Array[T], arr2: Array[T]): Int = hamming(arr1, arr2)
+//  }
+//
+//  class Jaccard[T] extends WeightedScoreMetric[T, Int] with JaccardImpl[T] {
+//    override def score(arr1: Array[T], arr2: Array[T]): Double = jaccard(arr1, arr2)
+//    override def score(arr1: Array[T], arr2: Array[T], weight: Int): Double = jaccard(arr1, arr2, weight)
+//  }
+//
+//  object Jaro extends StringMetric[JaroAlgorithm]
+//  object JaroWinkler extends WeightedStringMetric[JaroWinklerAlgorithm, Double]
+//
+//  class Levenshtein[T] extends ScoreFromDistanceMetric[T] with LevenshteinDistanceImpl[T] {
+//    override def distance(arr1: Array[T], arr2: Array[T]): Int = levenshtein(arr1, arr2)
+//  }
 
   object LongestCommonSeq extends StringMetric[LongestCommonSeqAlorithm]
   object NeedlemanWunsch extends WeightedStringMetric[NeedlemanWunschAlgorithm, ConstantGap]

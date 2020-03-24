@@ -9,7 +9,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of cosine similarity score for [[CosineAlgorithm]].
     */
-  implicit object CosSimilarityScore extends CosSimilarityImpl[Char]
+  implicit object CosSimilarityScore extends CosSimilarityImpl
     with ScoringAlgorithm[CosineAlgorithm] {
     /**
       * The score method takes two strings and returns the cosine similarity between them.
@@ -24,7 +24,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of dice coefficient score for [[DiceCoefficientAlgorithm]].
     */
-  implicit object DiceCoefficientScore extends DiceCoefficientImpl[Char]
+  implicit object DiceCoefficientScore extends DiceCoefficientImpl
     with ScoringAlgorithm[DiceCoefficientAlgorithm] {
     /**
       * The score method takes two strings and returns the dice coefficient score between them.
@@ -40,7 +40,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of jaccard score for [[JaccardAlgorithm]].
     */
-  implicit object JaccardScore extends JaccardImpl[Char] with WeightedScoringAlgorithm[JaccardAlgorithm, Int] {
+  implicit object JaccardScore extends JaccardImpl with WeightedScoringAlgorithm[JaccardAlgorithm, Int] {
     /**
       * The score method takes two strings and returns jaccard score between them.
       *
@@ -102,7 +102,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of n-gram score for [[NGramAlgorithm]].
     */
-  implicit object NGramScore extends NGramImpl[Char] with WeightedScoringAlgorithm[NGramAlgorithm, Int] {
+  implicit object NGramScore extends NGramImpl with WeightedScoringAlgorithm[NGramAlgorithm, Int] {
     /**
       * The score method takes two strings and returns n-gram similarity between them.
       *
@@ -117,7 +117,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of overlap score for [[OverlapAlgorithm]].
     */
-  implicit object OverlapScore extends OverlapImpl[Char] with WeightedScoringAlgorithm[OverlapAlgorithm, Int] {
+  implicit object OverlapScore extends OverlapImpl with WeightedScoringAlgorithm[OverlapAlgorithm, Int] {
     /**
       * The score method takes two strings and returns n-gram similarity between them.
       *
@@ -166,7 +166,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of tversky score for [[TverskyAlgorithm]].
     */
-  implicit object TverskyScore extends JaccardImpl[Char] with WeightedScoringAlgorithm[TverskyAlgorithm, Double] {
+  implicit object TverskyScore extends JaccardImpl with WeightedScoringAlgorithm[TverskyAlgorithm, Double] {
     /**
       * The score method takes two strings and returns tversky score between them.
       *

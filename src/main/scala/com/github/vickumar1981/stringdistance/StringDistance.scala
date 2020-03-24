@@ -56,22 +56,22 @@ object StringDistance {
 /**
   * Java Wrapper for cosine similarity.
   */
-class CosineSimilarityImplWrapper extends CosSimilarityImpl[Char]
+class CosineSimilarityImplWrapper extends CosSimilarityImpl
 
 /**
   * Java Wrapper for dice coefficient similarity.
   */
-class DiceCoefficientImplWrapper extends DiceCoefficientImpl[Char]
+class DiceCoefficientImplWrapper extends DiceCoefficientImpl
 
 /**
   * Java Wrapper for hamming distance.
   */
-class HammingImplWrapper extends HammingImpl[Char]
+class HammingImplWrapper extends HammingImpl
 
 /**
   * Java Wrapper for jaccard similarity.
   */
-class JaccardImplWrapper extends JaccardImpl[Char]
+class JaccardImplWrapper extends JaccardImpl
 
 /**
   * Java Wrapper for jaro and jaro winkler similarity.
@@ -96,12 +96,12 @@ class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl[Char]
 /**
   * Java Wrapper for n-gram similarity.
   */
-class NGramImplWrapper extends NGramImpl[Char]
+class NGramImplWrapper extends NGramImpl
 
 /**
   * Java Wrapper for overlap similarity.
   */
-class OverlapImplWrapper extends OverlapImpl[Char]
+class OverlapImplWrapper extends OverlapImpl
 
 
 /**
