@@ -77,7 +77,7 @@ public class StringDistance {
     }
 
     public static Integer longestCommonSeq(String s1, String s2) {
-        return longestCommonSeq.longestCommonSeq(s1, s2);
+        return longestCommonSeq.longestCommonSeq(s1.toCharArray(), s2.toCharArray());
     }
 
     public static Double needlemanWunsch(String s1, String s2) {
@@ -85,7 +85,7 @@ public class StringDistance {
     }
 
     public static Double needlemanWunsch(String s1, String s2, ConstantGap gap) {
-            return needlemanWunsch.needleman(s1, s2, gap);
+            return needlemanWunsch.needleman(s1.toCharArray(), s2.toCharArray(), gap);
     }
 
     public static Integer nGramDist(String s1, String s2) { return nGramDist(s1, s2, 1); }
@@ -110,11 +110,11 @@ public class StringDistance {
     }
 
     public static Double smithWaterman(String s1, String s2, Gap gap) {
-        return smithWaterman.smithWaterman(s1, s2, gap, Integer.MAX_VALUE);
+        return smithWaterman.smithWaterman(s1.toCharArray(), s2.toCharArray(), gap, Integer.MAX_VALUE);
     }
 
     public static Double smithWaterman(String s1, String s2, Gap gap, Integer windowSize) {
-        return smithWaterman.smithWaterman(s1, s2, gap, windowSize);
+        return smithWaterman.smithWaterman(s1.toCharArray(), s2.toCharArray(), gap, windowSize);
     }
 
     public static Double smithWatermanGotoh(String s1, String s2) {
@@ -122,7 +122,7 @@ public class StringDistance {
     }
 
     public static Double smithWatermanGotoh(String s1, String s2, ConstantGap gap) {
-        return smithWaterman.smithWatermanGotoh(s1, s2, gap);
+        return smithWaterman.smithWatermanGotoh(s1.toCharArray(), s2.toCharArray(), gap);
     }
 
     public static Double tversky(String s1, String s2) { return tversky(s1, s2, 1d); }

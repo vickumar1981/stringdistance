@@ -1,7 +1,7 @@
 package com.github.vickumar1981.stringdistance.impl
 
-trait GapSubstitution {
-  protected def subst(a: String, aIndex: Int, b: String, bIndex: Int, gap: Gap): Double = {
+trait GapSubstitution[T] {
+  protected def subst(a: Array[T], aIndex: Int, b: Array[T], bIndex: Int, gap: Gap): Double = {
     if (a(aIndex) == b(bIndex)) gap.matchValue else gap.misMatchValue
   }
 }

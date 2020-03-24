@@ -2,8 +2,8 @@ package com.github.vickumar1981.stringdistance.impl
 
 import scala.math.{max, min}
 
-trait SmithWatermanImpl extends GapSubstitution {
-  def smithWaterman(s1: String, s2: String,
+trait SmithWatermanImpl[T] extends GapSubstitution[T] {
+  def smithWaterman(s1: Array[T], s2: Array[T],
                     gap: Gap = LinearGap(),
                     windowSize: Int = Integer.MAX_VALUE): Double = {
     require(gap.matchValue > 0, "Smith Waterman match value must be a number > 0.")
@@ -19,7 +19,7 @@ trait SmithWatermanImpl extends GapSubstitution {
     }
   }
 
-  def smithWatermanGotoh(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double = {
+  def smithWatermanGotoh(s1: Array[T], s2: Array[T], gap: ConstantGap = ConstantGap()): Double = {
     require(gap.matchValue > 0, "Smith Waterman Gotoh match value must be a number > 0.")
     require(gap.misMatchValue < 0, "Smith Waterman Gotoh mismatch value must be a number < 0.")
     require(gap.gapValue <= 0, "Smith Waterman Gotoh gap value must be a number <= 0")
@@ -32,7 +32,7 @@ trait SmithWatermanImpl extends GapSubstitution {
   }
 
   // scalastyle:off
-  private def calculateSmithWaterman(s1: String, s2: String, gap: Gap, windowSize: Int): Double = {
+  private def calculateSmithWaterman(s1: Array[T], s2: Array[T], gap: Gap, windowSize: Int): Double = {
     val (s1Len, s2Len) = (s1.length, s2.length)
     val d = Array.ofDim[Double](s1Len, s2Len)
     var maxValue: Double = max(0d, subst(s1, 0, s2, 0, gap))
@@ -86,7 +86,7 @@ trait SmithWatermanImpl extends GapSubstitution {
 
   // scalastyle: on
 
-  private def calculateSmithWatermanGotoh(s1: String, s2: String, gap: ConstantGap): Double = {
+  private def calculateSmithWatermanGotoh(s1: Array[T], s2: Array[T], gap: ConstantGap): Double = {
     val (s1Len, s2Len) = (s1.length, s2.length)
     val v0 = Array.ofDim[Double](s2Len)
     val v1 = Array.ofDim[Double](s2Len)

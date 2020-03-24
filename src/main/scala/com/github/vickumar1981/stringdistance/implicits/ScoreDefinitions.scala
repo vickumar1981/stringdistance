@@ -4,6 +4,7 @@ import com.github.vickumar1981.stringdistance._
 import com.github.vickumar1981.stringdistance.impl._
 
 trait ScoreDefinitions {
+  private implicit def stringToCharArray(s: String): Array[Char] = s.toCharArray
 
   /**
     * Implicit definition of cosine similarity score for [[CosineAlgorithm]].
@@ -86,7 +87,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of needleman wunsch score for [[NeedlemanWunschAlgorithm]].
     */
-  implicit object NeedlemanWunschScore extends NeedlemanWunschImpl
+  implicit object NeedlemanWunschScore extends NeedlemanWunschImpl[Char]
     with WeightedScoringAlgorithm[NeedlemanWunschAlgorithm, ConstantGap] {
     /**
       * The score method takes two strings and returns needleman wunsch similarity between them.
@@ -96,8 +97,8 @@ trait ScoreDefinitions {
       * @return Returns the needleman wunsch similarity between Strings s1 and s2.
       */
     override def score(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double =
-      needleman(s1, s2, gap)
-    override def score(s1: String, s2: String): Double = needleman(s1, s2)
+      needleman(s1.toCharArray, s2.toCharArray, gap)
+    override def score(s1: String, s2: String): Double = needleman(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -133,7 +134,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of smith waterman score for [[SmithWatermanAlgorithm]].
     */
-  implicit object SmithWatermanScore extends SmithWatermanImpl
+  implicit object SmithWatermanScore extends SmithWatermanImpl[Char]
     with WeightedScoringAlgorithm[SmithWatermanAlgorithm, (Gap, Int)] {
     /**
       * The score method takes two strings and returns smith waterman similarity between them.
@@ -143,14 +144,14 @@ trait ScoreDefinitions {
       * @return Returns the smith waterman similarity between Strings s1 and s2.
       */
     override def score(s1: String, s2: String, gapAndWindowSize: (Gap, Int)): Double =
-      smithWaterman(s1, s2, gapAndWindowSize._1, gapAndWindowSize._2)
-    override def score(s1: String, s2: String): Double = smithWaterman(s1, s2)
+      smithWaterman(s1.toCharArray, s2.toCharArray, gapAndWindowSize._1, gapAndWindowSize._2)
+    override def score(s1: String, s2: String): Double = smithWaterman(s1.toCharArray, s2.toCharArray)
   }
 
   /**
     * Implicit definition of smith waterman gotoh score for [[SmithWatermanGotohAlgorithm]].
     */
-  implicit object SmithWatermanGotohScore extends SmithWatermanImpl
+  implicit object SmithWatermanGotohScore extends SmithWatermanImpl[Char]
     with WeightedScoringAlgorithm[SmithWatermanGotohAlgorithm, ConstantGap] {
     /**
       * The score method takes two strings and returns smith waterman similarity between them.
@@ -160,8 +161,8 @@ trait ScoreDefinitions {
       * @return Returns the smith waterman gotoh similarity between Strings s1 and s2.
       */
     override def score(s1: String, s2: String, gap: ConstantGap): Double =
-      smithWatermanGotoh(s1, s2, gap)
-    override def score(s1: String, s2: String): Double = smithWatermanGotoh(s1, s2)
+      smithWatermanGotoh(s1.toCharArray, s2.toCharArray, gap)
+    override def score(s1: String, s2: String): Double = smithWatermanGotoh(s1.toCharArray, s2.toCharArray)
   }
 
   /**

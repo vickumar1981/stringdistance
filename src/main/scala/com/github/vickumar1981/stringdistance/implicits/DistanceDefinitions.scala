@@ -4,6 +4,8 @@ import com.github.vickumar1981.stringdistance._
 import com.github.vickumar1981.stringdistance.impl.{HammingImpl, LevenshteinDistanceImpl, LongestCommonSeqImpl, NGramImpl}
 
 trait DistanceDefinitions {
+  private implicit def stringToCharArray(s: String): Array[Char] = s.toCharArray
+
   /**
     * Implicit definition of damerau levenshtein distance for [[DamerauLevenshteinAlgorithm]].
     */
@@ -16,7 +18,7 @@ trait DistanceDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the damerau levenshtein distance between Strings s1 and s2.
       */
-    override def distance(s1: String, s2: String): Int = damerauLevenshtein(s1.toCharArray, s2.toCharArray)
+    override def distance(s1: String, s2: String): Int = damerauLevenshtein(s1, s2)
   }
 
   /**
@@ -31,7 +33,7 @@ trait DistanceDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the hamming distance between Strings s1 and s2.
       */
-    override def distance(s1: String, s2: String): Int = hamming(s1.toCharArray, s2.toCharArray)
+    override def distance(s1: String, s2: String): Int = hamming(s1, s2)
   }
 
   /**
@@ -46,13 +48,13 @@ trait DistanceDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the levenshtein distance between Strings s1 and s2.
       */
-    override def distance(s1: String, s2: String): Int = levenshtein(s1.toCharArray, s2.toCharArray)
+    override def distance(s1: String, s2: String): Int = levenshtein(s1, s2)
   }
 
   /**
     * Implicit definition of longest common subsequence for [[CosineAlgorithm]].
     */
-  implicit object LongestCommonSeqDistance extends LongestCommonSeqImpl
+  implicit object LongestCommonSeqDistance extends LongestCommonSeqImpl[Char]
     with DistanceAlgorithm[LongestCommonSeqAlorithm] {
     /**
       * The score method takes two strings and returns longest common subsequence distance between them.
@@ -75,7 +77,7 @@ trait DistanceDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the n-gram distance between Strings s1 and s2.
       */
-    override def distance(s1: String, s2: String, n: Int): Int = nGramDist(s1.toCharArray, s2.toCharArray, n)
-    override def distance(s1: String, s2: String): Int = nGramDist(s1.toCharArray, s2.toCharArray)
+    override def distance(s1: String, s2: String, n: Int): Int = nGramDist(s1, s2, n)
+    override def distance(s1: String, s2: String): Int = nGramDist(s1, s2)
   }
 }

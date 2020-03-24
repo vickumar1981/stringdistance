@@ -87,12 +87,12 @@ class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl[Char]
 /**
   * Java Wrapper for longest comment sequence.
   */
-class LongestCommonSeqWrapper extends LongestCommonSeqImpl
+class LongestCommonSeqWrapper extends LongestCommonSeqImpl[Char]
 
 /**
   * Java Wrapper for needleman wunsch similarity.
   */
-class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl
+class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl[Char]
 
 /**
   * Java Wrapper for n-gram similarity.
@@ -108,5 +108,5 @@ class OverlapImplWrapper extends OverlapImpl[Char]
 /**
   * Java Wrapper for smith waterman similarity.
   */
-class SmithWatermanImplWrapper extends SmithWatermanImpl
+class SmithWatermanImplWrapper extends SmithWatermanImpl[Char]
 
