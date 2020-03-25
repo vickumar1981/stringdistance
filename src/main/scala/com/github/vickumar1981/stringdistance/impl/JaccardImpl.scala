@@ -2,15 +2,15 @@ package com.github.vickumar1981.stringdistance.impl
 
 import com.github.vickumar1981.stringdistance.interfaces.NGramTokenizer
 
-trait JaccardImpl[T] extends NGramTokenizer[T] {
-  protected def jaccard(s1: Array[T], s2: Array[T], n: Int = 1): Double = {
+trait JaccardImpl extends NGramTokenizer {
+  protected def jaccard[T](s1: Array[T], s2: Array[T], n: Int = 1): Double = {
     require(n > 0, "Jaccard n-gram size must be a positive number.")
     foldNGram(s1, s2, n)(0d)(_ => 1d) {
       (s1Tok, s2Tok, dist) => dist.toDouble / (s1Tok.length + s2Tok.length - dist)
     }
   }
 
-  protected def tversky(s1: Array[T], s2: Array[T], n: Double = 1): Double = {
+  protected def tversky[T](s1: Array[T], s2: Array[T], n: Double = 1): Double = {
     require(n >= 0 && n <= 1, "Tversky weight must be a number between 0 and 1.")
     foldNGram(s1, s2, 2)(0d)(_ => 1d) {
       (s1Tok, s2Tok, dist) => {

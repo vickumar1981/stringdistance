@@ -4,6 +4,7 @@ import com.github.vickumar1981.stringdistance.impl.ConstantGap;
 import com.github.vickumar1981.stringdistance.impl.Gap;
 import com.github.vickumar1981.stringdistance.impl.LinearGap;
 
+
 public class StringDistance {
     private final static CosSimilarityImpl cosine = new CosSimilarityImpl();
     private final static JaccardImpl jaccard = new JaccardImpl();
@@ -26,8 +27,13 @@ public class StringDistance {
         return minLen * 1.0 / maxLen;
     }
 
+    private static Character[] toArr(String s) {
+        return s.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
+    }
+
+
     public static Double cosine(String s1, String s2) {
-        return cosine.cosSimilarity(s1.toCharArray(), s2.toCharArray());
+        return cosine.cosSimilarity(toArr(s1), toArr(s2));
     }
 
     public static Double damerau(String s1, String s2) {
@@ -35,11 +41,11 @@ public class StringDistance {
     }
 
     public static Integer damerauDist(String s1, String s2) {
-        return levenshtein.damerauLevenshtein(s1.toCharArray(), s2.toCharArray());
+        return levenshtein.damerauLevenshtein(toArr(s1), toArr(s2));
     }
 
     public static Double diceCoefficient(String s1, String s2) {
-        return dice.diceCoefficient(s1.toCharArray(), s2.toCharArray());
+        return dice.diceCoefficient(toArr(s1), toArr(s2));
     }
 
     public static Double hamming(String s1, String s2) {
@@ -47,13 +53,13 @@ public class StringDistance {
     }
 
     public static Integer hammingDist(String s1, String s2) {
-        return hamming.hamming(s1.toCharArray(), s2.toCharArray());
+        return hamming.hamming(toArr(s1), toArr(s2));
     }
 
     public static Double jaccard(String s1, String s2) { return jaccard(s1, s2, 1); }
 
     public static Double jaccard(String s1, String s2, Integer n) {
-        return jaccard.jaccard(s1.toCharArray(), s2.toCharArray(), n);
+        return jaccard.jaccard(toArr(s1), toArr(s2), n);
     }
 
     public static Double jaroWinkler(String s1, String s2) {
@@ -61,11 +67,11 @@ public class StringDistance {
     }
 
     public static Double jaroWinkler(String s1, String s2, Double weight) {
-        return jaro.jaroWinkler(s1.toCharArray(), s2.toCharArray(), weight);
+        return jaro.jaroWinkler(toArr(s1), toArr(s2), weight);
     }
 
     public static Double jaro(String s1, String s2) {
-        return jaro.jaro(s1.toCharArray(), s2.toCharArray());
+        return jaro.jaro(toArr(s1), toArr(s2));
     }
 
     public static Double levenshtein(String s1, String s2) {
@@ -73,11 +79,11 @@ public class StringDistance {
     }
 
     public static Integer levenshteinDist(String s1, String s2) {
-        return levenshtein.levenshtein(s1.toCharArray(), s2.toCharArray());
+        return levenshtein.levenshtein(toArr(s1), toArr(s2));
     }
 
     public static Integer longestCommonSeq(String s1, String s2) {
-        return longestCommonSeq.longestCommonSeq(s1.toCharArray(), s2.toCharArray());
+        return longestCommonSeq.longestCommonSeq(toArr(s1), toArr(s2));
     }
 
     public static Double needlemanWunsch(String s1, String s2) {
@@ -85,36 +91,36 @@ public class StringDistance {
     }
 
     public static Double needlemanWunsch(String s1, String s2, ConstantGap gap) {
-            return needlemanWunsch.needleman(s1.toCharArray(), s2.toCharArray(), gap);
+            return needlemanWunsch.needleman(toArr(s1), toArr(s2), gap);
     }
 
     public static Integer nGramDist(String s1, String s2) { return nGramDist(s1, s2, 1); }
 
     public static Integer nGramDist(String s1, String s2, Integer n) {
-        return ngram.nGramDist(s1.toCharArray(), s2.toCharArray(), n);
+        return ngram.nGramDist(toArr(s1), toArr(s2), n);
     }
 
     public static Double nGram(String s1, String s2) { return nGram(s1, s2, 1); }
 
     public static Double nGram(String s1, String s2, Integer n) {
-        return ngram.nGram(s1.toCharArray(), s2.toCharArray(), n);
+        return ngram.nGram(toArr(s1), toArr(s2), n);
     }
 
     public static Double overlap(String s1, String s2) { return overlap(s1, s2, 1); }
 
     public static Double overlap(String s1, String s2, Integer n) {
-        return overLap.overlap(s1.toCharArray(), s2.toCharArray(), n); }
+        return overLap.overlap(toArr(s1), toArr(s2), n); }
 
     public static Double smithWaterman(String s1, String s2) {
         return smithWaterman(s1, s2, new LinearGap(1d, -1d, -1d));
     }
 
     public static Double smithWaterman(String s1, String s2, Gap gap) {
-        return smithWaterman.smithWaterman(s1.toCharArray(), s2.toCharArray(), gap, Integer.MAX_VALUE);
+        return smithWaterman.smithWaterman(toArr(s1), toArr(s2), gap, Integer.MAX_VALUE);
     }
 
     public static Double smithWaterman(String s1, String s2, Gap gap, Integer windowSize) {
-        return smithWaterman.smithWaterman(s1.toCharArray(), s2.toCharArray(), gap, windowSize);
+        return smithWaterman.smithWaterman(toArr(s1), toArr(s2), gap, windowSize);
     }
 
     public static Double smithWatermanGotoh(String s1, String s2) {
@@ -122,12 +128,12 @@ public class StringDistance {
     }
 
     public static Double smithWatermanGotoh(String s1, String s2, ConstantGap gap) {
-        return smithWaterman.smithWatermanGotoh(s1.toCharArray(), s2.toCharArray(), gap);
+        return smithWaterman.smithWatermanGotoh(toArr(s1), toArr(s2), gap);
     }
 
     public static Double tversky(String s1, String s2) { return tversky(s1, s2, 1d); }
 
     public static Double tversky(String s1, String s2, Double n) {
-        return jaccard.tversky(s1.toCharArray(), s2.toCharArray(), n);
+        return jaccard.tversky(toArr(s1), toArr(s2), n);
     }
 }

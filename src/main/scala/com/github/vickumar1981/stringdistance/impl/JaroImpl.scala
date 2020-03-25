@@ -2,15 +2,15 @@ package com.github.vickumar1981.stringdistance.impl
 
 import com.github.vickumar1981.stringdistance.interfaces.CommonStringDistanceAlgo
 
-trait JaroImpl[T] extends CommonStringDistanceAlgo[T] {
-  protected def jaroWinkler(s1: Array[T], s2: Array[T], weight: Double = 0.1): Double = {
+trait JaroImpl extends CommonStringDistanceAlgo {
+  protected def jaroWinkler[T](s1: Array[T], s2: Array[T], weight: Double = 0.1): Double = {
     require(weight >= 0 && weight <= 1, "Jaro-Winkler weight must be a number between 0 and 1.")
     val jaroScore = jaro(s1, s2)
     val l = minStartPrefix(s1, s2)
     jaroScore + (l * weight * (1 - jaroScore))
   }
 
-  protected def jaro(s1: Array[T], s2: Array[T]): Double = {
+  protected def jaro[T](s1: Array[T], s2: Array[T]): Double = {
     val minLen = math.min(s1.length, s2.length)
     val halflen = (minLen / 2) + (minLen % 2)
     val common1 = getCommonChars(s1.toList, s2.toList, halflen)

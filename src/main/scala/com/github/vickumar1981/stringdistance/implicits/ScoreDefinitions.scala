@@ -9,8 +9,8 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of cosine similarity score for [[CosineAlgorithm]].
     */
-  implicit object CosSimilarityScore extends CosSimilarityImpl[Char]
-    with WeightedScoringAlgorithm[CosineAlgorithm, String] {
+  implicit object CosSimilarityScore extends CosSimilarityImpl
+    with ScoringAlgorithm[CosineAlgorithm] {
     /**
       * The score method takes two strings and returns the cosine similarity between them.
       *
@@ -18,15 +18,13 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the cosine similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, splitOn: String): Double =
-      cosSimilarity(s1.toCharArray, s2.toCharArray)
     override def score(s1: String, s2: String): Double = cosSimilarity(s1.toCharArray, s2.toCharArray)
   }
 
   /**
     * Implicit definition of dice coefficient score for [[DiceCoefficientAlgorithm]].
     */
-  implicit object DiceCoefficientScore extends DiceCoefficientImpl[Char]
+  implicit object DiceCoefficientScore extends DiceCoefficientImpl
     with ScoringAlgorithm[DiceCoefficientAlgorithm] {
     /**
       * The score method takes two strings and returns the dice coefficient score between them.
@@ -42,7 +40,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of jaccard score for [[JaccardAlgorithm]].
     */
-  implicit object JaccardScore extends JaccardImpl[Char] with WeightedScoringAlgorithm[JaccardAlgorithm, Int] {
+  implicit object JaccardScore extends JaccardImpl with WeightedScoringAlgorithm[JaccardAlgorithm, Int] {
     /**
       * The score method takes two strings and returns jaccard score between them.
       *
@@ -57,7 +55,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of jaro score for [[JaroAlgorithm]].
     */
-  implicit object JaroScore extends JaroImpl[Char] with ScoringAlgorithm[JaroAlgorithm] {
+  implicit object JaroScore extends JaroImpl with ScoringAlgorithm[JaroAlgorithm] {
     /**
       * The score method takes two strings and returns the jaro score between them.
       *
@@ -71,7 +69,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of jaro winkler score for [[JaroWinklerAlgorithm]].
     */
-  implicit object JaroWinklerScore extends JaroImpl[Char] with WeightedScoringAlgorithm[JaroWinklerAlgorithm, Double] {
+  implicit object JaroWinklerScore extends JaroImpl with WeightedScoringAlgorithm[JaroWinklerAlgorithm, Double] {
     /**
       * The score method takes two strings and returns the jaro winkler score between them.
       *
@@ -87,7 +85,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of needleman wunsch score for [[NeedlemanWunschAlgorithm]].
     */
-  implicit object NeedlemanWunschScore extends NeedlemanWunschImpl[Char]
+  implicit object NeedlemanWunschScore extends NeedlemanWunschImpl
     with WeightedScoringAlgorithm[NeedlemanWunschAlgorithm, ConstantGap] {
     /**
       * The score method takes two strings and returns needleman wunsch similarity between them.
@@ -104,7 +102,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of n-gram score for [[NGramAlgorithm]].
     */
-  implicit object NGramScore extends NGramImpl[Char] with WeightedScoringAlgorithm[NGramAlgorithm, Int] {
+  implicit object NGramScore extends NGramImpl with WeightedScoringAlgorithm[NGramAlgorithm, Int] {
     /**
       * The score method takes two strings and returns n-gram similarity between them.
       *
@@ -119,7 +117,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of overlap score for [[OverlapAlgorithm]].
     */
-  implicit object OverlapScore extends OverlapImpl[Char] with WeightedScoringAlgorithm[OverlapAlgorithm, Int] {
+  implicit object OverlapScore extends OverlapImpl with WeightedScoringAlgorithm[OverlapAlgorithm, Int] {
     /**
       * The score method takes two strings and returns n-gram similarity between them.
       *
@@ -134,7 +132,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of smith waterman score for [[SmithWatermanAlgorithm]].
     */
-  implicit object SmithWatermanScore extends SmithWatermanImpl[Char]
+  implicit object SmithWatermanScore extends SmithWatermanImpl
     with WeightedScoringAlgorithm[SmithWatermanAlgorithm, (Gap, Int)] {
     /**
       * The score method takes two strings and returns smith waterman similarity between them.
@@ -151,7 +149,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of smith waterman gotoh score for [[SmithWatermanGotohAlgorithm]].
     */
-  implicit object SmithWatermanGotohScore extends SmithWatermanImpl[Char]
+  implicit object SmithWatermanGotohScore extends SmithWatermanImpl
     with WeightedScoringAlgorithm[SmithWatermanGotohAlgorithm, ConstantGap] {
     /**
       * The score method takes two strings and returns smith waterman similarity between them.
@@ -168,7 +166,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of tversky score for [[TverskyAlgorithm]].
     */
-  implicit object TverskyScore extends JaccardImpl[Char] with WeightedScoringAlgorithm[TverskyAlgorithm, Double] {
+  implicit object TverskyScore extends JaccardImpl with WeightedScoringAlgorithm[TverskyAlgorithm, Double] {
     /**
       * The score method takes two strings and returns tversky score between them.
       *

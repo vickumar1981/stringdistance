@@ -9,7 +9,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of damerau levenshtein distance for [[DamerauLevenshteinAlgorithm]].
     */
-  implicit object DamerauLevenshteinDistance extends LevenshteinDistanceImpl[Char]
+  implicit object DamerauLevenshteinDistance extends LevenshteinDistanceImpl
     with DistanceAlgorithm[DamerauLevenshteinAlgorithm] with ScorableFromDistance[DamerauLevenshteinAlgorithm] {
     /**
       * The score method takes two strings and returns the damerau levenshtein distance between them.
@@ -24,7 +24,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of hamming distance for [[HammingAlgorithm]].
     */
-  implicit object HammingDistance extends HammingImpl[Char]
+  implicit object HammingDistance extends HammingImpl
     with DistanceAlgorithm[HammingAlgorithm] with ScorableFromDistance[HammingAlgorithm] {
     /**
       * The distance method takes two strings and returns the hamming distance between them.
@@ -39,7 +39,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of levenshtein distance for [[LevenshteinAlgorithm]].
     */
-  implicit object LevenshteinDistance extends LevenshteinDistanceImpl[Char]
+  implicit object LevenshteinDistance extends LevenshteinDistanceImpl
     with DistanceAlgorithm[LevenshteinAlgorithm] with ScorableFromDistance[LevenshteinAlgorithm] {
     /**
       * The score method takes two strings and returns the levenshtein distance between them.
@@ -54,7 +54,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of longest common subsequence for [[CosineAlgorithm]].
     */
-  implicit object LongestCommonSeqDistance extends LongestCommonSeqImpl[Char]
+  implicit object LongestCommonSeqDistance extends LongestCommonSeqImpl
     with DistanceAlgorithm[LongestCommonSeqAlorithm] {
     /**
       * The score method takes two strings and returns longest common subsequence distance between them.
@@ -69,7 +69,7 @@ trait DistanceDefinitions {
   /**
     * Implicit definition of n-gram distance for [[NGramAlgorithm]].
     */
-  implicit object NGramDistance extends NGramImpl[Char] with WeightedDistanceAlgorithm[NGramAlgorithm, Int] {
+  implicit object NGramDistance extends NGramImpl with WeightedDistanceAlgorithm[NGramAlgorithm, Int] {
     /**
       * The score method takes two strings and returns n-gram similarity between them.
       *

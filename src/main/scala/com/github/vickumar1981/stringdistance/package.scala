@@ -40,6 +40,8 @@ import com.github.vickumar1981.stringdistance.implicits.{DistanceDefinitions, Sc
   */
 package object stringdistance extends DistanceDefinitions with ScoreDefinitions with SoundDefinitions {
 
+  implicit def gapToGapAndWindow(g: Gap): (Gap, Int) = (g, Integer.MAX_VALUE)
+
   /**
     * A marker interface for the string metric algorithm.
     */

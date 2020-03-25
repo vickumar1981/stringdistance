@@ -1,19 +1,20 @@
 package com.github.vickumar1981.stringdistance.interfaces
 
-trait NGramTokenizer[T] {
-  protected val intersectLength: (List[List[T]], List[List[T]]) => Int = (mt1, mt2) => mt1.intersect(mt2).length
+trait NGramTokenizer {
+  protected def intersectLength[T]: (List[List[T]], List[List[T]]) => Int = (mt1, mt2) => mt1.intersect(mt2).length
 
-  private def tokenize(a: List[T], n: Int): List[List[T]] =
+  private def tokenize[T](a: List[T], n: Int): List[List[T]] =
     sequence(a, List.empty, n)
 
-  protected def tokenizeNGram(a: Array[T], n: Int): List[List[T]] = tokenize(a.toList, n)
+  protected def tokenizeNGram[T](a: Array[T], n: Int): List[List[T]] = tokenize(a.toList, n)
 
   @annotation.tailrec
-  private val sequence: (List[T], List[List[T]], Int) => List[List[T]] = (i, o, n) =>
+  private def sequence[T](i: List[T], o: List[List[T]], n: Int) : List[List[T]] = {
     if (i.length <= n) o :+ i
-    else sequence(i.tail, o :+ i.take(n), n)
+    else sequence[T](i.tail, o :+ i.take(n), n)
+  }
 
-  protected def foldNGram[R](s1: Array[T], s2: Array[T], n: Int = 1)
+  protected def foldNGram[T, R](s1: Array[T], s2: Array[T], n: Int = 1)
                             (err: => R)(success: Int => R)
                             (fuzzy: (List[List[T]], List[List[T]], Int) => R): R = {
     if (n <= 0 || s1.length < n || s2.length < n) err

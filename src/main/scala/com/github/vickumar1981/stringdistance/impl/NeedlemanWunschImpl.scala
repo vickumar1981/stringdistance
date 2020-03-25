@@ -2,8 +2,8 @@ package com.github.vickumar1981.stringdistance.impl
 
 import scala.math.{max, min}
 
-trait NeedlemanWunschImpl[T] extends GapSubstitution[T] {
-  def needleman(s1: Array[T], s2: Array[T], gap: ConstantGap = ConstantGap()): Double = {
+trait NeedlemanWunschImpl extends GapSubstitution {
+  def needleman[T](s1: Array[T], s2: Array[T], gap: ConstantGap = ConstantGap()): Double = {
     require(gap.matchValue > 0, "NeedlmanWunsch match value must be a number > 0.")
     require(gap.misMatchValue < 0, "NeedlemanWunsh mismatch value must be a number < 0.")
     require(gap.gapValue <= 0, "Needleman Wunsh gap value must be a number <= 0.")
@@ -15,7 +15,7 @@ trait NeedlemanWunschImpl[T] extends GapSubstitution[T] {
     }
   }
 
-  private def calculateNeedlemanW(s1: Array[T], s2: Array[T], gap: ConstantGap): Double = {
+  private def calculateNeedlemanW[T](s1: Array[T], s2: Array[T], gap: ConstantGap): Double = {
     (s1.length, s2.length) match {
       case (0, s2Len) => -gap.gapValue * s2Len
       case (s1Len, 0) => -gap.gapValue * s1Len

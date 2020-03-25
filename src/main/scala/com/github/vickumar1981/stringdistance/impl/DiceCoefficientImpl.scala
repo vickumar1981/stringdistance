@@ -1,7 +1,7 @@
 package com.github.vickumar1981.stringdistance.impl
 
-trait DiceCoefficientImpl[T] {
-  protected def diceCoefficient(s1: Array[T], s2: Array[T]): Double = {
+trait DiceCoefficientImpl {
+  protected def diceCoefficient[T](s1: Array[T], s2: Array[T]): Double = {
     val nx = s1.zip(s1.tail).toSet
     val ny = s2.zip(s2.tail).toSet
     val intersection = nx intersect ny
