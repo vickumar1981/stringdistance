@@ -124,7 +124,7 @@ class TestStringDistance extends AnyFlatSpec with Matchers {
 
   "The Tversky Score with weight 2.0" should "match the jaccard score using bigrams" in {
     testCases.filter(_.jaccard.isDefined).map(t => {
-      val tversky = t.s1 tversky (t.s2)
+      val tversky = t.s1 tversky t.s2
       val jaccard = t.s1 jaccard (t.s2, 2)
       roundToPrecision(tversky) should be (roundToPrecision(jaccard))
     })

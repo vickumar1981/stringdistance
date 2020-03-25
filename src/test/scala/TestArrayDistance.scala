@@ -1,17 +1,13 @@
 import com.github.vickumar1981.stringdistance.ArrayDistance._
 import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
+import fixtures.TestArrayMetric
 import fixtures.TestCases.{precision, testCases}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 import scala.math.BigDecimal
 
-class TestArrayDistance extends AnyFlatSpec with Matchers {
-
-  case class ValueWrapper(ch: Char)
-
-  implicit private def convertTestCase(s: String): Array[ValueWrapper] =
-    s.toCharArray.map(ch => ValueWrapper(ch))
+class TestArrayDistance extends AnyFlatSpec with Matchers with TestArrayMetric {
 
   private def roundToPrecision(v: Double) =
     BigDecimal(v).setScale(precision, BigDecimal.RoundingMode.HALF_UP).toDouble
@@ -172,10 +168,10 @@ class TestArrayDistance extends AnyFlatSpec with Matchers {
     testCases.filter(t => t.s1.length == t.s2.length && t.levenshtein.isDefined).map(t => {
       val smithWaterman = SmithWaterman.score(t.s1,
         t.s2,
-        (LinearGap(
+        LinearGap(
           misMatchValue = -1,
           gapValue = -1
-        ), Integer.MAX_VALUE))
+        ))
       val damerau = Damerau.score(t.s1, t.s2)
       roundToPrecision(smithWaterman) should be (roundToPrecision(damerau))
     })
