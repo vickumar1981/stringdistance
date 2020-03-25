@@ -76,22 +76,22 @@ class JaccardImplWrapper extends JaccardImpl
 /**
   * Java Wrapper for jaro and jaro winkler similarity.
   */
-class JaroImplWrapper extends JaroImpl[Char]
+class JaroImplWrapper extends JaroImpl
 
 /**
   * Java Wrapper for levenshtein distance.
   */
-class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl[Char]
+class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
 
 /**
   * Java Wrapper for longest comment sequence.
   */
-class LongestCommonSeqWrapper extends LongestCommonSeqImpl[Char]
+class LongestCommonSeqWrapper extends LongestCommonSeqImpl
 
 /**
   * Java Wrapper for needleman wunsch similarity.
   */
-class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl[Char]
+class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl
 
 /**
   * Java Wrapper for n-gram similarity.
@@ -107,5 +107,5 @@ class OverlapImplWrapper extends OverlapImpl
 /**
   * Java Wrapper for smith waterman similarity.
   */
-class SmithWatermanImplWrapper extends SmithWatermanImpl[Char]
+class SmithWatermanImplWrapper extends SmithWatermanImpl
 

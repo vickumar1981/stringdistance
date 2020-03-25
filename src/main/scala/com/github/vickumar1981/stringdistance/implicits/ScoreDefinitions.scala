@@ -55,7 +55,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of jaro score for [[JaroAlgorithm]].
     */
-  implicit object JaroScore extends JaroImpl[Char] with ScoringAlgorithm[JaroAlgorithm] {
+  implicit object JaroScore extends JaroImpl with ScoringAlgorithm[JaroAlgorithm] {
     /**
       * The score method takes two strings and returns the jaro score between them.
       *
@@ -69,7 +69,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of jaro winkler score for [[JaroWinklerAlgorithm]].
     */
-  implicit object JaroWinklerScore extends JaroImpl[Char] with WeightedScoringAlgorithm[JaroWinklerAlgorithm, Double] {
+  implicit object JaroWinklerScore extends JaroImpl with WeightedScoringAlgorithm[JaroWinklerAlgorithm, Double] {
     /**
       * The score method takes two strings and returns the jaro winkler score between them.
       *
@@ -85,7 +85,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of needleman wunsch score for [[NeedlemanWunschAlgorithm]].
     */
-  implicit object NeedlemanWunschScore extends NeedlemanWunschImpl[Char]
+  implicit object NeedlemanWunschScore extends NeedlemanWunschImpl
     with WeightedScoringAlgorithm[NeedlemanWunschAlgorithm, ConstantGap] {
     /**
       * The score method takes two strings and returns needleman wunsch similarity between them.
@@ -132,7 +132,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of smith waterman score for [[SmithWatermanAlgorithm]].
     */
-  implicit object SmithWatermanScore extends SmithWatermanImpl[Char]
+  implicit object SmithWatermanScore extends SmithWatermanImpl
     with WeightedScoringAlgorithm[SmithWatermanAlgorithm, (Gap, Int)] {
     /**
       * The score method takes two strings and returns smith waterman similarity between them.
@@ -149,7 +149,7 @@ trait ScoreDefinitions {
   /**
     * Implicit definition of smith waterman gotoh score for [[SmithWatermanGotohAlgorithm]].
     */
-  implicit object SmithWatermanGotohScore extends SmithWatermanImpl[Char]
+  implicit object SmithWatermanGotohScore extends SmithWatermanImpl
     with WeightedScoringAlgorithm[SmithWatermanGotohAlgorithm, ConstantGap] {
     /**
       * The score method takes two strings and returns smith waterman similarity between them.
