@@ -2,6 +2,18 @@ package com.github.vickumar1981.stringdistance
 
 import com.github.vickumar1981.stringdistance.impl._
 
+/**
+  * Main class to work with generic arrays, Array[T], analagous to [[StringDistance]]
+  *
+  * {{{
+  * import com.github.vickumar1981.stringdistance.ArrayDistance._
+  *
+  * // Example Levenshtein Distance and Score
+  * val levenshteinDist = Levenshtein.distance(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 2
+  * val levenshtein = Levenshtein.score(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 0.667
+  * }}}
+  */
+
 object ArrayDistance {
   protected def wrapDist[T](arr1: Array[T], arr2: Array[T], dist: () => Int) =
     if (arr1.isEmpty && arr2.isEmpty) 0 else dist()
