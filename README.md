@@ -213,9 +213,9 @@ Boolean soundex = StringSound.soundex("merci", "mercy");
 - You can use the `ArrayDistance` class just like the `StringDistance` class,
 except using a generic array - `Array[T]` for Scala and `T[]` for Java.
 
-- Make sure your classes are comparable using `==` for Scala and `.equals` for Java
+- Make sure your classes are comparable using `==` for Scala or `.equals` for Java
 
-__Scala Example:__
+__Scala Sample Code:__
 
 ```scala
 import com.github.vickumar1981.stringdistance.ArrayDistance._
@@ -224,6 +224,12 @@ import com.github.vickumar1981.stringdistance.ArrayDistance._
 val levenshteinDist = Levenshtein.distance(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 2
 val levenshtein = Levenshtein.score(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 0.667
 ```
+
+
+__Java Example Code:__
+  - [Implement .equals for your class](https://github.com/vickumar1981/stringdistance/blob/master/src/main/java/sd_example/Ch.java#L15)
+  - [Use ArrayDistance with your class](https://github.com/vickumar1981/stringdistance/blob/master/src/main/java/sd_example/SdJavaExample.java#L7)
+
 
 ---
 
