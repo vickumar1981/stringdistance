@@ -4,8 +4,6 @@ import com.github.vickumar1981.stringdistance._
 import com.github.vickumar1981.stringdistance.impl._
 
 trait ScoreDefinitions {
-  private implicit def stringToCharArray(s: String): Array[Char] = s.toCharArray
-
   /**
     * Implicit definition of cosine similarity score for [[CosineAlgorithm]].
     */
