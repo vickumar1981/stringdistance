@@ -1,7 +1,7 @@
 import xerial.sbt.Sonatype._
 
 name := "stringdistance"
-version := "1.2.0"
+version := "1.2.1"
 scalaVersion := "2.13.1"
 organization := "com.github.vickumar1981"
 description := "A fuzzy matching string distance library for Scala and Java."
