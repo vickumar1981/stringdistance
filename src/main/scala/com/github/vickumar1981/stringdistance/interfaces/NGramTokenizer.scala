@@ -1,5 +1,7 @@
 package com.github.vickumar1981.stringdistance.interfaces
 
+import scala.jdk.CollectionConverters._
+
 trait NGramTokenizer {
   protected def intersectLength[T]: (List[List[T]], List[List[T]]) => Int = (mt1, mt2) => mt1.intersect(mt2).length
 
@@ -7,6 +9,9 @@ trait NGramTokenizer {
     sequence(a, List.empty, n)
 
   protected def tokenizeNGram[T](a: Array[T], n: Int): List[List[T]] = tokenize(a.toList, n)
+
+  protected def tokensAsJava[T](a: Array[T], n: Int): java.util.List[java.util.List[T]] =
+    tokenizeNGram(a, n).map(_.asJava).asJava
 
   @annotation.tailrec
   private def sequence[T](i: List[T], o: List[List[T]], n: Int) : List[List[T]] = {

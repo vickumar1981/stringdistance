@@ -103,6 +103,9 @@ val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)  // 2
 val ngramSimilarity: Double = NGram.score("karolin", "kathrin", 1)  // 0.714
 val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)  // 0.333
 
+// N-Gram tokens, returns a List[String]
+val tokens: List[String] = NGram.tokens("martha", 2)  // List("ma", "ar", "rt", "th", "ha")
+
 // Overlap Similarity
 val overlap: Double = Overlap.score("karolin", "kathrin", 1)  // 0.286
 val overlapBiGram: Double = Overlap.score("karolin", "kathrin", 2)  // 0.667
@@ -153,6 +156,9 @@ val longestCommonSeq: Int = "martha".longestCommonSeq("marhta")
 val ngramDist: Int = "karolin".nGramDist("kathrin")
 val bigramDist: Int = "karolin".nGramDist("kathrin", 2)
 
+// N-Gram tokens, returns a List[String]
+val tokens: List[String] = "martha".tokens(2)  // List("ma", "ar", "rt", "th", "ha")
+
 // Phonetic similarity of two strings
 val metaphone: Boolean = "merci".metaphone("mercy")
 val soundex: Boolean = "merci".soundex("mercy")
@@ -192,6 +198,9 @@ Integer levenshteinDist = StringDistance.levenshteinDist("martha", "marhta");
 Integer longestCommonSeq = StringDistance.longestCommonSeq("martha", "marhta");
 Integer ngramDist = StringDistance.nGramDist("karolin", "kathrin");
 Integer bigramDist = StringDistance.nGramDist("karolin", "kathrin", 2);
+
+// N-Gram tokens, returns a List<String>
+List<String> tokens = StringDistance.nGramTokens(2)  // List("ma", "ar", "rt", "th", "ha")
 
 // Phonetic similarity of two strings
 Boolean metaphone = StringSound.metaphone("merci", "mercy");
