@@ -287,6 +287,9 @@ package object stringdistance extends DistanceDefinitions with ScoreDefinitions 
     * val smithWatermanGotoh: Double = "martha".smithWatermanGotoh("marhta")
     * val tversky: Double = "karolin".tversky("kathrin", 0.5)
     *
+    * // return a List[String] of ngram tokens
+    * val tokens = "martha".tokens(2) // List("ma", "ar", "rt", "th", "ha")
+    *
     * // Distances between two strings
     * val damerauDist: int = "martha".damerauDist("marhta")
     * val hammingDist: Int = "martha".hammingDist("marhta")
@@ -323,6 +326,7 @@ package object stringdistance extends DistanceDefinitions with ScoreDefinitions 
       def nGramDist(s2: String, nGram: Int = 1): Int = NGram.distance(s1, s2, nGram)
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)
       def tversky(s2: String, n: Double = 1): Double = Tversky.score(s1, s2, n)
+      def tokens(n: Int): List[String] = NGram.tokens(s1, n)
       def smithWaterman(s2: String, gap: Gap = LinearGap(gapValue = -1),
                         windowSize: Int = Integer.MAX_VALUE): Double =
         SmithWaterman.score(s1, s2, (gap, windowSize))

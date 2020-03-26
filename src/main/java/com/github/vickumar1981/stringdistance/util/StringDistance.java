@@ -4,6 +4,9 @@ import com.github.vickumar1981.stringdistance.impl.ConstantGap;
 import com.github.vickumar1981.stringdistance.impl.Gap;
 import com.github.vickumar1981.stringdistance.impl.LinearGap;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class StringDistance {
     private final static CosSimilarityImpl cosine = new CosSimilarityImpl();
@@ -129,6 +132,10 @@ public class StringDistance {
 
     public static Double smithWatermanGotoh(String s1, String s2, ConstantGap gap) {
         return smithWaterman.smithWatermanGotoh(toArr(s1), toArr(s2), gap);
+    }
+
+    public static List<String> nGramTokens(String s, Integer n) {
+        return  ngram.tokensAsJava(toArr(s), n).stream().map(String::valueOf).collect(Collectors.toList());
     }
 
     public static Double tversky(String s1, String s2) { return tversky(s1, s2, 1d); }

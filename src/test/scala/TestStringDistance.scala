@@ -87,6 +87,13 @@ class TestStringDistance extends AnyFlatSpec with Matchers {
     })
   }
 
+  "The N-Gram bigrams" should "return a list of length equal to the string's length minus 1" in {
+    testCases.filter(_.ngram.isDefined).filter(_.s1.nonEmpty).map(t => {
+      val tokens = t.s1.tokens(2)
+      tokens.size should be (t.s1.length - 1)
+    })
+  }
+
   "The Cosine Similarity" should "match for all test cases" in {
     testCases.filter(_.cosine.isDefined).map(t => {
       val cosine = t.s1.cosine(t.s2)

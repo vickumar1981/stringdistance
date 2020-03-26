@@ -1,6 +1,7 @@
 package com.github.vickumar1981.stringdistance
 
 import com.github.vickumar1981.stringdistance.impl._
+import com.github.vickumar1981.stringdistance.interfaces.NGramTokenizer
 
 /**
   * Main class to organize functionality of different string distance algorithms
@@ -33,6 +34,9 @@ import com.github.vickumar1981.stringdistance.impl._
   * val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
   * val ngramDist: Int = NGram.distance("karolin", "kathrin", 1)
   * val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)
+  *
+  * // return a List[String] of ngram tokens
+  * val tokens = NGram.tokens("martha", 2) // List("ma", "ar", "rt", "th", "ha")
   * }}}
   */
 object StringDistance {
@@ -46,7 +50,9 @@ object StringDistance {
   object Levenshtein extends StringMetric[LevenshteinAlgorithm]
   object LongestCommonSeq extends StringMetric[LongestCommonSeqAlorithm]
   object NeedlemanWunsch extends WeightedStringMetric[NeedlemanWunschAlgorithm, ConstantGap]
-  object NGram extends WeightedStringMetric[NGramAlgorithm, Int]
+  object NGram extends WeightedStringMetric[NGramAlgorithm, Int] with NGramTokenizer {
+    def tokens(s: String, n: Int): List[String] = tokenizeNGram(s.toCharArray, n).map(_.mkString)
+  }
   object Overlap extends WeightedStringMetric[OverlapAlgorithm, Int]
   object SmithWaterman extends WeightedStringMetric[SmithWatermanAlgorithm, (Gap, Int)]
   object SmithWatermanGotoh extends WeightedStringMetric[SmithWatermanGotohAlgorithm, ConstantGap]
