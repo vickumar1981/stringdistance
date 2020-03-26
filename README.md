@@ -17,10 +17,11 @@ Requires: Java 8+ or Scala 2.12+
 2.  [Using in Scala](https://github.com/vickumar1981/stringdistance#2-scala-usage)
 3.  [Using in Scala with implicits](https://github.com/vickumar1981/stringdistance#3-scala-use-with-implicits)
 4.  [Using in Java](https://github.com/vickumar1981/stringdistance#4-java-usage)
-5.  [Adding your own algorithm](https://github.com/vickumar1981/stringdistance#5-adding-your-own-distance-or-scoring-algorithm)
-6.  [Reporting an Issue](https://github.com/vickumar1981/stringdistance#6-reporting-an-issue)
-7.  [Contributing](https://github.com/vickumar1981/stringdistance#7-contributing)
-8.  [License](https://github.com/vickumar1981/stringdistance#8-license)
+5.  [Using with Arrays](https://github.com/vickumar1981/stringdistance#5-using-with-arrays)
+6.  [Adding your own algorithm](https://github.com/vickumar1981/stringdistance#6-adding-your-own-distance-or-scoring-algorithm)
+7.  [Reporting an Issue](https://github.com/vickumar1981/stringdistance#7-reporting-an-issue)
+8.  [Contributing](https://github.com/vickumar1981/stringdistance#8-contributing)
+9.  [License](https://github.com/vickumar1981/stringdistance#9-license)
 
 ---
 ### 1. Add it to your project ...
@@ -207,7 +208,26 @@ Boolean soundex = StringSound.soundex("merci", "mercy");
 ```
 ---
 
-### 5. Adding your own Distance or Scoring Algorithm 
+### 5. Using with Arrays
+
+- You can use the `ArrayDistance` class just like the `StringDistance` class,
+except using a generic array - `Array[T]` for Scala and `T[]` for Java.
+
+- Make sure your classes are comparable using `==` for Scala and `.equals` for Java
+
+__Scala Example:__
+
+```scala
+import com.github.vickumar1981.stringdistance.ArrayDistance._
+
+// Example Levenshtein Distance and Score
+val levenshteinDist = Levenshtein.distance(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 2
+val levenshtein = Levenshtein.score(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 0.667
+```
+
+---
+
+### 6. Adding your own Distance or Scoring Algorithm 
 
 1.  Create a marker trait that extends `StringMetricAlgorithm`:
 
@@ -240,16 +260,16 @@ val customScore: Double = CustomMetric.score("hello", "hello2")
 val customDist: Int = CustomMetric.distance("hello", "hello2")
 ```
 ---
-### 6. Reporting an Issue
+### 7. Reporting an Issue
 
 Please report any issues or bugs to the [Github issues page](https://github.com/vickumar1981/stringdistance/issues).
 
 ---
-### 7. Contributing
+### 8. Contributing
 
 Please view the [contributing guidelines](CONTRIBUTING.md) 
 
 ---
-### 8. License
+### 9. License
 
 This project is licensed under the [Apache 2 License](LICENSE.md).
