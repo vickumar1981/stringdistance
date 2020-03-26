@@ -7,6 +7,8 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 class TestStringDistance extends AnyFlatSpec with Matchers {
+  import scala.jdk.CollectionConverters._
+
   private def roundToPrecision(v: Double) =
     BigDecimal(v).setScale(precision, BigDecimal.RoundingMode.HALF_UP).toDouble
 
@@ -91,6 +93,14 @@ class TestStringDistance extends AnyFlatSpec with Matchers {
     testCases.filter(_.ngram.isDefined).filter(_.s1.nonEmpty).map(t => {
       val tokens = t.s1.tokens(2)
       tokens.size should be (t.s1.length - 1)
+    })
+  }
+
+  "The N-Gram bigrams" should "be the same for Java and Scala lists" in {
+    testCases.filter(_.ngram.isDefined).filter(_.s1.nonEmpty).map(t => {
+      val javaTokens = com.github.vickumar1981.stringdistance.util.StringDistance.nGramTokens(t.s1, 2)
+      val tokens = t.s1.tokens(2)
+      javaTokens should equal(tokens.map(_.mkString("[", ", ", "]")).asJava)
     })
   }
 
