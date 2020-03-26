@@ -4,6 +4,8 @@ import com.github.vickumar1981.stringdistance.impl.ConstantGap;
 import com.github.vickumar1981.stringdistance.impl.Gap;
 import com.github.vickumar1981.stringdistance.impl.LinearGap;
 
+import java.util.List;
+
 
 public class ArrayDistance {
     private final static CosSimilarityImpl cosine = new CosSimilarityImpl();
@@ -104,6 +106,10 @@ public class ArrayDistance {
 
     public static <T> Double nGram(T[] s1, T[] s2, Integer n) {
         return ngram.nGram(s1, s2, n);
+    }
+
+    public static <T> List<List<T>> nGramTokens(T[] s1, Integer n) {
+        return ngram.tokensAsJava(s1, n);
     }
 
     public static <T> Double overlap(T[] s1, T[] s2) { return overlap(s1, s2, 1); }

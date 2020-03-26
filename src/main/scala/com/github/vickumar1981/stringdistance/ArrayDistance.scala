@@ -116,6 +116,7 @@ object ArrayDistance {
     override def score[T1](arr1: Array[T1], arr2: Array[T1], weight: Int): Double =
       wrapScore(arr1, arr2, () => nGram(arr1, arr2, weight))
 
+    def tokens[T](s: Array[T], n: Int): List[List[T]] = tokenizeNGram(s, n)
   }
 
   object Overlap extends WeightedScoreMetric[Int] with OverlapImpl {
