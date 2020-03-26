@@ -1,6 +1,6 @@
 package com.github.vickumar1981.stringdistance.interfaces
 
-import scala.jdk.CollectionConverters._
+import collection.JavaConverters._
 
 trait NGramTokenizer {
   protected def intersectLength[T]: (List[List[T]], List[List[T]]) => Int = (mt1, mt2) => mt1.intersect(mt2).length
