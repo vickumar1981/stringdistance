@@ -210,7 +210,8 @@ Boolean soundex = StringSound.soundex("merci", "mercy");
 
 ### 5. Using with Arrays
 
-- You can use the `ArrayDistance` class just like the `StringDistance` class,
+- You can use the [ArrayDistance](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/ArrayDistance$.html) 
+class just like the [StringDistance](https://vickumar1981.github.io/stringdistance/api/com/github/vickumar1981/stringdistance/StringDistance$.html) class,
 except using a generic array - `Array[T]` for Scala and `T[]` for Java.
 
 - Make sure your classes are comparable using `==` for Scala or `.equals` for Java
