@@ -4,6 +4,7 @@ import com.github.vickumar1981.stringdistance._
 import com.github.vickumar1981.stringdistance.impl.{HammingImpl, LevenshteinDistanceImpl, LongestCommonSeqImpl, NGramImpl}
 
 trait DistanceDefinitions {
+  private implicit def stringToCharArray(s: String): Array[Char] = s.toCharArray
 
   /**
     * Implicit definition of damerau levenshtein distance for [[DamerauLevenshteinAlgorithm]].

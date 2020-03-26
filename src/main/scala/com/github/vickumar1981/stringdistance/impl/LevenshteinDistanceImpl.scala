@@ -4,15 +4,15 @@ import scala.math.min
 import scala.language.postfixOps
 
 trait LevenshteinDistanceImpl {
-  protected def levenshtein(a: String, b: String): Int =
-    ((0 to b.size).toList /: a)((prev, x) =>
+  protected def levenshtein[T](a: Array[T], b: Array[T]): Int =
+    ((0 to b.length).toList /: a)((prev, x) =>
       (prev zip prev.tail zip b).scanLeft(prev.head + 1) {
         case (h, ((d, v), y)) => min(min(h + 1, v + 1), d + (if (x == y) 0 else 1))
       }) last
 
 
-  protected def damerauLevenshtein(a: String, b: String): Int = {
-    val (aLength, bLength) = (a.size, b.size)
+  protected def damerauLevenshtein[T](a: Array[T], b: Array[T]): Int = {
+    val (aLength, bLength) = (a.length, b.length)
 
     (aLength, bLength) match {
       case (0, _) => bLength

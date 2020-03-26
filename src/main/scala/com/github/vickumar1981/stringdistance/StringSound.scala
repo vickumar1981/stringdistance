@@ -20,11 +20,11 @@ object StringSound {
 }
 
 /**
-  * Jave Wrapper for metaphone similarity.
+  * Java Wrapper for metaphone similarity.
   */
 class MetaphoneImplWrapper extends MetaphoneImpl
 
 /**
-  * Jave Wrapper for soundex similarity.
+  * Java Wrapper for soundex similarity.
   */
 class SoundexImplWrapper extends SoundexImpl

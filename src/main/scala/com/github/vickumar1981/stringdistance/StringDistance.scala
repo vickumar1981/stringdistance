@@ -1,17 +1,17 @@
 package com.github.vickumar1981.stringdistance
 
 import com.github.vickumar1981.stringdistance.impl._
+import com.github.vickumar1981.stringdistance.interfaces.NGramTokenizer
 
 /**
   * Main class to organize functionality of different string distance algorithms
   *
   * {{{
-  * import com.github.vickumar1981.stringdistance.Strategy
   * import com.github.vickumar1981.stringdistance.StringDistance._
   * import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
   *
   * // Scores between strings
-  * val cosSimilarity: Double = Cosine.score("hello", "chello", Strategy.splitWord)
+  * val cosSimilarity: Double = Cosine.score("hello", "chello")
   * val damerau: Double = Damerau.score("martha", "marhta")
   * val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
   * val hamming: Double = Hamming.score("martha", "marhta")
@@ -34,10 +34,13 @@ import com.github.vickumar1981.stringdistance.impl._
   * val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
   * val ngramDist: Int = NGram.distance("karolin", "kathrin", 1)
   * val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)
+  *
+  * // return a List[String] of ngram tokens
+  * val tokens = NGram.tokens("martha", 2) // List("ma", "ar", "rt", "th", "ha")
   * }}}
   */
 object StringDistance {
-  object Cosine extends WeightedStringMetric[CosineAlgorithm, String]
+  object Cosine extends StringMetric[CosineAlgorithm]
   object Damerau extends StringMetric[DamerauLevenshteinAlgorithm]
   object DiceCoefficient extends StringMetric[DiceCoefficientAlgorithm]
   object Hamming extends StringMetric[HammingAlgorithm]
@@ -47,7 +50,9 @@ object StringDistance {
   object Levenshtein extends StringMetric[LevenshteinAlgorithm]
   object LongestCommonSeq extends StringMetric[LongestCommonSeqAlorithm]
   object NeedlemanWunsch extends WeightedStringMetric[NeedlemanWunschAlgorithm, ConstantGap]
-  object NGram extends WeightedStringMetric[NGramAlgorithm, Int]
+  object NGram extends WeightedStringMetric[NGramAlgorithm, Int] with NGramTokenizer {
+    def tokens(s: String, n: Int): List[String] = tokenizeNGram(s.toCharArray, n).map(_.mkString)
+  }
   object Overlap extends WeightedStringMetric[OverlapAlgorithm, Int]
   object SmithWaterman extends WeightedStringMetric[SmithWatermanAlgorithm, (Gap, Int)]
   object SmithWatermanGotoh extends WeightedStringMetric[SmithWatermanGotohAlgorithm, ConstantGap]
@@ -55,58 +60,58 @@ object StringDistance {
 }
 
 /**
-  * Jave Wrapper for cosine similarity.
+  * Java Wrapper for cosine similarity.
   */
 class CosineSimilarityImplWrapper extends CosSimilarityImpl
 
 /**
-  * Jave Wrapper for dice coefficient similarity.
+  * Java Wrapper for dice coefficient similarity.
   */
 class DiceCoefficientImplWrapper extends DiceCoefficientImpl
 
 /**
-  * Jave Wrapper for hamming distance.
+  * Java Wrapper for hamming distance.
   */
 class HammingImplWrapper extends HammingImpl
 
 /**
-  * Jave Wrapper for jaccard similarity.
+  * Java Wrapper for jaccard similarity.
   */
 class JaccardImplWrapper extends JaccardImpl
 
 /**
-  * Jave Wrapper for jaro and jaro winkler similarity.
+  * Java Wrapper for jaro and jaro winkler similarity.
   */
 class JaroImplWrapper extends JaroImpl
 
 /**
-  * Jave Wrapper for levenshtein distance.
+  * Java Wrapper for levenshtein distance.
   */
 class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
 
 /**
-  * Jave Wrapper for longest comment sequence.
+  * Java Wrapper for longest comment sequence.
   */
 class LongestCommonSeqWrapper extends LongestCommonSeqImpl
 
 /**
-  * Jave Wrapper for needleman wunsch similarity.
+  * Java Wrapper for needleman wunsch similarity.
   */
 class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl
 
 /**
-  * Jave Wrapper for n-gram similarity.
+  * Java Wrapper for n-gram similarity.
   */
 class NGramImplWrapper extends NGramImpl
 
 /**
-  * Jave Wrapper for overlap similarity.
+  * Java Wrapper for overlap similarity.
   */
 class OverlapImplWrapper extends OverlapImpl
 
 
 /**
-  * Jave Wrapper for smith waterman similarity.
+  * Java Wrapper for smith waterman similarity.
   */
 class SmithWatermanImplWrapper extends SmithWatermanImpl
 

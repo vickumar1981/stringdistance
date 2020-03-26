@@ -4,12 +4,11 @@ import com.github.vickumar1981.stringdistance._
 import com.github.vickumar1981.stringdistance.impl._
 
 trait ScoreDefinitions {
-
   /**
     * Implicit definition of cosine similarity score for [[CosineAlgorithm]].
     */
   implicit object CosSimilarityScore extends CosSimilarityImpl
-    with WeightedScoringAlgorithm[CosineAlgorithm, String] {
+    with ScoringAlgorithm[CosineAlgorithm] {
     /**
       * The score method takes two strings and returns the cosine similarity between them.
       *
@@ -17,9 +16,7 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the cosine similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, splitOn: String): Double =
-      cosSimilarity(s1, s2, splitOn)
-    override def score(s1: String, s2: String): Double = cosSimilarity(s1, s2)
+    override def score(s1: String, s2: String): Double = cosSimilarity(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -34,7 +31,7 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the dice coefficient score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String): Double = diceCoefficient(s1, s2)
+    override def score(s1: String, s2: String): Double = diceCoefficient(s1.toCharArray, s2.toCharArray)
   }
 
 
@@ -49,8 +46,8 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the jaccard score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, n: Int): Double = jaccard(s1, s2, n)
-    override def score(s1: String, s2: String): Double = jaccard(s1, s2)
+    override def score(s1: String, s2: String, n: Int): Double = jaccard(s1.toCharArray, s2.toCharArray, n)
+    override def score(s1: String, s2: String): Double = jaccard(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -64,7 +61,7 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the jaro score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String): Double = jaro(s1, s2)
+    override def score(s1: String, s2: String): Double = jaro(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -78,8 +75,9 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the jaro winkler score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, weight: Double = 0.1): Double = jaroWinkler(s1, s2, weight)
-    override def score(s1: String, s2: String): Double = jaroWinkler(s1, s2)
+    override def score(s1: String, s2: String, weight: Double = 0.1): Double =
+      jaroWinkler(s1.toCharArray, s2.toCharArray, weight)
+    override def score(s1: String, s2: String): Double = jaroWinkler(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -95,8 +93,8 @@ trait ScoreDefinitions {
       * @return Returns the needleman wunsch similarity between Strings s1 and s2.
       */
     override def score(s1: String, s2: String, gap: ConstantGap = ConstantGap()): Double =
-      needleman(s1, s2, gap)
-    override def score(s1: String, s2: String): Double = needleman(s1, s2)
+      needleman(s1.toCharArray, s2.toCharArray, gap)
+    override def score(s1: String, s2: String): Double = needleman(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -110,8 +108,8 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the n-gram similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, n: Int): Double = nGram(s1, s2, n)
-    override def score(s1: String, s2: String): Double = nGram(s1, s2)
+    override def score(s1: String, s2: String, n: Int): Double = nGram(s1.toCharArray, s2.toCharArray, n)
+    override def score(s1: String, s2: String): Double = nGram(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -125,8 +123,8 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the overlap similarity between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, n: Int = 1): Double = overlap(s1, s2, n)
-    override def score(s1: String, s2: String): Double = overlap(s1, s2)
+    override def score(s1: String, s2: String, n: Int = 1): Double = overlap(s1.toCharArray, s2.toCharArray, n)
+    override def score(s1: String, s2: String): Double = overlap(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -142,8 +140,8 @@ trait ScoreDefinitions {
       * @return Returns the smith waterman similarity between Strings s1 and s2.
       */
     override def score(s1: String, s2: String, gapAndWindowSize: (Gap, Int)): Double =
-      smithWaterman(s1, s2, gapAndWindowSize._1, gapAndWindowSize._2)
-    override def score(s1: String, s2: String): Double = smithWaterman(s1, s2)
+      smithWaterman(s1.toCharArray, s2.toCharArray, gapAndWindowSize._1, gapAndWindowSize._2)
+    override def score(s1: String, s2: String): Double = smithWaterman(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -159,8 +157,8 @@ trait ScoreDefinitions {
       * @return Returns the smith waterman gotoh similarity between Strings s1 and s2.
       */
     override def score(s1: String, s2: String, gap: ConstantGap): Double =
-      smithWatermanGotoh(s1, s2, gap)
-    override def score(s1: String, s2: String): Double = smithWatermanGotoh(s1, s2)
+      smithWatermanGotoh(s1.toCharArray, s2.toCharArray, gap)
+    override def score(s1: String, s2: String): Double = smithWatermanGotoh(s1.toCharArray, s2.toCharArray)
   }
 
   /**
@@ -174,7 +172,7 @@ trait ScoreDefinitions {
       * @param s2 The 2nd String.
       * @return Returns the tversky score between Strings s1 and s2.
       */
-    override def score(s1: String, s2: String, n: Double): Double = tversky(s1, s2, n)
-    override def score(s1: String, s2: String): Double = tversky(s1, s2)
+    override def score(s1: String, s2: String, n: Double): Double = tversky(s1.toCharArray, s2.toCharArray, n)
+    override def score(s1: String, s2: String): Double = tversky(s1.toCharArray, s2.toCharArray)
   }
 }

@@ -40,6 +40,8 @@ import com.github.vickumar1981.stringdistance.implicits.{DistanceDefinitions, Sc
   */
 package object stringdistance extends DistanceDefinitions with ScoreDefinitions with SoundDefinitions {
 
+  implicit def gapToGapAndWindow(g: Gap): (Gap, Int) = (g, Integer.MAX_VALUE)
+
   /**
     * A marker interface for the string metric algorithm.
     */
@@ -131,15 +133,6 @@ package object stringdistance extends DistanceDefinitions with ScoreDefinitions 
     */
   trait TverskyAlgorithm extends StringMetricAlgorithm
 
-  /**
-    * The Strategy object has two strategies(reg ex) expressions on which to split input.
-    * [[Strategy.splitWord]] splits a word into a sequence of characters.
-    * [[Strategy.splitSentence]] splits a sentence into a sequence of words.
-    */
-  object Strategy {
-    final lazy val splitWord = "(?!^)"
-    final lazy val splitSentence = "\\W+"
-  }
 
   /**
     * A type class to extend a distance method to [[StringMetricAlgorithm]].
@@ -294,6 +287,9 @@ package object stringdistance extends DistanceDefinitions with ScoreDefinitions 
     * val smithWatermanGotoh: Double = "martha".smithWatermanGotoh("marhta")
     * val tversky: Double = "karolin".tversky("kathrin", 0.5)
     *
+    * // return a List[String] of ngram tokens
+    * val tokens = "martha".tokens(2) // List("ma", "ar", "rt", "th", "ha")
+    *
     * // Distances between two strings
     * val damerauDist: int = "martha".damerauDist("marhta")
     * val hammingDist: Int = "martha".hammingDist("marhta")
@@ -312,7 +308,7 @@ package object stringdistance extends DistanceDefinitions with ScoreDefinitions 
     import StringSound._
 
     implicit class StringToStringDistanceConverter(s1: String) {
-      def cosine(s2: String, splitOn: String = Strategy.splitWord): Double = Cosine.score(s1, s2, splitOn)
+      def cosine(s2: String): Double = Cosine.score(s1, s2)
       def damerau(s2: String): Double = Damerau.score(s1, s2)
       def damerauDist(s2: String): Int = Damerau.distance(s1, s2)
       def diceCoefficient(s2: String): Double = DiceCoefficient.score(s1, s2)
@@ -330,6 +326,7 @@ package object stringdistance extends DistanceDefinitions with ScoreDefinitions 
       def nGramDist(s2: String, nGram: Int = 1): Int = NGram.distance(s1, s2, nGram)
       def overlap(s2: String, nGram: Int = 1): Double = Overlap.score(s1, s2, nGram)
       def tversky(s2: String, n: Double = 1): Double = Tversky.score(s1, s2, n)
+      def tokens(n: Int): List[String] = NGram.tokens(s1, n)
       def smithWaterman(s2: String, gap: Gap = LinearGap(gapValue = -1),
                         windowSize: Int = Integer.MAX_VALUE): Double =
         SmithWaterman.score(s1, s2, (gap, windowSize))
