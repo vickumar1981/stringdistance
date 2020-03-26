@@ -11,6 +11,15 @@ class TestValidArguments extends AnyFlatSpec {
     assert(NGram.distance("karolin", "kathrin", 2) > 0)
   }
 
+  "All distances" should "be 0 for two empty strings" in {
+    assert(Damerau.distance("", "") == 0)
+    assert(Hamming.distance("", "") == 0)
+    assert(Levenshtein.distance("", "") == 0)
+    assert(LongestCommonSeq.distance("", "") == 0)
+    assert(NGram.distance("", "") == 0)
+    assert(NGram.distance("", "", 2) == 0)
+  }
+
   "All scores" should "be less than one for non-like strings" in {
     assert(Cosine.score("hello", "chello") < 1)
     assert(Damerau.score("martha", "marhta") < 1)
