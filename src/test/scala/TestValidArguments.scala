@@ -30,4 +30,23 @@ class TestValidArguments extends AnyFlatSpec {
     assert(Tversky.score("karolin", "kathrin") < 1)
   }
 
+  "All scores" should "be 1 for two empty strings" in {
+    assert(Cosine.score("", "") == 1)
+    assert(Damerau.score("", "") == 1)
+    assert(DiceCoefficient.score("", "") == 1)
+    assert(Hamming.score("", "") == 1)
+    assert(Jaccard.score("", "") == 1)
+    assert(Jaro.score("", "") == 1)
+    assert(JaroWinkler.score("", "") == 1)
+    assert(Levenshtein.score("", "") == 1)
+    assert(NeedlemanWunsch.score("", "") == 1)
+    assert(NGram.score("", "") == 1)
+    assert(NGram.score("", "", 2) == 1)
+    assert(Overlap.score("", "") == 1)
+    assert(Overlap.score("", "", 2) == 1)
+    assert(SmithWaterman.score("", "") == 1)
+    assert(SmithWatermanGotoh.score("", "") == 1)
+    assert(Tversky.score("", "") == 1)
+  }
+
 }
