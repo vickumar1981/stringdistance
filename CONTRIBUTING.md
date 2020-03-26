@@ -81,4 +81,4 @@ __Generate API documentation:__
 ```
 
 The `index.html` page of the documentation should be located in your project root
-directory, under `target/scala-2.12/api`.
+directory, under `target/scala-2.13/api`.
