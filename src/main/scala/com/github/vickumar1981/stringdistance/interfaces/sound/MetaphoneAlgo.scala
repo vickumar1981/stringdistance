@@ -2,7 +2,7 @@ package com.github.vickumar1981.stringdistance.interfaces.sound
 
 import CommonSoundAlgo._
 
-object MetaphoneAlgo {
+private[stringdistance] object MetaphoneAlgo {
   def compute(a: Array[Char]): Option[Array[Char]] =
     if (a.length == 0 || !isAlpha(a.head)) None
     else {

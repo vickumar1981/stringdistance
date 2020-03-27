@@ -2,7 +2,7 @@ package com.github.vickumar1981.stringdistance.impl
 
 import com.github.vickumar1981.stringdistance.interfaces.NGramTokenizer
 
-trait NGramImpl extends NGramTokenizer {
+private[stringdistance]trait NGramImpl extends NGramTokenizer {
   protected def nGram[T](s1: Array[T], s2: Array[T], n: Int = 1): Double = {
     require(n > 0, "Ngram score, n-gram size must be a positive number.")
     foldNGram(s1, s2, n)(0d)(_ => 1d) {

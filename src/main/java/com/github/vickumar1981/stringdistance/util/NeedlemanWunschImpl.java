@@ -2,6 +2,6 @@ package com.github.vickumar1981.stringdistance.util;
 
 import com.github.vickumar1981.stringdistance.NeedlemanWunschImplWrapper;
 
-public class NeedlemanWunschImpl extends NeedlemanWunschImplWrapper {
+class NeedlemanWunschImpl extends NeedlemanWunschImplWrapper {
     public NeedlemanWunschImpl() {}
 }

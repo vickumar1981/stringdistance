@@ -59,59 +59,16 @@ object StringDistance {
   object Tversky extends WeightedStringMetric[TverskyAlgorithm, Double]
 }
 
-/**
-  * Java Wrapper for cosine similarity.
-  */
-class CosineSimilarityImplWrapper extends CosSimilarityImpl
 
-/**
-  * Java Wrapper for dice coefficient similarity.
-  */
-class DiceCoefficientImplWrapper extends DiceCoefficientImpl
-
-/**
-  * Java Wrapper for hamming distance.
-  */
-class HammingImplWrapper extends HammingImpl
-
-/**
-  * Java Wrapper for jaccard similarity.
-  */
-class JaccardImplWrapper extends JaccardImpl
-
-/**
-  * Java Wrapper for jaro and jaro winkler similarity.
-  */
-class JaroImplWrapper extends JaroImpl
-
-/**
-  * Java Wrapper for levenshtein distance.
-  */
-class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
-
-/**
-  * Java Wrapper for longest comment sequence.
-  */
-class LongestCommonSeqWrapper extends LongestCommonSeqImpl
-
-/**
-  * Java Wrapper for needleman wunsch similarity.
-  */
-class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl
-
-/**
-  * Java Wrapper for n-gram similarity.
-  */
-class NGramImplWrapper extends NGramImpl
-
-/**
-  * Java Wrapper for overlap similarity.
-  */
-class OverlapImplWrapper extends OverlapImpl
-
-
-/**
-  * Java Wrapper for smith waterman similarity.
-  */
-class SmithWatermanImplWrapper extends SmithWatermanImpl
+private[stringdistance] class CosineSimilarityImplWrapper extends CosSimilarityImpl
+private[stringdistance] class DiceCoefficientImplWrapper extends DiceCoefficientImpl
+private[stringdistance] class HammingImplWrapper extends HammingImpl
+private[stringdistance] class JaccardImplWrapper extends JaccardImpl
+private[stringdistance] class JaroImplWrapper extends JaroImpl
+private[stringdistance] class LevenshteinDistanceImplWrapper extends LevenshteinDistanceImpl
+private[stringdistance] class LongestCommonSeqWrapper extends LongestCommonSeqImpl
+private[stringdistance] class NeedlemanWunschImplWrapper extends NeedlemanWunschImpl
+private[stringdistance] class NGramImplWrapper extends NGramImpl
+private[stringdistance] class OverlapImplWrapper extends OverlapImpl
+private[stringdistance] class SmithWatermanImplWrapper extends SmithWatermanImpl
 

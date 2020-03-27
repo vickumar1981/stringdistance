@@ -1,6 +1,6 @@
 package com.github.vickumar1981.stringdistance.impl
 
-trait CosSimilarityImpl {
+private[stringdistance] trait CosSimilarityImpl {
   private def termFrequencyMap[T](terms: Seq[T]): Map[T, Int] = {
     val retMap = scala.collection.mutable.Map[T, Int]()
     terms.foreach {

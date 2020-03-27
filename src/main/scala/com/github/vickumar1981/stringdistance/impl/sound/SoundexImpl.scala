@@ -3,7 +3,7 @@ package com.github.vickumar1981.stringdistance.impl.sound
 import com.github.vickumar1981.stringdistance.interfaces.sound.CommonSoundAlgo._
 import com.github.vickumar1981.stringdistance.interfaces.sound.SoundexAlgo
 
-trait SoundexImpl {
+private[stringdistance] trait SoundexImpl {
   private def compare(a: Array[Char], b: Array[Char]): Option[Boolean] =
     if (a.length == 0 || !isAlpha(a.head) || b.length == 0 || !isAlpha(b.head)) None
     else if (a.head.toLower != b.head.toLower) Some(false)

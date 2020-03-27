@@ -1,6 +1,6 @@
 package com.github.vickumar1981.stringdistance.impl
 
-trait LongestCommonSeqImpl {
+private[stringdistance] trait LongestCommonSeqImpl {
   private def lcs[T](x: Array[T], y: Array[T], m: Int, n: Int): Int = {
     if (m == 0 || n == 0) 0
     else if (x(m - 1) == y(n - 1)) 1 + lcs(x, y, m - 1, n - 1)

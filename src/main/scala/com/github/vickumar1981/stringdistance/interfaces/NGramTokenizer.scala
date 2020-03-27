@@ -2,7 +2,7 @@ package com.github.vickumar1981.stringdistance.interfaces
 
 import collection.JavaConverters._
 
-trait NGramTokenizer {
+private[stringdistance] trait NGramTokenizer {
   protected def intersectLength[T]: (List[List[T]], List[List[T]]) => Int = (mt1, mt2) => mt1.intersect(mt2).length
 
   private def tokenize[T](a: List[T], n: Int): List[List[T]] =

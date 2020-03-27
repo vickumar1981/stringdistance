@@ -2,7 +2,7 @@ package com.github.vickumar1981.stringdistance.impl
 
 import com.github.vickumar1981.stringdistance.interfaces.CommonStringDistanceAlgo
 
-trait JaroImpl extends CommonStringDistanceAlgo {
+private[stringdistance] trait JaroImpl extends CommonStringDistanceAlgo {
   protected def jaroWinkler[T](s1: Array[T], s2: Array[T], weight: Double = 0.1): Double = {
     require(weight >= 0 && weight <= 1, "Jaro-Winkler weight must be a number between 0 and 1.")
     val jaroScore = jaro(s1, s2)
