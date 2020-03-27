@@ -28,7 +28,7 @@ public class ArrayDistance {
         }
         return minLen * 1.0 / maxLen;
     }
-    
+
     public static <T> Double cosine(T[] s1, T[] s2) {
         return cosine.cosSimilarity(s1, s2);
     }

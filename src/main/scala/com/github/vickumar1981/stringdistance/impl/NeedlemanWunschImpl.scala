@@ -2,7 +2,7 @@ package com.github.vickumar1981.stringdistance.impl
 
 import scala.math.{max, min}
 
-trait NeedlemanWunschImpl extends GapSubstitution {
+private[stringdistance]trait NeedlemanWunschImpl extends GapSubstitution {
   def needleman[T](s1: Array[T], s2: Array[T], gap: ConstantGap = ConstantGap()): Double = {
     require(gap.matchValue > 0, "NeedlmanWunsch match value must be a number > 0.")
     require(gap.misMatchValue < 0, "NeedlemanWunsh mismatch value must be a number < 0.")

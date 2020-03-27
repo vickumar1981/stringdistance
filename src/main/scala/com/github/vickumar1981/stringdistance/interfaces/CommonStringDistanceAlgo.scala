@@ -3,7 +3,7 @@ package com.github.vickumar1981.stringdistance.interfaces
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 
-trait CommonStringDistanceAlgo {
+private[stringdistance] trait CommonStringDistanceAlgo {
   final private lazy val MIN_PREFIX_LENGTH = 4
 
   protected def minStartPrefix[T](s1: Array[T], s2: Array[T], minPrefixLen: Int = MIN_PREFIX_LENGTH): Int = {

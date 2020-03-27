@@ -3,7 +3,7 @@ package com.github.vickumar1981.stringdistance.impl
 import scala.math.min
 import scala.language.postfixOps
 
-trait LevenshteinDistanceImpl {
+private[stringdistance] trait LevenshteinDistanceImpl {
   protected def levenshtein[T](a: Array[T], b: Array[T]): Int =
     ((0 to b.length).toList /: a)((prev, x) =>
       (prev zip prev.tail zip b).scanLeft(prev.head + 1) {

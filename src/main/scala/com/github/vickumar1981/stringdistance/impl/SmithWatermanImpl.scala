@@ -2,7 +2,7 @@ package com.github.vickumar1981.stringdistance.impl
 
 import scala.math.{max, min}
 
-trait SmithWatermanImpl extends GapSubstitution {
+private[stringdistance]trait SmithWatermanImpl extends GapSubstitution {
   def smithWaterman[T](s1: Array[T], s2: Array[T],
                        gap: Gap = LinearGap(),
                        windowSize: Int = Integer.MAX_VALUE): Double = {
