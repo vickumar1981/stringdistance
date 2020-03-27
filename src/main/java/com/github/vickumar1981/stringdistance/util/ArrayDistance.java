@@ -28,12 +28,7 @@ public class ArrayDistance {
         }
         return minLen * 1.0 / maxLen;
     }
-
-    private static Character[] toArr(String s) {
-        return s.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
-    }
-
-
+    
     public static <T> Double cosine(T[] s1, T[] s2) {
         return cosine.cosSimilarity(s1, s2);
     }
