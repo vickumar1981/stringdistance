@@ -10,7 +10,7 @@ publishMavenStyle := true
 licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 pomIncludeRepository := { _ => false }
 publishArtifact in Test := false
-crossScalaVersions := Seq("2.12.8", "2.13.1")
+crossScalaVersions := Seq("2.11.12", "2.12.8", "2.13.1")
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false, includeDependency = false)
 
 // Add sonatype repository settings
