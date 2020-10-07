@@ -1,6 +1,6 @@
 ![Logo](logo.png)
 
-# Conributing to StringDistance  
+# Contributing to StringDistance  
 
 Thanks for taking the time to contribute!
 
