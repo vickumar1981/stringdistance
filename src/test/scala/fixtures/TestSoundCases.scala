@@ -10,6 +10,7 @@ object TestSoundCases {
     TestSoundCase("merci", "mercy", Some(true), Some(true)),
     TestSoundCase("dumb", "gum", Some(false), Some(false)),
     TestSoundCase("", "abc", Some(false), Some(false)),
+    TestSoundCase("abc", "", Some(false), Some(false)),
     TestSoundCase("robert", "rupert", Some(false), Some(true)),
     TestSoundCase("robert", "rubin", Some(false), Some(false)),
     TestSoundCase("night", "knight", Some(true), Some(false)),
@@ -30,6 +31,14 @@ object TestSoundCases {
     TestSoundCase("xanax", "zanax", Some(true), Some(false)),
     TestSoundCase("whirl", "wiril", Some(true), Some(true)),
     TestSoundCase("squirrel", "skwerl", Some(false), Some(true)),
-    TestSoundCase("lackey", "lakie", Some(true), Some(true))
+    TestSoundCase("lackey", "lakie", Some(true), Some(true)),
+    TestSoundCase("hanma", "hammer", Some(false), Some(false)),
+    TestSoundCase("abbot", "about", Some(true), Some(true)),
+    TestSoundCase("x", "s", Some(true), Some(false)),
+    TestSoundCase("why", "y", Some(false), Some(false)),
+    TestSoundCase("aeon", "eon", Some(true), Some(false)),
+    TestSoundCase("dodgy", "dodge", Some(true), Some(true)),
+    TestSoundCase("edgy", "wedgie", Some(false), Some(false)),
+    TestSoundCase("caça", "cassa", Some(false), Some(false))
   )
 }
