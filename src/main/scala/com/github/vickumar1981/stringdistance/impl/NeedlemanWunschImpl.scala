@@ -2,7 +2,7 @@ package com.github.vickumar1981.stringdistance.impl
 
 import scala.math.{max, min}
 
-private[stringdistance]trait NeedlemanWunschImpl extends GapSubstitution {
+private[stringdistance] trait NeedlemanWunschImpl extends GapSubstitution {
   def needleman[T](s1: Array[T], s2: Array[T], gap: ConstantGap = ConstantGap()): Double = {
     require(gap.matchValue > 0, "NeedlmanWunsch match value must be a number > 0.")
     require(gap.misMatchValue < 0, "NeedlemanWunsh mismatch value must be a number < 0.")
@@ -22,16 +22,16 @@ private[stringdistance]trait NeedlemanWunschImpl extends GapSubstitution {
       case (s1Len, s2Len) => {
         val v0 = Array.ofDim[Double](s2Len + 1)
         val v1 = Array.ofDim[Double](s2Len + 1)
-        v0.indices.foreach {
-          i => v0(i) = i
+        v0.indices.foreach { i =>
+          v0(i) = i
         }
 
-        (1 until s1Len).foreach {
-          i => {
-            (1 until v0.length).foreach {
-              j =>
-                v1(j) = min(min(v0(j) - gap.gapValue, v1(j - 1) - gap.gapValue),
-                  v0(j - 1) - subst(s1, i - 1, s2, j - 1, gap))
+        (1 until s1Len).foreach { i =>
+          {
+            (1 until v0.length).foreach { j =>
+              v1(j) = min(
+                min(v0(j) - gap.gapValue, v1(j - 1) - gap.gapValue),
+                v0(j - 1) - subst(s1, i - 1, s2, j - 1, gap))
             }
             v0.indices.foreach { j => v0(j) = v1(j) }
           }

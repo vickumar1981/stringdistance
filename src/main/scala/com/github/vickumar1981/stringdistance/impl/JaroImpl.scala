@@ -16,9 +16,12 @@ private[stringdistance] trait JaroImpl extends CommonStringDistanceAlgo {
     val common1 = getCommonChars(s1.toList, s2.toList, halflen)
     val common2 = getCommonChars(s2.toList, s1.toList, halflen)
     if (common1.nonEmpty && common2.nonEmpty && common1.length == common2.length) {
-      val transpositions = common1.indices.filterNot(idx => common1(idx) == common2(idx)).map {
-        _ => 1d
-      }.sum * 0.5d
+      val transpositions = common1.indices
+        .filterNot(idx => common1(idx) == common2(idx))
+        .map { _ =>
+          1d
+        }
+        .sum * 0.5d
       (((common1.length * 1d) / s1.length) +
         (common2.length * 1d / s2.length) +
         ((1d * common1.length - transpositions) / common1.length)) / 3d

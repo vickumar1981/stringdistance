@@ -48,6 +48,12 @@ __Running unit tests:__
 ./sbt test
 ```
 
+__Formatting your code:__
+```
+# From project root directory
+./sbt scalafmtAll
+```
+
 __Run linter, unit tests, & code coverage:__
 
 ```

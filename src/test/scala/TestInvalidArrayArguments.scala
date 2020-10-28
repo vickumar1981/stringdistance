@@ -18,15 +18,21 @@ class TestInvalidArrayArguments extends AnyFlatSpec with Matchers with TestArray
   }
 
   "Needleman Wunsch score" should "only accept a match value > 0" in {
-    assertThrows[IllegalArgumentException] { NeedlemanWunsch.score("abc", "abc", ConstantGap(-1, -1, 0)) }
+    assertThrows[IllegalArgumentException] {
+      NeedlemanWunsch.score("abc", "abc", ConstantGap(-1, -1, 0))
+    }
   }
 
   "Needleman Wunsch score" should "only accept a mismatch value < 0" in {
-    assertThrows[IllegalArgumentException] { NeedlemanWunsch.score("abc", "abc", ConstantGap(1, 1, 0)) }
+    assertThrows[IllegalArgumentException] {
+      NeedlemanWunsch.score("abc", "abc", ConstantGap(1, 1, 0))
+    }
   }
 
   "Needleman Wunsch score" should "only accept a gap value <= 0" in {
-    assertThrows[IllegalArgumentException] { NeedlemanWunsch.score("abc", "abc", ConstantGap(1, -1, 1)) }
+    assertThrows[IllegalArgumentException] {
+      NeedlemanWunsch.score("abc", "abc", ConstantGap(1, -1, 1))
+    }
   }
 
   "NGram score" should "only accept a positive number for n-gram size" in {
@@ -43,36 +49,43 @@ class TestInvalidArrayArguments extends AnyFlatSpec with Matchers with TestArray
 
   "Smith Waterman score" should "only accept a match value > 0" in {
     assertThrows[IllegalArgumentException] {
-      SmithWaterman.score("abc", "abc", ConstantGap(-1, -1, 0)) }
+      SmithWaterman.score("abc", "abc", ConstantGap(-1, -1, 0))
+    }
   }
 
   "Smith Waterman score" should "only accept a mismatch value < 0" in {
     assertThrows[IllegalArgumentException] {
-      SmithWaterman.score("abc", "abc", ConstantGap(1, 1, 0)) }
+      SmithWaterman.score("abc", "abc", ConstantGap(1, 1, 0))
+    }
   }
 
   "Smith Waterman score" should "only accept a gap value <= 0" in {
     assertThrows[IllegalArgumentException] {
-      SmithWaterman.score("abc", "abc", ConstantGap(1, -1, 1)) }
+      SmithWaterman.score("abc", "abc", ConstantGap(1, -1, 1))
+    }
   }
 
   "Smith Waterman score" should "only accept a window size > 0" in {
     assertThrows[IllegalArgumentException] {
-      SmithWaterman.score("abc", "abc", (ConstantGap(1, -1, 0), -1)) }
+      SmithWaterman.score("abc", "abc", (ConstantGap(1, -1, 0), -1))
+    }
   }
 
   "Smith Waterman Gotoh score" should "only accept a match value > 0" in {
     assertThrows[IllegalArgumentException] {
-      SmithWatermanGotoh.score("abc", "abc", ConstantGap(-1, -1, 0)) }
+      SmithWatermanGotoh.score("abc", "abc", ConstantGap(-1, -1, 0))
+    }
   }
 
   "Smith Waterman Gotoh score" should "only accept a mismatch value < 0" in {
     assertThrows[IllegalArgumentException] {
-      SmithWatermanGotoh.score("abc", "abc", ConstantGap(1, 1, 0)) }
+      SmithWatermanGotoh.score("abc", "abc", ConstantGap(1, 1, 0))
+    }
   }
 
   "Smith Waterman Gotoh score" should "only accept a gap value <= 0" in {
     assertThrows[IllegalArgumentException] {
-      SmithWatermanGotoh.score("abc", "abc", ConstantGap(1, -1, 1)) }
+      SmithWatermanGotoh.score("abc", "abc", ConstantGap(1, -1, 1))
+    }
   }
 }

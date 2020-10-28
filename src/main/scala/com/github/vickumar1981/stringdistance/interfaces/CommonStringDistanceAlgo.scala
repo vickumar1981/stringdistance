@@ -6,10 +6,13 @@ import scala.collection.mutable.ListBuffer
 private[stringdistance] trait CommonStringDistanceAlgo {
   final private lazy val MIN_PREFIX_LENGTH = 4
 
-  protected def minStartPrefix[T](s1: Array[T], s2: Array[T], minPrefixLen: Int = MIN_PREFIX_LENGTH): Int = {
+  protected def minStartPrefix[T](
+      s1: Array[T],
+      s2: Array[T],
+      minPrefixLen: Int = MIN_PREFIX_LENGTH): Int = {
     var isSame = true
     var minPrefix = 0
-    s1.zipWithIndex.foreach{
+    s1.zipWithIndex.foreach {
       case (ch, chIndex) => {
         if (isSame && chIndex < s2.length && ch == s2(chIndex))
           minPrefix += 1
@@ -25,7 +28,7 @@ private[stringdistance] trait CommonStringDistanceAlgo {
     val strCopy: mutable.ListBuffer[T] = ListBuffer(s2: _*)
     var n = s1.length
     val m = s2.length
-    s1.zipWithIndex.foreach{
+    s1.zipWithIndex.foreach {
       case (ch, chIndex) => {
         var foundIt = false
         var j = math.max(0, chIndex - halfLen)
@@ -36,7 +39,8 @@ private[stringdistance] trait CommonStringDistanceAlgo {
           }
           j += 1
         }
-      }}
+      }
+    }
     commonChars.toList
   }
 }
