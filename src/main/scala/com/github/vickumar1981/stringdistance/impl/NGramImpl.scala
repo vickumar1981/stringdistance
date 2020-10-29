@@ -12,8 +12,6 @@ private[stringdistance] trait NGramImpl extends NGramTokenizer {
 
   protected def nGramDist[T](s1: Array[T], s2: Array[T], n: Int = 1): Int = {
     require(n > 0, "Ngram distance, n-gram size must be a positive number.")
-    foldNGram(s1, s2, n)(0)(identity) { (_, _, dist) =>
-      dist
-    }
+    foldNGram(s1, s2, n)(0)(identity) { (_, _, dist) => dist }
   }
 }
