@@ -5,54 +5,54 @@ import ArrayDistanceBenchmarks._
 
 class ArrayDistanceBenchmarks {
   @Benchmark
-  def emptyCosineTest(): Unit = emptyArrScoreTest(ArrayDistance.Cosine)
+  def emptyCosineTest(): Unit = emptyArrTest(ArrayDistance.Cosine)
   @Benchmark
-  def smallDiffCosineTest(): Unit = smallDiffArrScoreTest(ArrayDistance.Cosine)
+  def smallDiffCosineTest(): Unit = smallDiffArrTest(ArrayDistance.Cosine)
   @Benchmark
-  def smallSameCosineTest(): Unit = smallSameArrScoreTest(ArrayDistance.Cosine)
+  def smallSameCosineTest(): Unit = smallSameArrTest(ArrayDistance.Cosine)
   @Benchmark
-  def largeDiffCosineTest(): Unit = largeDiffArrScoreTest(ArrayDistance.Cosine)
+  def largeDiffCosineTest(): Unit = largeDiffArrTest(ArrayDistance.Cosine)
   @Benchmark
-  def largeSameCosineTest(): Unit = largeSameArrScoreTest(ArrayDistance.Cosine)
+  def largeSameCosineTest(): Unit = largeSameArrTest(ArrayDistance.Cosine)
 
   // Missing: Damerau
 
   @Benchmark
-  def emptyDiceCoefficientTest(): Unit = emptyArrScoreTest(ArrayDistance.DiceCoefficient)
+  def emptyDiceCoefficientTest(): Unit = emptyArrTest(ArrayDistance.DiceCoefficient)
   @Benchmark
-  def smallDiffDiceCoefficientTest(): Unit = smallDiffArrScoreTest(ArrayDistance.DiceCoefficient)
+  def smallDiffDiceCoefficientTest(): Unit = smallDiffArrTest(ArrayDistance.DiceCoefficient)
   @Benchmark
-  def smallSameDiceCoefficientTest(): Unit = smallSameArrScoreTest(ArrayDistance.DiceCoefficient)
+  def smallSameDiceCoefficientTest(): Unit = smallSameArrTest(ArrayDistance.DiceCoefficient)
   @Benchmark
-  def largeDiffDiceCoefficientTest(): Unit = largeDiffArrScoreTest(ArrayDistance.DiceCoefficient)
+  def largeDiffDiceCoefficientTest(): Unit = largeDiffArrTest(ArrayDistance.DiceCoefficient)
   @Benchmark
-  def largeSameDiceCoefficientTest(): Unit = largeSameArrScoreTest(ArrayDistance.DiceCoefficient)
+  def largeSameDiceCoefficientTest(): Unit = largeSameArrTest(ArrayDistance.DiceCoefficient)
 
   // Missing: Hamming
 
   // Missing: Jaccard
 
   @Benchmark
-  def emptyJaroTest(): Unit = emptyArrScoreTest(ArrayDistance.Jaro)
+  def emptyJaroTest(): Unit = emptyArrTest(ArrayDistance.Jaro)
   @Benchmark
-  def smallDiffJaroTest(): Unit = smallDiffArrScoreTest(ArrayDistance.Jaro)
+  def smallDiffJaroTest(): Unit = smallDiffArrTest(ArrayDistance.Jaro)
   @Benchmark
-  def smallSameJaroTest(): Unit = smallSameArrScoreTest(ArrayDistance.Jaro)
+  def smallSameJaroTest(): Unit = smallSameArrTest(ArrayDistance.Jaro)
   @Benchmark
-  def largeDiffJaroTest(): Unit = largeDiffArrScoreTest(ArrayDistance.Jaro)
+  def largeDiffJaroTest(): Unit = largeDiffArrTest(ArrayDistance.Jaro)
   @Benchmark
-  def largeSameJaroTest(): Unit = largeSameArrScoreTest(ArrayDistance.Jaro)
+  def largeSameJaroTest(): Unit = largeSameArrTest(ArrayDistance.Jaro)
 
   @Benchmark
-  def emptyLongestCommonSeqTest(): Unit = emptyArrDistanceTest(ArrayDistance.LongestCommonSeq)
+  def emptyLongestCommonSeqTest(): Unit = emptyArrTest(ArrayDistance.LongestCommonSeq)
   @Benchmark
-  def smallDiffLongestCommonSeqTest(): Unit = smallDiffArrDistanceTest(ArrayDistance.LongestCommonSeq)
+  def smallDiffLongestCommonSeqTest(): Unit = smallDiffArrTest(ArrayDistance.LongestCommonSeq)
   @Benchmark
-  def smallSameLongestCommonSeqTest(): Unit = smallSameArrDistanceTest(ArrayDistance.LongestCommonSeq)
+  def smallSameLongestCommonSeqTest(): Unit = smallSameArrTest(ArrayDistance.LongestCommonSeq)
   /*@Benchmark
-  def largeDiffLongestCommonSeqTest(): Unit = largeDiffArrDistanceTest(ArrayDistance.LongestCommonSeq)
+  def largeDiffLongestCommonSeqTest(): Unit = largeDiffArrTest(ArrayDistance.LongestCommonSeq)
   @Benchmark
-  def largeSameLongestCommonSeqTest(): Unit = largeSameArrDistanceTest(ArrayDistance.LongestCommonSeq)*/
+  def largeSameLongestCommonSeqTest(): Unit = largeSameArrTest(ArrayDistance.LongestCommonSeq)*/
 
   // Missing: NeedlemanWunsch
 
@@ -68,43 +68,41 @@ class ArrayDistanceBenchmarks {
 }
 
 object ArrayDistanceBenchmarks {
-  def testScoreMetric[T](
-    arr1: Array[T],
-    arr2: Array[T]
-  )(scoreMetric: ArrayDistance.ScoreMetric): Unit =
-    scoreMetric.score(arr1, arr2)
 
-  def testDistanceMetric[T](
-    arr1: Array[T],
-    arr2: Array[T]
-  )(distanceMetric: ArrayDistance.DistanceMetric): Unit =
-    distanceMetric.distance(arr1, arr2)
+  trait Bench[T] {
+    def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit
+  }
 
-  val emptyArrScoreTest = testScoreMetric(Array.empty[Int], Array.empty[Int]) _
-  val smallDiffArrScoreTest = testScoreMetric(
-    Array.fill(10)('a'),
-    Array.fill(10)('b')) _
-  val smallSameArrScoreTest = testScoreMetric(
-    Array.fill(10)('a'),
-    Array.fill(10)('a')) _
-  val largeDiffArrScoreTest = testScoreMetric(
-    Array.fill(50)('a'),
-    Array.fill(50)('b')) _
-  val largeSameArrScoreTest = testScoreMetric(
-    Array.fill(50)('a'),
-    Array.fill(50)('a')) _
+  object Bench {
+    def apply[T](implicit bench: Bench[T]): Bench[T] = bench
+  }
 
-  val emptyArrDistanceTest = testDistanceMetric(Array.empty[Int], Array.empty[Int]) _
-  val smallDiffArrDistanceTest = testDistanceMetric(
+  implicit def scoreMetricBenchmarkable[T <: ArrayDistance.ScoreMetric] = new Bench[T] {
+    def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
+      metric.score(arr1, arr2)
+  }
+
+  implicit def distanceMetricBenchmarkable[T <: ArrayDistance.DistanceMetric] = new Bench[T] {
+    def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
+      metric.distance(arr1, arr2)
+  }
+
+  def emptyArrTest[T: Bench](metric: T) =
+    Bench[T].benchmark(Array.empty[Int], Array.empty[Int], metric)
+  def smallDiffArrTest[T: Bench](metric: T) = Bench[T].benchmark(
     Array.fill(10)('a'),
-    Array.fill(10)('b')) _
-  val smallSameArrDistanceTest = testDistanceMetric(
+    Array.fill(10)('b'),
+    metric)
+  def smallSameArrTest[T: Bench](metric: T) = Bench[T].benchmark(
     Array.fill(10)('a'),
-    Array.fill(10)('a')) _
-  val largeDiffArrDistanceTest = testDistanceMetric(
+    Array.fill(10)('a'),
+    metric)
+  def largeDiffArrTest[T: Bench](metric: T) = Bench[T].benchmark(
     Array.fill(50)('a'),
-    Array.fill(50)('b')) _
-  val largeSameArrDistanceTest = testDistanceMetric(
+    Array.fill(50)('b'),
+    metric)
+  def largeSameArrTest[T: Bench](metric: T) = Bench[T].benchmark(
     Array.fill(50)('a'),
-    Array.fill(50)('a')) _
+    Array.fill(50)('a'),
+    metric)
 }
