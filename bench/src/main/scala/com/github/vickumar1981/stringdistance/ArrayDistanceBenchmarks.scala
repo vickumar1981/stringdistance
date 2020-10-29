@@ -95,22 +95,30 @@ class ArrayDistanceBenchmarks {
   def largeSameNeedlemanWunschTest(): Unit = largeSameArrTest(ArrayDistance.NeedlemanWunsch)
 
   @Benchmark
-  def smallDiffNGramDistTest(): Unit = smallDiffArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
+  def smallDiffNGramDistTest(): Unit =
+    smallDiffArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
   @Benchmark
-  def smallSameNGramDistTest(): Unit = smallSameArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
+  def smallSameNGramDistTest(): Unit =
+    smallSameArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
   @Benchmark
-  def largeDiffNGramDistTest(): Unit = largeDiffArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
+  def largeDiffNGramDistTest(): Unit =
+    largeDiffArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
   @Benchmark
-  def largeSameNGramDistTest(): Unit = largeSameArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
+  def largeSameNGramDistTest(): Unit =
+    largeSameArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
 
   @Benchmark
-  def smallDiffNGramScoreTest(): Unit = smallDiffArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
+  def smallDiffNGramScoreTest(): Unit =
+    smallDiffArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
   @Benchmark
-  def smallSameNGramScoreTest(): Unit = smallSameArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
+  def smallSameNGramScoreTest(): Unit =
+    smallSameArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
   @Benchmark
-  def largeDiffNGramScoreTest(): Unit = largeDiffArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
+  def largeDiffNGramScoreTest(): Unit =
+    largeDiffArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
   @Benchmark
-  def largeSameNGramScoreTest(): Unit = largeSameArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
+  def largeSameNGramScoreTest(): Unit =
+    largeSameArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
 
   @Benchmark
   def smallDiffOverlapTest(): Unit = smallDiffArrTest(ArrayDistance.Overlap)
@@ -120,7 +128,7 @@ class ArrayDistanceBenchmarks {
   def largeDiffOverlapTest(): Unit = largeDiffArrTest(ArrayDistance.Overlap)
   @Benchmark
   def largeSameOverlapTest(): Unit = largeSameArrTest(ArrayDistance.Overlap)
-  
+
   @Benchmark
   def smallDiffSmithWatermanTest(): Unit = smallDiffArrTest(ArrayDistance.SmithWaterman)
   @Benchmark
@@ -129,7 +137,7 @@ class ArrayDistanceBenchmarks {
   def largeDiffSmithWatermanTest(): Unit = largeDiffArrTest(ArrayDistance.SmithWaterman)
   @Benchmark
   def largeSameSmithWatermanTest(): Unit = largeSameArrTest(ArrayDistance.SmithWaterman)
-  
+
   @Benchmark
   def smallDiffSmithWatermanGotohTest(): Unit = smallDiffArrTest(ArrayDistance.SmithWatermanGotoh)
   @Benchmark
@@ -138,7 +146,7 @@ class ArrayDistanceBenchmarks {
   def largeDiffSmithWatermanGotohTest(): Unit = largeDiffArrTest(ArrayDistance.SmithWatermanGotoh)
   @Benchmark
   def largeSameSmithWatermanGotohTest(): Unit = largeSameArrTest(ArrayDistance.SmithWatermanGotoh)
-  
+
   @Benchmark
   def smallDiffTverskyTest(): Unit = smallDiffArrTest(ArrayDistance.Tversky)
   @Benchmark
@@ -159,45 +167,42 @@ object ArrayDistanceBenchmarks {
     def apply[T](implicit bench: Bench[T]): Bench[T] = bench
   }
 
-  implicit def scoreMetricBenchmarkable[T <: ArrayDistance.ScoreMetric] = new Bench[T] {
-    def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
-      metric.score(arr1, arr2)
-  }
+  implicit def scoreMetricBenchmarkable[T <: ArrayDistance.ScoreMetric] =
+    new Bench[T] {
+      def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
+        metric.score(arr1, arr2)
+    }
 
-  implicit def distanceMetricBenchmarkable[T <: ArrayDistance.DistanceMetric] = new Bench[T] {
-    def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
-      metric.distance(arr1, arr2)
-  }
+  implicit def distanceMetricBenchmarkable[T <: ArrayDistance.DistanceMetric] =
+    new Bench[T] {
+      def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
+        metric.distance(arr1, arr2)
+    }
 
-  implicit def weightedScoreMetricBenchmarkable[T <: ArrayDistance.WeightedScoreMetric[_]] = new Bench[T] {
-    def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
-      metric.score(arr1, arr2)
-  }
+  implicit def weightedScoreMetricBenchmarkable[T <: ArrayDistance.WeightedScoreMetric[_]] =
+    new Bench[T] {
+      def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
+        metric.score(arr1, arr2)
+    }
 
-  implicit def weightedDistanceMetricBenchmarkable[T <: ArrayDistance.WeightedDistanceMetric[_]] = new Bench[T] {
-    def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
-      metric.distance(arr1, arr2)
-  }
+  implicit def weightedDistanceMetricBenchmarkable[T <: ArrayDistance.WeightedDistanceMetric[_]] =
+    new Bench[T] {
+      def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
+        metric.distance(arr1, arr2)
+    }
 
-  implicit def scoreFromDistanceMetricBenchmarkable[T <: ArrayDistance.ScoreFromDistanceMetric] = new Bench[T] {
-    def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
-      metric.distance(arr1, arr2)
-  }
+  implicit def scoreFromDistanceMetricBenchmarkable[T <: ArrayDistance.ScoreFromDistanceMetric] =
+    new Bench[T] {
+      def benchmark[U](arr1: Array[U], arr2: Array[U], metric: T): Unit =
+        metric.distance(arr1, arr2)
+    }
 
-  def smallDiffArrTest[T: Bench](metric: T) = Bench[T].benchmark(
-    Array.fill(10)('a'),
-    Array.fill(10)('b'),
-    metric)
-  def smallSameArrTest[T: Bench](metric: T) = Bench[T].benchmark(
-    Array.fill(10)('a'),
-    Array.fill(10)('a'),
-    metric)
-  def largeDiffArrTest[T: Bench](metric: T) = Bench[T].benchmark(
-    Array.fill(50)('a'),
-    Array.fill(50)('b'),
-    metric)
-  def largeSameArrTest[T: Bench](metric: T) = Bench[T].benchmark(
-    Array.fill(50)('a'),
-    Array.fill(50)('a'),
-    metric)
+  def smallDiffArrTest[T: Bench](metric: T) =
+    Bench[T].benchmark(Array.fill(10)('a'), Array.fill(10)('b'), metric)
+  def smallSameArrTest[T: Bench](metric: T) =
+    Bench[T].benchmark(Array.fill(10)('a'), Array.fill(10)('a'), metric)
+  def largeDiffArrTest[T: Bench](metric: T) =
+    Bench[T].benchmark(Array.fill(50)('a'), Array.fill(50)('b'), metric)
+  def largeSameArrTest[T: Bench](metric: T) =
+    Bench[T].benchmark(Array.fill(50)('a'), Array.fill(50)('a'), metric)
 }
