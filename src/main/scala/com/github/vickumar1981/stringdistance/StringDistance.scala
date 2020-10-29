@@ -4,41 +4,41 @@ import com.github.vickumar1981.stringdistance.impl._
 import com.github.vickumar1981.stringdistance.interfaces.NGramTokenizer
 
 /**
-  * Main class to organize functionality of different string distance algorithms
-  *
-  * {{{
-  * import com.github.vickumar1981.stringdistance.StringDistance._
-  * import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
-  *
-  * // Scores between strings
-  * val cosSimilarity: Double = Cosine.score("hello", "chello")
-  * val damerau: Double = Damerau.score("martha", "marhta")
-  * val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
-  * val hamming: Double = Hamming.score("martha", "marhta")
-  * val jaccard: Double = Jaccard.score("karolin", "kathrin", 1)
-  * val jaro: Double = Jaro.score("martha", "marhta")
-  * val jaroWinkler: Double = JaroWinkler.score("martha", "marhta", 0.1)
-  * val levenshtein: Double = Levenshtein.score("martha", "marhta")
-  * val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta", ConstantGap())
-  * val ngramSimilarity: Double = NGram.score("karolin", "kathrin", 1)
-  * val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
-  * val overlap: Double = Overlap.score("karolin", "kathrin", 1)
-  * val smithWaterman: Double = SmithWaterman.score("martha", "marhta", (LinearGap(gapValue = -1), Integer.MAX_VALUE))
-  * val smithWatermanGotoh: Double = SmithWatermanGotoh.score("martha", "marhta", ConstantGap())
-  * val tversky: Double = Tversky.score("karolin", "kathrin", 0.5)
-  *
-  * // Distances between strings
-  * val damerauDist: Int = Damerau.distance("martha", "marhta")
-  * val hammingDist: Int = Hamming.distance("martha", "marhta")
-  * val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")
-  * val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
-  * val ngramDist: Int = NGram.distance("karolin", "kathrin", 1)
-  * val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)
-  *
-  * // return a List[String] of ngram tokens
-  * val tokens = NGram.tokens("martha", 2) // List("ma", "ar", "rt", "th", "ha")
-  * }}}
-  */
+ * Main class to organize functionality of different string distance algorithms
+ *
+ * {{{
+ * import com.github.vickumar1981.stringdistance.StringDistance._
+ * import com.github.vickumar1981.stringdistance.impl.{ConstantGap, LinearGap}
+ *
+ * // Scores between strings
+ * val cosSimilarity: Double = Cosine.score("hello", "chello")
+ * val damerau: Double = Damerau.score("martha", "marhta")
+ * val diceCoefficient: Double = DiceCoefficient.score("martha", "marhta")
+ * val hamming: Double = Hamming.score("martha", "marhta")
+ * val jaccard: Double = Jaccard.score("karolin", "kathrin", 1)
+ * val jaro: Double = Jaro.score("martha", "marhta")
+ * val jaroWinkler: Double = JaroWinkler.score("martha", "marhta", 0.1)
+ * val levenshtein: Double = Levenshtein.score("martha", "marhta")
+ * val needlemanWunsch: Double = NeedlemanWunsch.score("martha", "marhta", ConstantGap())
+ * val ngramSimilarity: Double = NGram.score("karolin", "kathrin", 1)
+ * val bigramSimilarity: Double = NGram.score("karolin", "kathrin", 2)
+ * val overlap: Double = Overlap.score("karolin", "kathrin", 1)
+ * val smithWaterman: Double = SmithWaterman.score("martha", "marhta", (LinearGap(gapValue = -1), Integer.MAX_VALUE))
+ * val smithWatermanGotoh: Double = SmithWatermanGotoh.score("martha", "marhta", ConstantGap())
+ * val tversky: Double = Tversky.score("karolin", "kathrin", 0.5)
+ *
+ * // Distances between strings
+ * val damerauDist: Int = Damerau.distance("martha", "marhta")
+ * val hammingDist: Int = Hamming.distance("martha", "marhta")
+ * val levenshteinDist: Int = Levenshtein.distance("martha", "marhta")
+ * val longestCommonSubSeq: Int = LongestCommonSeq.distance("martha", "marhta")
+ * val ngramDist: Int = NGram.distance("karolin", "kathrin", 1)
+ * val bigramDist: Int = NGram.distance("karolin", "kathrin", 2)
+ *
+ * // return a List[String] of ngram tokens
+ * val tokens = NGram.tokens("martha", 2) // List("ma", "ar", "rt", "th", "ha")
+ * }}}
+ */
 object StringDistance {
   object Cosine extends StringMetric[CosineAlgorithm]
   object Damerau extends StringMetric[DamerauLevenshteinAlgorithm]
@@ -59,7 +59,6 @@ object StringDistance {
   object Tversky extends WeightedStringMetric[TverskyAlgorithm, Double]
 }
 
-
 private[stringdistance] class CosineSimilarityImplWrapper extends CosSimilarityImpl
 private[stringdistance] class DiceCoefficientImplWrapper extends DiceCoefficientImpl
 private[stringdistance] class HammingImplWrapper extends HammingImpl
@@ -71,4 +70,3 @@ private[stringdistance] class NeedlemanWunschImplWrapper extends NeedlemanWunsch
 private[stringdistance] class NGramImplWrapper extends NGramImpl
 private[stringdistance] class OverlapImplWrapper extends OverlapImpl
 private[stringdistance] class SmithWatermanImplWrapper extends SmithWatermanImpl
-

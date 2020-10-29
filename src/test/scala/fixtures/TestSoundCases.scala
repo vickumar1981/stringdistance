@@ -1,9 +1,11 @@
 package fixtures
 
 // scalastyle:off
-case class TestSoundCase (s1: String, s2: String,
-                          metaphone: Option[Boolean] = None,
-                          soundex: Option[Boolean] = None)
+case class TestSoundCase(
+    s1: String,
+    s2: String,
+    metaphone: Option[Boolean] = None,
+    soundex: Option[Boolean] = None)
 
 object TestSoundCases {
   lazy val testCases: List[TestSoundCase] = List(

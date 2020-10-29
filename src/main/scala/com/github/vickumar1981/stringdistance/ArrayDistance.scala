@@ -3,16 +3,16 @@ package com.github.vickumar1981.stringdistance
 import com.github.vickumar1981.stringdistance.impl._
 
 /**
-  * Main class to work with generic arrays, Array[T], analagous to [[StringDistance]]
-  *
-  * {{{
-  * import com.github.vickumar1981.stringdistance.ArrayDistance._
-  *
-  * // Example Levenshtein Distance and Score
-  * val levenshteinDist = Levenshtein.distance(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 2
-  * val levenshtein = Levenshtein.score(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 0.667
-  * }}}
-  */
+ * Main class to work with generic arrays, Array[T], analagous to [[StringDistance]]
+ *
+ * {{{
+ * import com.github.vickumar1981.stringdistance.ArrayDistance._
+ *
+ * // Example Levenshtein Distance and Score
+ * val levenshteinDist = Levenshtein.distance(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 2
+ * val levenshtein = Levenshtein.score(Array("m", "a", "r", "t", "h", "a"), Array("m", "a", "r", "h", "t", "a")) // 0.667
+ * }}}
+ */
 
 object ArrayDistance {
   protected def wrapDist[T](arr1: Array[T], arr2: Array[T], dist: () => Int) =
@@ -41,11 +41,14 @@ object ArrayDistance {
   sealed trait ScoreFromDistanceMetric {
     def distance[T](arr1: Array[T], arr2: Array[T]): Int
     def score[T](s1: Array[T], s2: Array[T]): Double = {
-      wrapScore[T](s1, s2, () => {
-        val maxLen = math.max(s1.length, s2.length)
-        val minLen = maxLen - distance(s1, s2)
-        (if (minLen < 0 || minLen > maxLen) 0d else minLen * 1d) / maxLen
-      })
+      wrapScore[T](
+        s1,
+        s2,
+        () => {
+          val maxLen = math.max(s1.length, s2.length)
+          val minLen = maxLen - distance(s1, s2)
+          (if (minLen < 0 || minLen > maxLen) 0d else minLen * 1d) / maxLen
+        })
     }
   }
 
