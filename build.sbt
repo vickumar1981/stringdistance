@@ -1,8 +1,6 @@
 import xerial.sbt.Sonatype._
 
 lazy val testScalastyle = taskKey[Unit]("testScalastyle")
-testScalastyle := scalastyle.in(Test).toTask("").value
-(test in Test) := ((test in Test) dependsOn testScalastyle).value
 
 lazy val commonSettings = List(
     scalaVersion := "2.13.1",
@@ -34,6 +32,9 @@ lazy val root = (project in file("."))
 
     assemblyJarName := "stringdistance_2.13-" + version.value + ".jar",
     test in assembly := {},
+
+    testScalastyle := scalastyle.in(Test).toTask("").value,
+    (test in Test) := ((test in Test) dependsOn testScalastyle).value,
 
     libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.0-M4" % Test,
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0-M4" % Test,
