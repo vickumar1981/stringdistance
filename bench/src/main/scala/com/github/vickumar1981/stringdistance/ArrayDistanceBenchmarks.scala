@@ -5,8 +5,6 @@ import ArrayDistanceBenchmarks._
 
 class ArrayDistanceBenchmarks {
   @Benchmark
-  def emptyCosineTest(): Unit = emptyArrTest(ArrayDistance.Cosine)
-  @Benchmark
   def smallDiffCosineTest(): Unit = smallDiffArrTest(ArrayDistance.Cosine)
   @Benchmark
   def smallSameCosineTest(): Unit = smallSameArrTest(ArrayDistance.Cosine)
@@ -15,8 +13,6 @@ class ArrayDistanceBenchmarks {
   @Benchmark
   def largeSameCosineTest(): Unit = largeSameArrTest(ArrayDistance.Cosine)
 
-  @Benchmark
-  def emptyDamerauTest(): Unit = emptyArrTest(ArrayDistance.Damerau)
   @Benchmark
   def smallDiffDamerauTest(): Unit = smallDiffArrTest(ArrayDistance.Damerau)
   @Benchmark
@@ -27,8 +23,6 @@ class ArrayDistanceBenchmarks {
   def largeSameDamerauTest(): Unit = largeSameArrTest(ArrayDistance.Damerau)
 
   @Benchmark
-  def emptyDiceCoefficientTest(): Unit = emptyArrTest(ArrayDistance.DiceCoefficient)
-  @Benchmark
   def smallDiffDiceCoefficientTest(): Unit = smallDiffArrTest(ArrayDistance.DiceCoefficient)
   @Benchmark
   def smallSameDiceCoefficientTest(): Unit = smallSameArrTest(ArrayDistance.DiceCoefficient)
@@ -37,8 +31,6 @@ class ArrayDistanceBenchmarks {
   @Benchmark
   def largeSameDiceCoefficientTest(): Unit = largeSameArrTest(ArrayDistance.DiceCoefficient)
 
-  @Benchmark
-  def emptyHammingTest(): Unit = emptyArrTest(ArrayDistance.Hamming)
   @Benchmark
   def smallDiffHammingTest(): Unit = smallDiffArrTest(ArrayDistance.Hamming)
   @Benchmark
@@ -49,8 +41,6 @@ class ArrayDistanceBenchmarks {
   def largeSameHammingTest(): Unit = largeSameArrTest(ArrayDistance.Hamming)
 
   @Benchmark
-  def emptyJaccardTest(): Unit = emptyArrTest(ArrayDistance.Jaccard)
-  @Benchmark
   def smallDiffJaccardTest(): Unit = smallDiffArrTest(ArrayDistance.Jaccard)
   @Benchmark
   def smallSameJaccardTest(): Unit = smallSameArrTest(ArrayDistance.Jaccard)
@@ -59,8 +49,6 @@ class ArrayDistanceBenchmarks {
   @Benchmark
   def largeSameJaccardTest(): Unit = largeSameArrTest(ArrayDistance.Jaccard)
 
-  @Benchmark
-  def emptyJaroTest(): Unit = emptyArrTest(ArrayDistance.Jaro)
   @Benchmark
   def smallDiffJaroTest(): Unit = smallDiffArrTest(ArrayDistance.Jaro)
   @Benchmark
@@ -71,8 +59,6 @@ class ArrayDistanceBenchmarks {
   def largeSameJaroTest(): Unit = largeSameArrTest(ArrayDistance.Jaro)
 
   @Benchmark
-  def emptyJaroWinklerTest(): Unit = emptyArrTest(ArrayDistance.JaroWinkler)
-  @Benchmark
   def smallDiffJaroWinklerTest(): Unit = smallDiffArrTest(ArrayDistance.JaroWinkler)
   @Benchmark
   def smallSameJaroWinklerTest(): Unit = smallSameArrTest(ArrayDistance.JaroWinkler)
@@ -81,8 +67,6 @@ class ArrayDistanceBenchmarks {
   @Benchmark
   def largeSameJaroWinklerTest(): Unit = largeSameArrTest(ArrayDistance.JaroWinkler)
 
-  @Benchmark
-  def emptyLevenshteinTest(): Unit = emptyArrTest(ArrayDistance.Levenshtein)
   @Benchmark
   def smallDiffLevenshteinTest(): Unit = smallDiffArrTest(ArrayDistance.Levenshtein)
   @Benchmark
@@ -93,8 +77,6 @@ class ArrayDistanceBenchmarks {
   def largeSameLevenshteinTest(): Unit = largeSameArrTest(ArrayDistance.Levenshtein)
 
   @Benchmark
-  def emptyLongestCommonSeqTest(): Unit = emptyArrTest(ArrayDistance.LongestCommonSeq)
-  @Benchmark
   def smallDiffLongestCommonSeqTest(): Unit = smallDiffArrTest(ArrayDistance.LongestCommonSeq)
   @Benchmark
   def smallSameLongestCommonSeqTest(): Unit = smallSameArrTest(ArrayDistance.LongestCommonSeq)
@@ -103,8 +85,6 @@ class ArrayDistanceBenchmarks {
   @Benchmark
   def largeSameLongestCommonSeqTest(): Unit = largeSameArrTest(ArrayDistance.LongestCommonSeq)*/
 
-  @Benchmark
-  def emptyNeedlemanWunschTest(): Unit = emptyArrTest(ArrayDistance.NeedlemanWunsch)
   @Benchmark
   def smallDiffNeedlemanWunschTest(): Unit = smallDiffArrTest(ArrayDistance.NeedlemanWunsch)
   @Benchmark
@@ -115,8 +95,6 @@ class ArrayDistanceBenchmarks {
   def largeSameNeedlemanWunschTest(): Unit = largeSameArrTest(ArrayDistance.NeedlemanWunsch)
 
   @Benchmark
-  def emptyNGramDistTest(): Unit = emptyArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
-  @Benchmark
   def smallDiffNGramDistTest(): Unit = smallDiffArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
   @Benchmark
   def smallSameNGramDistTest(): Unit = smallSameArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
@@ -125,8 +103,6 @@ class ArrayDistanceBenchmarks {
   @Benchmark
   def largeSameNGramDistTest(): Unit = largeSameArrTest[ArrayDistance.WeightedDistanceMetric[Int]](ArrayDistance.NGram)
 
-  @Benchmark
-  def emptyNGramScoreTest(): Unit = emptyArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
   @Benchmark
   def smallDiffNGramScoreTest(): Unit = smallDiffArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
   @Benchmark
@@ -137,8 +113,6 @@ class ArrayDistanceBenchmarks {
   def largeSameNGramScoreTest(): Unit = largeSameArrTest[ArrayDistance.WeightedScoreMetric[Int]](ArrayDistance.NGram)
 
   @Benchmark
-  def emptyOverlapTest(): Unit = emptyArrTest(ArrayDistance.Overlap)
-  @Benchmark
   def smallDiffOverlapTest(): Unit = smallDiffArrTest(ArrayDistance.Overlap)
   @Benchmark
   def smallSameOverlapTest(): Unit = smallSameArrTest(ArrayDistance.Overlap)
@@ -147,8 +121,6 @@ class ArrayDistanceBenchmarks {
   @Benchmark
   def largeSameOverlapTest(): Unit = largeSameArrTest(ArrayDistance.Overlap)
   
-  @Benchmark
-  def emptySmithWatermanTest(): Unit = emptyArrTest(ArrayDistance.SmithWaterman)
   @Benchmark
   def smallDiffSmithWatermanTest(): Unit = smallDiffArrTest(ArrayDistance.SmithWaterman)
   @Benchmark
@@ -159,8 +131,6 @@ class ArrayDistanceBenchmarks {
   def largeSameSmithWatermanTest(): Unit = largeSameArrTest(ArrayDistance.SmithWaterman)
   
   @Benchmark
-  def emptySmithWatermanGotohTest(): Unit = emptyArrTest(ArrayDistance.SmithWatermanGotoh)
-  @Benchmark
   def smallDiffSmithWatermanGotohTest(): Unit = smallDiffArrTest(ArrayDistance.SmithWatermanGotoh)
   @Benchmark
   def smallSameSmithWatermanGotohTest(): Unit = smallSameArrTest(ArrayDistance.SmithWatermanGotoh)
@@ -169,8 +139,6 @@ class ArrayDistanceBenchmarks {
   @Benchmark
   def largeSameSmithWatermanGotohTest(): Unit = largeSameArrTest(ArrayDistance.SmithWatermanGotoh)
   
-  @Benchmark
-  def emptyTverskyTest(): Unit = emptyArrTest(ArrayDistance.Tversky)
   @Benchmark
   def smallDiffTverskyTest(): Unit = smallDiffArrTest(ArrayDistance.Tversky)
   @Benchmark
@@ -216,8 +184,6 @@ object ArrayDistanceBenchmarks {
       metric.distance(arr1, arr2)
   }
 
-  def emptyArrTest[T: Bench](metric: T) =
-    Bench[T].benchmark(Array.empty[Int], Array.empty[Int], metric)
   def smallDiffArrTest[T: Bench](metric: T) = Bench[T].benchmark(
     Array.fill(10)('a'),
     Array.fill(10)('b'),
