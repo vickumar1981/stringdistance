@@ -88,3 +88,15 @@ __Generate API documentation:__
 
 The `index.html` page of the documentation should be located in your project root
 directory, under `target/scala-2.13/api`.
+
+---
+### 6. Running benchmarks
+
+To run, benchmarks on a single thread: 
+`./sbt bench/jmh:run -i 1 -wi 1 -f1 -t1`.
+
+For more information on JMH benchmarking parameters, please refer to these links:
+
+[Scala JMH Plugin Page](https://github.com/ktoso/sbt-jmh)
+
+[Java Microbenchmark Harness Page](https://github.com/openjdk/jmh)
