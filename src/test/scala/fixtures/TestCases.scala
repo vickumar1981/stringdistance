@@ -112,7 +112,8 @@ object TestCases {
       Some(1),
       Some(1),
       ngram = Some(1),
-      nGramDist = Some(0))
+      nGramDist = Some(0)),
+    TestCase("RUE NELSON MANDELA", "RUE ALBERT UNGEHEUER", longestCommonSeq = Some(8))
   )
 
   lazy val precision = 3
