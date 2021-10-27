@@ -93,7 +93,8 @@ directory, under `target/scala-2.13/api`.
 ### 6. Running benchmarks
 
 To run, benchmarks on a single thread: 
-`./sbt bench/jmh:run -i 1 -wi 1 -f1 -t1`.
+`./sbt "bench/jmh:run -i 1 -wi 1 -f 1 -t 1"` or
+`./sbt "bench/jmh:run -bm ss -lrf"`.
 
 For more information on JMH benchmarking parameters, please refer to these links:
 
