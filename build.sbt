@@ -11,7 +11,7 @@ lazy val root = (project in file("."))
   .settings(commonSettings: _*)
   .settings(
     name := "stringdistance",
-    version := "1.2.7",
+    version := "1.2.8-SNAPSHOT",
     organization := "com.github.vickumar1981",
     description := "A fuzzy matching string distance library for Scala and Java.",
     sonatypeProjectHosting := Some(GitHubHosting("vickumar1981", "stringdistance", "vickumar@gmail.com")),
