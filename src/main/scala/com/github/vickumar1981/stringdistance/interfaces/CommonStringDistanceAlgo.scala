@@ -25,17 +25,17 @@ private[stringdistance] trait CommonStringDistanceAlgo {
 
   protected def getCommonChars[T](s1: List[T], s2: List[T], halfLen: Int): List[T] = {
     val commonChars: mutable.ListBuffer[T] = ListBuffer.empty[T]
-    val strCopy: mutable.ListBuffer[T] = ListBuffer(s2: _*)
-    var n = s1.length
+    val strCopy: mutable.ListBuffer[Option[T]] = ListBuffer(s2: _*).map(v => Some(v))
     val m = s2.length
     s1.zipWithIndex.foreach {
       case (ch, chIndex) => {
         var foundIt = false
         var j = math.max(0, chIndex - halfLen)
         while (!foundIt && j <= Math.min(chIndex + halfLen, m - 1)) {
-          if (strCopy(j) == ch) {
+          if (strCopy(j).contains(ch)) {
             foundIt = true
             commonChars += ch
+            strCopy(j) = None
           }
           j += 1
         }
